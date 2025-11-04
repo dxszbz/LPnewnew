@@ -1,0 +1,54 @@
+---
+export interface Props {
+  initialLocale?: string;
+  storageKey?: string;
+  supportedLocales?: string[];
+}
+
+const {
+  initialLocale = 'en',
+  storageKey = 'lander-locale',
+  supportedLocales = ['en']
+} = Astro.props satisfies Props;
+
+const storageKeySerialized = JSON.stringify(storageKey);
+const supportedLocalesSerialized = JSON.stringify(supportedLocales);
+const initialLocaleSerialized = JSON.stringify(initialLocale);
+---
+
+<script is:inline>
+  // 中文註解：語言腳本負責同步語言設定並提供全局切換接口
+  const STORAGE_KEY = ${storageKeySerialized};
+  const SUPPORTED_LOCALES = ${supportedLocalesSerialized};
+  const INITIAL_LOCALE = ${initialLocaleSerialized};
+
+  const applyLocale = (locale) => {
+    document.documentElement.lang = locale;
+    localStorage.setItem(STORAGE_KEY, locale);
+  };
+
+  const readStoredLocale = () => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored || !SUPPORTED_LOCALES.includes(stored)) {
+      return INITIAL_LOCALE;
+    }
+    return stored;
+  };
+
+  const init = () => {
+    const locale = readStoredLocale();
+    applyLocale(locale);
+  };
+
+  window.__LANDER_I18N__ = {
+    getLocale: () => localStorage.getItem(STORAGE_KEY) ?? INITIAL_LOCALE,
+    setLocale: (locale) => {
+      if (!SUPPORTED_LOCALES.includes(locale)) return;
+      applyLocale(locale);
+      document.dispatchEvent(new CustomEvent('lander:locale-change', { detail: locale }));
+    },
+    listLocales: () => [...SUPPORTED_LOCALES]
+  };
+
+  init();
+</script>

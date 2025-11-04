@@ -1,0 +1,28 @@
+---
+export interface Props {
+  icon: string;
+  tone?: 'brand' | 'success' | 'neutral';
+  size?: 'sm' | 'md';
+}
+
+const {
+  icon,
+  tone = 'brand',
+  size = 'md'
+} = Astro.props satisfies Props;
+
+const toneMap: Record<typeof tone, string> = {
+  brand: 'bg-slate-800/70 text-brand-100',
+  success: 'bg-success-500/20 text-success-500',
+  neutral: 'bg-slate-900/60 text-white/70'
+};
+
+const sizeMap: Record<typeof size, string> = {
+  sm: 'h-8 w-8',
+  md: 'h-10 w-10'
+};
+---
+
+<span class={`inline-flex items-center justify-center rounded-lg ${toneMap[tone]} ${sizeMap[size]}`}>
+  <i data-lucide={icon} class="h-5 w-5" aria-hidden="true"></i>
+</span>

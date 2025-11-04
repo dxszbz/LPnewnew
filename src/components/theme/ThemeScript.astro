@@ -1,0 +1,89 @@
+---
+export interface Props {
+  initialTheme?: 'system' | 'day' | 'night';
+  storageKey?: string;
+  availableThemes?: Array<'system' | 'day' | 'night'>;
+}
+
+const {
+  initialTheme = 'system',
+  storageKey = 'lander-theme',
+  availableThemes = ['system', 'day', 'night']
+} = Astro.props satisfies Props;
+
+const storageKeySerialized = JSON.stringify(storageKey);
+const availableThemesSerialized = JSON.stringify(availableThemes);
+const initialThemeSerialized = JSON.stringify(initialTheme);
+---
+
+<script is:inline>
+  // 中文註解：主題腳本負責讀寫本地儲存並在頁面載入前設定 data-theme
+  const STORAGE_KEY = ${storageKeySerialized};
+  const AVAILABLE_THEMES = ${availableThemesSerialized};
+  const INITIAL_THEME = ${initialThemeSerialized};
+  const prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const resolveTheme = (theme) =>
+    theme === 'system'
+        ? prefersDarkQuery.matches
+          ? 'night'
+          : 'day'
+        : theme;
+
+  let stopSystemWatch = () => {};
+
+  const ensureWatcher = (theme) => {
+    stopSystemWatch();
+    if (theme === 'system') {
+      stopSystemWatch = watchSystemTheme();
+    }
+  };
+
+  const applyTheme = (theme) => {
+    const root = document.documentElement;
+    const resolved = resolveTheme(theme);
+    root.dataset.theme = resolved;
+    localStorage.setItem(STORAGE_KEY, theme);
+    root.classList.toggle('theme-night', resolved === 'night');
+    root.classList.toggle('theme-day', resolved === 'day');
+    ensureWatcher(theme);
+  };
+
+  const readStoredTheme = () => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored || !AVAILABLE_THEMES.includes(stored)) {
+      return INITIAL_THEME;
+    }
+    return stored;
+  };
+
+  const watchSystemTheme = () => {
+    const handler = () => applyTheme('system');
+    if (typeof prefersDarkQuery.addEventListener === 'function') {
+      prefersDarkQuery.addEventListener('change', handler);
+      return () => prefersDarkQuery.removeEventListener('change', handler);
+    }
+    if (typeof prefersDarkQuery.addListener === 'function') {
+      prefersDarkQuery.addListener(handler);
+      return () => prefersDarkQuery.removeListener(handler);
+    }
+    return () => {};
+  };
+
+  const init = () => {
+    const current = readStoredTheme();
+    applyTheme(current);
+    ensureWatcher(current);
+  };
+
+  window.__LANDER_THEME__ = {
+    getTheme: () => localStorage.getItem(STORAGE_KEY) ?? 'system',
+    setTheme: (nextTheme) => {
+      if (!AVAILABLE_THEMES.includes(nextTheme)) return;
+      applyTheme(nextTheme);
+    },
+    listThemes: () => [...AVAILABLE_THEMES]
+  };
+
+  init();
+</script>

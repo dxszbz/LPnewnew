@@ -1,0 +1,59 @@
+.stock-stripes {
+  background-color: #ff6b00;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 107, 0, 0.8) 0px,
+    rgba(255, 107, 0, 0.8) 20px,
+    rgba(232, 92, 0, 0.8) 20px,
+    rgba(232, 92, 0, 0.8) 40px
+  );
+  background-size: 60px 60px;
+  background-position: 0 0, 0 0;
+}
+
+[data-checkout-trigger] {
+  position: relative;
+}
+
+[data-checkout-trigger]::after {
+  content: '';
+  display: none;
+}
+
+[data-checkout-trigger].is-loading::after {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.25rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-top-color: transparent;
+  animation: checkoutSpinner 0.8s linear infinite;
+}
+
+[data-checkout-trigger].is-loading .checkout-icon {
+  opacity: 0;
+}
+
+.icon-solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+@keyframes checkoutSpinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulseCta,
+  .animate-progressStripes,
+  .animate-floatBadge,
+  .animate-wiggle {
+    animation: none !important;
+  }
+}

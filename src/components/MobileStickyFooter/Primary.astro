@@ -1,0 +1,35 @@
+---
+export interface Props {
+  headline: string;
+  stockMessage: string;
+  ctaLabel: string;
+  targetId?: string;
+}
+
+const {
+  headline,
+  stockMessage,
+  ctaLabel,
+  targetId = 'purchase'
+} = Astro.props satisfies Props;
+
+const stockHtml = stockMessage.replace(
+  '{stock}',
+  '<span data-stock-text="sticky" class="font-bold text-warning-500"></span>'
+);
+---
+
+<div class="fixed inset-x-0 bottom-0 z-40 hidden bg-slate-900/90 p-4 backdrop-blur-md md:hidden" data-sticky-cta>
+  <div class="mx-auto flex max-w-xl items-center gap-3">
+    <div class="flex-1 text-xs text-white/70">
+      <p class="font-semibold text-white">
+        {headline}
+        <span data-countdown="sticky" class="text-warning-500"></span>
+      </p>
+      <p set:html={stockHtml}></p>
+    </div>
+    <a href={`#${targetId}`} class="cta-scroll flex-1 rounded-full bg-warning-500 px-4 py-3 text-center text-sm font-black text-slate-950 shadow-lg shadow-warning-500/40" role="button">
+      {ctaLabel}
+    </a>
+  </div>
+</div>

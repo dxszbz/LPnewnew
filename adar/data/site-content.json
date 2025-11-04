@@ -1,0 +1,41 @@
+{
+  "carouselImages": [
+    { "src": "images/01.png",  "alt": "A'DAR NordCharge front view" },
+    { "src": "images/02.png",  "alt": "A'DAR NordCharge magnetic alignment" },
+    { "src": "images/03.png",  "alt": "A'DAR NordCharge fast-charge demonstration" },
+    { "src": "images/04.png",  "alt": "A'DAR NordCharge LED battery display" },
+    { "src": "images/05.png",  "alt": "A'DAR NordCharge with packaging" },
+    { "src": "images/06.png",  "alt": "A'DAR NordCharge lifestyle usage" },
+    { "src": "images/07.png",  "alt": "A'DAR NordCharge desk setup" },
+    { "src": "images/08.png",  "alt": "A'DAR NordCharge on nightstand" },
+    { "src": "images/09.png",  "alt": "A'DAR NordCharge charging multiple devices" },
+    { "src": "images/10.png", "alt": "A'DAR NordCharge accessories close-up" },
+    { "src": "images/11.png", "alt": "A'DAR NordCharge travel scenario" },
+    { "src": "images/12.png", "alt": "A'DAR NordCharge magnetic snap in motion" },
+    { "src": "images/13.png", "alt": "A'DAR NordCharge outdoor usage" },
+    { "src": "images/14.jpg", "alt": "A'DAR NordCharge overhead pack shot" },
+    { "src": "images/15.png", "alt": "A'DAR NordCharge charging indicator close-up" }
+  ],
+  "reviews": [
+    {"name":"Iris Chen | Freelance Brand Designer","timestamp":"20 minutes ago","avatar":"https://i.pravatar.cc/80?img=68","stars":5,"content":"Client visits run all day and A'DAR NordCharge saves me from staring at 1% battery. The magnet is rock solid—I already convinced three teammates to grab theirs."},
+    {"name":"Ethan Lin | Tech YouTuber","timestamp":"32 minutes ago","avatar":"https://i.pravatar.cc/80?img=15","stars":5,"content":"Filming vlogs drains my phone fast. A'DAR NordCharge pumps it back up during shoots and never overheats. Easily the best magnetic pack I’ve tested."},
+    {"name":"Penny Wang | Travel Creator","timestamp":"41 minutes ago","avatar":"https://i.pravatar.cc/80?img=55","stars":5,"content":"Just survived a 12-day Europe tour with zero charging anxiety. While others hunted outlets, I snapped the A'DAR NordCharge on and kept moving."},
+    {"name":"Marcus Chang | Startup Founder","timestamp":"55 minutes ago","avatar":"https://i.pravatar.cc/80?img=24","stars":5,"content":"Received mine yesterday and went straight into investor meetings. Phone stayed at 80%+ all day and support replied instantly on chat."},
+    {"name":"Sophia Reyes | Event Planner","timestamp":"1 hour ago","avatar":"https://i.pravatar.cc/80?img=32","stars":5,"content":"Coordinating conferences means constant calls. A'DAR NordCharge let me run registration, live-stream, and photos without plugging in once."},
+    {"name":"David King | Airline Pilot","timestamp":"1 hour ago","avatar":"https://i.pravatar.cc/80?img=29","stars":5,"content":"Layovers are unpredictable. This power bank fits my flight bag and keeps my phone and headset topped up between legs."},
+    {"name":"Lena Novak | Fashion Buyer","timestamp":"1 hour ago","avatar":"https://i.pravatar.cc/80?img=41","stars":5,"content":"Paris showroom days are brutal on batteries. With A'DAR NordCharge I FaceTimed HQ all afternoon and still had juice for navigation at night."},
+    {"name":"Arjun Patel | Product Manager","timestamp":"2 hours ago","avatar":"https://i.pravatar.cc/80?img=47","stars":5,"content":"Daily standups, field visits, and ride-share tracking—A'DAR NordCharge handled it all. Love the LED readout so I know when to recharge it."},
+    {"name":"Mia Lopez | Wedding Photographer","timestamp":"2 hours ago","avatar":"https://i.pravatar.cc/80?img=12","stars":5,"content":"Shot a full wedding weekend and used the A'DAR NordCharge as my safety net between ceremonies. It even powered my gimbal in a pinch."},
+    {"name":"Kevin Brooks | Uber Fleet Owner","timestamp":"2 hours ago","avatar":"https://i.pravatar.cc/80?img=3","stars":5,"content":"Drivers were draining phones running apps. Bought the bundle and my top performers now finish shifts with battery to spare."},
+    {"name":"Harper Quinn | College Student","timestamp":"3 hours ago","avatar":"https://i.pravatar.cc/80?img=52","stars":5,"content":"Campus days run 14 hours. A'DAR NordCharge sticks to my phone while I take notes, stream tutorials, and commute. No more backpack full of cables."},
+    {"name":"Noah White | Emergency Medic","timestamp":"3 hours ago","avatar":"https://i.pravatar.cc/80?img=11","stars":5,"content":"We can’t risk losing dispatch contact. A'DAR NordCharge clips on inside the ambulance and keeps our phones powered through double shifts."},
+    {"name":"Grace Lee | Real Estate Agent","timestamp":"3 hours ago","avatar":"https://i.pravatar.cc/80?img=36","stars":5,"content":"Back-to-back showings used to kill my phone before evening offers. Now I stream virtual tours on site without sweating the battery."},
+    {"name":"Owen Hughes | Travel Blogger","timestamp":"4 hours ago","avatar":"https://i.pravatar.cc/80?img=67","stars":5,"content":"Hiking in Patagonia meant zero outlets. A'DAR NordCharge stayed magnetized even with gloves on and fast charged my phone at base camp."},
+    {"name":"Emily Foster | Nurse Practitioner","timestamp":"4 hours ago","avatar":"https://i.pravatar.cc/80?img=40","stars":5,"content":"Clinic tablets and my phone stay alive on 12-hour shifts. Pass-through charging is a lifesaver during quick breaks."},
+    {"name":"Jamal Rivers | Basketball Coach","timestamp":"5 hours ago","avatar":"https://i.pravatar.cc/80?img=14","stars":5,"content":"Game days require video playback and constant messaging. A'DAR NordCharge kept my analytics tablet and phone powered from warmup to press."},
+    {"name":"Sophie Muller | Luxury Retail Manager","timestamp":"5 hours ago","avatar":"https://i.pravatar.cc/80?img=21","stars":5,"content":"Our VIP events rely on digital lookbooks. A'DAR NordCharge hides behind the phone and still powers contactless checkout all night."},
+    {"name":"Victor Ramirez | Food Delivery Lead","timestamp":"6 hours ago","avatar":"https://i.pravatar.cc/80?img=8","stars":5,"content":"Peak dinner rush before used to drain our team trackers. With A'DAR NordCharge, riders finish routes without detouring to charge."},
+    {"name":"Ava Collins | Crisis Communications","timestamp":"6 hours ago","avatar":"https://i.pravatar.cc/80?img=44","stars":5,"content":"Media crises mean nonstop calls. A'DAR NordCharge sits behind my phone during every interview and the battery never dips below 70%."},
+    {"name":"Logan Price | Software Consultant","timestamp":"7 hours ago","avatar":"https://i.pravatar.cc/80?img=5","stars":5,"content":"Airport lounges were full but I still demoed apps for clients on the go. A'DAR NordCharge's magnet never budged while screen sharing."}
+  ]
+}

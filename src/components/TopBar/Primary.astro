@@ -1,0 +1,22 @@
+---
+export interface Props {
+  icon: string;
+  message: string;
+  countdownLabel: string;
+}
+
+const { icon, message, countdownLabel } = Astro.props satisfies Props;
+---
+
+<div class="fixed inset-x-0 top-0 z-50 bg-warning-500 text-center text-sm font-semibold tracking-wide text-white">
+  <div class="mx-auto flex max-w-screen-lg items-center justify-center gap-20 px-4 py-2">
+    <span class="inline-flex items-center gap-1">
+      <i data-lucide={icon} class="h-4 w-4 animate-wiggle text-white" aria-hidden="true"></i>
+      {message}
+    </span>
+    <span class="hidden text-xs sm:block">
+      {countdownLabel}
+      <span data-countdown="top" class="font-black"></span>
+    </span>
+  </div>
+</div>

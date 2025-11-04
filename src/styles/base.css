@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+[data-theme='day'] {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+}

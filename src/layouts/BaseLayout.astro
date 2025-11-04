@@ -1,0 +1,42 @@
+---
+import ThemeScript from '../components/theme/ThemeScript.astro';
+import LocaleScript from '../components/i18n/LocaleScript.astro';
+import '../styles/base.css';
+import '../styles/utilities.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  theme?: 'system' | 'day' | 'night';
+  availableThemes?: Array<'system' | 'day' | 'night'>;
+  supportedLocales?: string[];
+}
+
+const {
+  title = 'Astro Landing Template',
+  description = 'Reusable Astro landing page for product marketing.',
+  lang = 'en',
+  theme = 'system',
+  availableThemes = ['system', 'day', 'night'],
+  supportedLocales = ['en']
+} = Astro.props satisfies Props;
+
+const initialThemeAttribute = theme === 'system' ? 'night' : theme;
+---
+
+<!DOCTYPE html>
+<html lang={lang} data-theme={initialThemeAttribute}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <ThemeScript initialTheme={theme} availableThemes={availableThemes} />
+    <LocaleScript initialLocale={lang} supportedLocales={supportedLocales} />
+  </head>
+  <body class="bg-slate-950 text-slate-50 antialiased">
+    <slot />
+  </body>
+</html>

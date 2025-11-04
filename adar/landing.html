@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Flash Deal | A'DAR NordCharge</title>
+    <meta
+      name="description"
+      content="Lock in the A'DAR NordCharge magnetic fast-charging power bank before the 14-minute timer ends—snap-on fast power, strong magnets, and smart heat control for worry-free days."
+    >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Tailwind theme configuration: extend brand colors and animations
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#f3f8ff",
+                100: "#d9e9ff",
+                500: "#2e6bff",
+                600: "#1f4dd6",
+                700: "#1239aa"
+              },
+              warning: {
+                500: "#ff6b00",
+                600: "#e85c00"
+              },
+              success: {
+                500: "#0fba81"
+              }
+            },
+            boxShadow: {
+              glow: "0 20px 45px rgba(46,107,255,0.35)"
+            },
+            animation: {
+              pulseCta: "ctaPulse 1.8s ease-in-out infinite",
+              progressStripes: "stripe 1.2s linear infinite",
+              floatBadge: "floatBadge 3s ease-in-out infinite",
+              wiggle: "wiggle 4s ease-in-out infinite"
+            },
+            keyframes: {
+              ctaPulse: {
+                "0%,100%": { transform: "scale(1)", boxShadow: "0 0 0 rgba(46,107,255,0.4)" },
+                "50%": { transform: "scale(1.04)", boxShadow: "0 0 30px rgba(46,107,255,0.55)" }
+              },
+              stripe: {
+                "0%": { backgroundPosition: "0 0" },
+                "100%": { backgroundPosition: "-60px 0" }
+              },
+              floatBadge: {
+                "0%,100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-6px)" }
+              },
+              wiggle: {
+                "0%,100%": { transform: "rotate(0deg)" },
+                "10%": { transform: "rotate(-4deg)" },
+                "20%": { transform: "rotate(4deg)" },
+                "30%": { transform: "rotate(-3deg)" },
+                "40%": { transform: "rotate(3deg)" }
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script>
+      // Checkout API configuration: centralize endpoint and product data
+      const DEFAULT_CHECKOUT_CONFIG = {
+        apiEndpoint: "https://novacoretech.org/",
+        product: {
+          id: "adar-nordcharge",
+          wdp: "1",
+          name: "A'DAR NordCharge",
+          price: "94",
+          imageUrl: "https://ekontravel.com/cdn/shop/files/18_ad667c8e-7bc8-44c2-89ce-619609932391.png?v=1758264589",
+          meta: '{"product_id":"adar-nordcharge","bundle":"bogo","currency":"USD"}'
+        }
+      };
+      const LANDING_CHECKOUT_CONFIG = window?.LANDING_CHECKOUT_CONFIG ?? {};
+      const MERGED_CHECKOUT_PRODUCT = {
+        ...DEFAULT_CHECKOUT_CONFIG.product,
+        ...(LANDING_CHECKOUT_CONFIG.product ?? {})
+      };
+      window.CHECKOUT_CONFIG = Object.freeze({
+        ...DEFAULT_CHECKOUT_CONFIG,
+        ...LANDING_CHECKOUT_CONFIG,
+        product: MERGED_CHECKOUT_PRODUCT
+      });
+    </script>
+    <style>
+      .stock-stripes {
+        background-color: #ff6b00;
+        background-image: repeating-linear-gradient(
+          135deg,
+          rgba(255, 107, 0, 0.8) 0px,
+          rgba(255, 107, 0, 0.8) 20px,
+          rgba(232, 92, 0, 0.8) 20px,
+          rgba(232, 92, 0, 0.8) 40px
+        );
+        background-size: 60px 60px;
+        background-position: 0 0, 0 0;
+      }
+      [data-checkout-trigger] {
+        position: relative;
+      }
+      [data-checkout-trigger]::after {
+        content: "";
+        display: none;
+      }
+      [data-checkout-trigger].is-loading::after {
+        display: inline-block;
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-left: 0.25rem;
+        border-radius: 9999px;
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        border-top-color: transparent;
+        animation: checkoutSpinner 0.8s linear infinite;
+      }
+      [data-checkout-trigger].is-loading .checkout-icon {
+        opacity: 0;
+      }
+      @keyframes checkoutSpinner {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .icon-solid {
+        fill: currentColor;
+        stroke: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .animate-pulseCta,
+        .animate-progressStripes,
+        .animate-floatBadge,
+        .animate-wiggle {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-50 antialiased">
+    <div class="fixed inset-x-0 top-0 z-50 bg-warning-500 text-center text-sm font-semibold tracking-wide text-white">
+      <div class="mx-auto flex max-w-screen-lg items-center justify-center gap-20 px-4 py-2">
+        <span class="inline-flex items-center gap-1">
+          <i data-lucide="sparkles" class="h-4 w-4 animate-wiggle text-white"></i>
+          Emergency drop: 10-year risk-free guarantee + buy-one-get-one bonus
+        </span>
+        <span class="hidden text-xs sm:block">Checkout closes in <span id="countdown-top" class="font-black"></span></span>
+      </div>
+    </div>
+
+    <main class="mx-auto mt-16 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-20 sm:px-6 lg:px-10">
+      <section class="relative flex flex-col gap-6 rounded-3xl bg-gradient-to-b from-slate-900/60 to-slate-950 p-6 shadow-2xl ring-1 ring-white/10 sm:grid sm:grid-cols-2 sm:gap-10 sm:p-10">
+        <div id="hero-bg" class="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-20 sm:opacity-30" style="background-image: url('');"></div>
+        <div class="relative order-1 sm:order-1">
+          <div class="absolute -left-11 -top-4 z-40 hidden h-20 w-20 rounded-full bg-warning-500 text-center text-xs font-bold uppercase text-white shadow-glow sm:flex sm:flex-col sm:items-center sm:justify-center animate-floatBadge">
+            <span>Flash</span>
+            <span>Deal</span>
+            <span>87% OFF</span>
+          </div>
+          <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-xl sm:flex sm:h-full sm:flex-col">
+            <div id="hero-carousel" class="group relative aspect-square w-full overflow-hidden rounded-3xl bg-slate-800/60 sm:flex-1">
+              <div class="skeleton absolute inset-0 z-10 flex items-center justify-center text-sm text-white/30">Loading gallery…</div>
+              <div id="hero-slides" class="relative h-full w-full"></div>
+              <button type="button" class="absolute left-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-slate-900/70 p-2 text-white transition group-hover:flex" data-direction="prev" aria-label="Previous image">
+                <i data-lucide="chevron-left" class="h-5 w-5"></i>
+              </button>
+              <button type="button" class="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-slate-900/70 p-2 text-white transition group-hover:flex" data-direction="next" aria-label="Next image">
+                <i data-lucide="chevron-right" class="h-5 w-5"></i>
+              </button>
+              <div id="hero-dots" class="pointer-events-auto absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-1"></div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 border-t border-white/5 bg-slate-950/70 p-3 text-xs text-white/70">
+              <div class="flex items-center gap-2">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-brand-100"><i data-lucide="magnet" class="h-4 w-4"></i></span>
+                <span>Snap-on magnetic alignment</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-brand-100"><i data-lucide="battery-charging" class="h-4 w-4"></i></span>
+                <span>60% battery in 30 minutes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-brand-100"><i data-lucide="usb" class="h-4 w-4"></i></span>
+                <span>Two-way fast charging</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-2 flex flex-col gap-6 sm:order-2 sm:justify-between sm:h-full">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-brand-500/20 px-4 py-2 text-sm font-semibold text-brand-100 ring-1 ring-brand-500/40">
+              <i data-lucide="star" class="icon-solid h-4 w-4 text-brand-100"></i>
+              97,248 tech lovers left 5-star raves
+            </span>
+            <h1 class="mt-4 text-3xl font-black text-white sm:text-4xl lg:text-5xl">
+              Snap-on fast power. No cables. No dead phone.
+            </h1>
+            <p class="mt-3 text-base leading-relaxed text-white/80 sm:text-lg">
+              A'DAR NordCharge magnetically clicks in, delivers 20W fast charge and smart heat control—lock the <strong>BOGO bundle</strong> before the timer hits zero.
+            </p>
+            <ul class="mt-4 grid gap-2 text-sm text-white/75 sm:grid-cols-3">
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span> 60% in 30 minutes</li>
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span> Strong MagSafe hold</li>
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span> LED power display</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-slate-900/70 p-4 shadow-lg sm:mt-auto">
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <div class="text-xs font-semibold uppercase tracking-wide text-warning-500">Limited-time sale ends in</div>
+                <div id="countdown-main" class="text-2xl font-black text-white"></div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between text-xs text-white/70">
+                  <span>Live inventory</span>
+                  <span><span id="stock-remaining" class="font-bold text-warning-500"></span> sets</span>
+                </div>
+                <div class="mt-2 h-3 overflow-hidden rounded-full bg-white/10">
+                  <div id="stock-bar" class="stock-stripes h-3 w-full animate-progressStripes rounded-full"></div>
+                </div>
+                <p id="stock-alert" class="mt-2 text-xs font-semibold text-warning-500"></p>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 text-xs text-white/60">
+                <div class="flex items-center gap-1">
+                  <i data-lucide="shield-check" class="h-4 w-4 text-success-500"></i>
+                  10-year worry-free warranty
+                </div>
+                <div class="flex items-center gap-1">
+                  <i data-lucide="printer" class="h-4 w-4 text-success-500"></i>
+                  Orders print within 30 seconds
+                </div>
+                <div class="flex items-center gap-1">
+                  <i data-lucide="truck" class="h-4 w-4 text-success-500"></i>
+                  Worldwide free shipping
+                </div>
+              </div>
+            </div>
+            <div>
+              <a
+                href="#purchase"
+                class="cta-scroll group relative mt-12 mb-4 flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-lg font-black text-white shadow-glow transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-500/60 animate-pulseCta"
+                role="button"
+              >
+                <span class="absolute -top-6 inline-flex items-center gap-1 rounded-full bg-success-500 px-3 py-1 text-xs font-semibold text-slate-900 shadow-lg">
+                  <i data-lucide="users" class="h-3 w-3"></i>
+                  41 shoppers are checking out now
+                </span>
+                Claim my order NOW
+                <i data-lucide="arrow-right" class="h-5 w-5 transition-transform group-hover:translate-x-1"></i>
+              </a>
+              </div>
+              <p class="text-center text-xs text-white/60">256-bit secured checkout · 24/7 live support · No-hassle returns</p>
+          </div>
+        </div>
+      </section>
+
+<section id="value-details" class="mt-12 rounded-3xl border border-white/5 bg-slate-900/50 p-6 sm:p-10">
+  <h2 class="text-2xl font-bold text-white">Stop letting a dead phone make you anxious</h2>
+  <p class="mt-3 text-sm text-white/70">A dead battery isn’t “an inconvenience.” It blocks doors, payments, and decisions when stakes are highest. Don’t learn it the hard way.</p>
+
+  <!-- Row 1: Pain points with visual (text left, image right) -->
+  <div class="mt-6 grid gap-6 md:grid-cols-2 md:items-center">
+    <div class="space-y-2 text-sm text-white/75">
+      <ul class="space-y-2">
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="map-pin" class="h-5 w-5"></i>
+          </span>
+          <span>Stranded in a city you barely know — your phone dies as the last bus pulls away.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="heart" class="h-5 w-5"></i>
+          </span>
+          <span>Right before a first date, your phone goes dark — they walk off convinced you never showed.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="trending-down" class="h-5 w-5"></i>
+          </span>
+          <span>Mid‑selloff, your phone shuts down — your portfolio free‑falls and you can’t act.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="overflow-hidden rounded-xl bg-slate-900/60">
+      <img src="https://1075koolfm.com/cobPub/uploads/2025/04/Battery.jpg" alt="A'DAR NordCharge in action with no stand and low battery anxiety" class="h-auto w-full object-cover"/>
+    </div>
+  </div>
+
+  <!-- Row 2: Three frustrations solved (image left, text right) -->
+  <div class="mt-8 grid gap-6 md:grid-cols-2 md:items-center">
+    <!-- Left: feature image/GIF -->
+    <div class="overflow-hidden rounded-xl bg-slate-800/50">
+      <img src="https://ekontravel.com/cdn/shop/files/NC_gif3.webp" alt="Magnetic snap, fast charging, and stable stand in action" class="h-auto w-full object-cover"/>
+    </div>
+    <!-- Right: copy list -->
+    <div class="space-y-3">
+      <h3 class="text-xl font-bold text-white">Three frustrations solved in one snap</h3>
+      <ul class="space-y-2 text-sm text-white/80">
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="magnet" class="h-5 w-5"></i>
+          </span>
+          <span>Magnetic snap‑on alignment — clicks into place and stays locked.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="zap" class="h-5 w-5"></i>
+          </span>
+          <span>Real fast charging — 20W PD pumps 60% battery in 30 minutes.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="gauge" class="h-5 w-5"></i>
+          </span>
+          <span>Stable stand function — hands‑free video, calls, and streaming in portrait or landscape.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Row 2.5: Slim + Stand dedicated (text left, image right) -->
+  <div class="mt-8 grid gap-6 md:grid-cols-2 md:items-center">
+    <!-- Left: copy -->
+    <div class="space-y-3 text-sm text-white/80">
+      <h3 class="text-xl font-bold text-white">Carry less. Set it down. Get more done.</h3>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="feather" class="h-5 w-5"></i>
+          </span>
+          <span>Ultra‑slim, featherlight body — disappears in your pocket or sling.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="monitor" class="h-5 w-5"></i>
+          </span>
+          <span>Stable stand function — hands‑free calls, streaming, and meetings.</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+            <i data-lucide="rotate-ccw" class="h-5 w-5"></i>
+          </span>
+          <span>Portrait or landscape — steady angles that don’t wobble.</span>
+        </li>
+      </ul>
+    </div>
+    <!-- Right: feature image -->
+    <div class="overflow-hidden rounded-xl bg-slate-900/60">
+      <img src="https://ekontravel.com/cdn/shop/files/IMG_4231_5_1_a72ab4e4-bf76-4b6e-a33e-b2e348d1b8e4.webp" alt="Hands-free video call on stable stand; slim profile in pocket" class="h-auto w-full object-cover"/>
+    </div>
+  </div>
+
+  <!-- Row 3: Product details with large visual -->
+  <div class="mt-8">
+    <h3 class="text-xl font-bold text-white">Specs that keep up all day</h3>
+    <!-- Row 3: alternate layout (image left, text right) with vertical centering -->
+    <div class="mt-4 grid gap-6 md:grid-cols-2 md:items-center">
+      <div class="overflow-hidden rounded-xl bg-slate-900/60">
+        <img src="https://ekontravel.com/cdn/shop/files/NC_gif2-ezgif.com-optimize.webp" alt="Product detail overview" class="h-auto w-full object-cover"/>
+      </div>
+      <div class="space-y-3 text-sm text-white/80">
+        <p>A'DAR NordCharge snaps on magnetically and powers you through the longest days. With a magnetic snap and <strong>stable stand function</strong>, it is always ready for use — whether on the go, at your desk, or on your nightstand. Everything you need to know, at a glance:</p>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+              <i data-lucide="cpu" class="h-5 w-5"></i>
+            </span>
+            <span>10,000 mAh high‑density cell • 20W USB‑C in/out • 15W wireless • pass‑through charging</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+              <i data-lucide="circle-dot" class="h-5 w-5"></i>
+            </span>
+            <span>MagSafe‑compatible magnetic ring with 18 rare‑earth magnets</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+              <i data-lucide="monitor-smartphone" class="h-5 w-5"></i>
+            </span>
+            <span>LED power display with smart temperature regulation</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+              <i data-lucide="package" class="h-5 w-5"></i>
+            </span>
+            <span>In the box: A'DAR NordCharge power bank, USB‑C fast cable, magnetic ring, quick-start guide</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confidence guarantees -->
+  <div class="mt-8 space-y-3">
+    <h3 class="text-xl font-bold text-white text-center">Confidence guarantees that remove hesitation</h3>
+    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-white/80">
+      <li class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+          <i data-lucide="headset" class="h-5 w-5"></i>
+        </span>
+        <span>24/7 concierge support — talk to a real expert in 30 seconds.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+          <i data-lucide="refresh-ccw" class="h-5 w-5"></i>
+        </span>
+        <span>Unlimited replacements for 10 years — instant swap, no questions asked.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100">
+          <i data-lucide="shield-check" class="h-5 w-5"></i>
+        </span>
+        <span>Payment security — PCI compliance and real‑time encryption.</span>
+      </li>
+    </ul>
+    <div class="rounded-xl bg-slate-950/70 p-4 text-sm text-white/75 ring-1 ring-white/5">
+      <p class="italic">“The only pocket‑sized magnetic charger that passed 16 international safety certifications.” — TechGear Review Lab</p>
+    </div>
+    <div class="overflow-hidden rounded-xl bg-slate-800/50" style="display: none;">
+      <img src="https://placehold.co/600x300" alt="Guarantee visual" class="h-auto w-full object-cover"/>
+  </div>
+</section>
+      <section class="mt-16 rounded-3xl border border-brand-500/30 bg-slate-900/50 p-6 sm:p-10">
+        <h2 class="text-3xl font-bold text-white">Our risk‑free guarantee</h2>
+        <p class="mt-2 text-sm text-white/70">If A'DAR NordCharge doesn’t end your low-battery stress, you get a full refund within 30 days—no questions asked.</p>
+        <div class="mt-6 rounded-3xl border border-dashed border-brand-500/40 bg-slate-950/60 p-6">
+          <div class="grid gap-6 md:grid-cols-4">
+            <div class="flex items-start gap-3">
+              <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-success-500/20 text-success-500">✓</span>
+              <div class="text-sm text-white/80">30‑day trial with priority support</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-success-500/20 text-success-500">✓</span>
+              <div class="text-sm text-white/80">No‑questions‑asked full refund</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-success-500/20 text-success-500">✓</span>
+              <div class="text-sm text-white/80">Free worldwide shipping</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-success-500/20 text-success-500">✓</span>
+              <div class="text-sm text-white/80">10‑year worry‑free warranty</div>
+            </div>
+          </div>
+          <a href="#purchase" class="cta-scroll block mt-7 w-full rounded-full bg-brand-500 px-6 py-4 text-center text-lg font-black text-white shadow-glow transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-500/60" role="button">Start my risk-free trial</a>
+          <p class="mt-2 text-center text-xs text-white/60">Cancel anytime within 30 days for a full refund</p>
+        </div>
+      </section>
+      <section class="mt-16 rounded-3xl border border-white/5 bg-slate-900/40 p-6 sm:p-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 class="text-3xl font-bold text-white">Still wondering if it’s worth it?</h2>
+            <p class="mt-3 text-sm text-white/70">We manually verify every submission and only feature confirmed buyers. Reviews load in real time so you see what’s happening this minute.</p>
+          </div>
+          <div class="rounded-2xl bg-brand-500/20 px-4 py-3 text-sm font-semibold text-brand-100">
+            <span id="recent-activity">3 fresh 5-star reviews just posted in the last 2 minutes</span>
+          </div>
+        </div>
+        <div id="comments" class="mt-8 grid gap-6"></div>
+        <div id="comments-pagination" class="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-white/60">
+          <button type="button" id="comments-prev" class="flex items-center gap-1 rounded-full border border-white/20 px-3 py-2 text-white transition hover:border-brand-500/60 hover:text-brand-100">
+            <i data-lucide="chevron-left" class="h-3 w-3"></i>
+            Previous
+          </button>
+          <div id="comments-dots" class="flex flex-wrap items-center gap-2"></div>
+          <button type="button" id="comments-next" class="flex items-center gap-1 rounded-full border border-white/20 px-3 py-2 text-white transition hover:border-brand-500/60 hover:text-brand-100">
+            Next
+            <i data-lucide="chevron-right" class="h-3 w-3"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="mt-16 rounded-3xl border border-white/5 bg-slate-900/40 p-6 sm:p-10">
+        <h2 class="text-3xl font-bold text-white">Frequently asked questions</h2>
+        <dl class="mt-6 space-y-4 text-sm text-white/70">
+          <div class="rounded-2xl bg-slate-950/50 p-4">
+            <dt class="font-semibold text-white">Q1. Does NordCharge work with Android phones?</dt>
+            <dd class="mt-2">Yes. The built-in USB-C port fast charges Android phones, tablets, earbuds, and more. The included magnetic ring lets any case snap on securely.</dd>
+          </div>
+          <div class="rounded-2xl bg-slate-950/50 p-4">
+            <dt class="font-semibold text-white">Q2. Can I bring it on flights?</dt>
+            <dd class="mt-2">Absolutely. 10,000 mAh is within the International Civil Aviation Organization guidelines for carry-on batteries.</dd>
+          </div>
+          <div class="rounded-2xl bg-slate-950/50 p-4">
+            <dt class="font-semibold text-white">Q3. Will it overheat while charging?</dt>
+            <dd class="mt-2">NordCharge monitors temperature with 12 layers of protection and automatically balances output, so it stays cool even during marathon charging sessions.</dd>
+          </div>
+          <div class="rounded-2xl bg-slate-950/50 p-4">
+            <dt class="font-semibold text-white">Q4. Can I charge my phone and the power bank simultaneously?</dt>
+            <dd class="mt-2">Yes. Plug NordCharge into the wall and it will recharge itself while powering your phone via wireless or USB-C pass-through charging.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="purchase" class="mt-16 rounded-3xl border border-white/5 bg-slate-900/50 p-6 sm:p-10">
+        <h2 class="text-3xl font-bold text-white">Complete your order</h2>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60">
+            <img class="h-full w-full object-cover" src="images/01.png" alt="A'DAR NordCharge power bank">
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-6">
+            <p class="text-xl font-bold text-white">A'DAR NordCharge</p>
+            <p class="mt-1 text-sm text-white/60">Snap‑on fast power • 10,000 mAh • 20W USB‑C • LED display</p>
+            <form id="purchase-form" class="mt-6 space-y-4" action="" method="post">
+              <div class="flex items-center gap-3">
+                <span class="text-sm text-white/70">Quantity</span>
+                <div class="inline-flex items-center overflow-hidden rounded-full border border-white/20">
+                  <button type="button" id="qty-dec" class="px-3 py-2 text-white/80 hover:bg-white/10">−</button>
+                  <input id="purchase-qty" class="w-12 bg-transparent text-center text-white" type="number" name="quantity" value="1" min="1">
+                  <button type="button" id="qty-inc" class="px-3 py-2 text-white/80 hover:bg-white/10">＋</button>
+                </div>
+              </div>
+              <button type="submit" data-checkout-trigger class="group flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-lg font-black text-white shadow-glow transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-500/60">
+                <span data-checkout-cta-text>Buy now — $94</span>
+                <i data-checkout-cta-icon data-lucide="arrow-right" class="checkout-icon h-5 w-5 transition-transform group-hover:translate-x-1"></i>
+              </button>
+              <!-- Safe checkout badges -->
+              <div class="mt-4 grid grid-cols-2 gap-2 text-xs text-white/80 sm:grid-cols-3" aria-label="Checkout assurances">
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="truck" class="h-4 w-4 text-brand-100"></i>
+                  <span>Free shipping</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="rotate-ccw" class="h-4 w-4 text-brand-100"></i>
+                  <span>Easy returns</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="shield-check" class="h-4 w-4 text-brand-100"></i>
+                  <span>Secure checkout</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="badge-check" class="h-4 w-4 text-brand-100"></i>
+                  <span>1‑year warranty</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="circle-dollar-sign" class="h-4 w-4 text-brand-100"></i>
+                  <span>Money‑back guarantee</span>
+                </div>
+                <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
+                  <i data-lucide="thumbs-up" class="h-4 w-4 text-brand-100"></i>
+                  <span>Satisfaction guarantee</span>
+                </div>
+              </div>
+            </form>
+            <p class="mt-2 text-center text-xs text-white/60">256‑bit secured checkout · 30‑day money‑back guarantee</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="sticky-cta" class="fixed inset-x-0 bottom-0 z-40 hidden bg-slate-900/90 p-4 backdrop-blur-md md:hidden">
+      <div class="mx-auto flex max-w-xl items-center gap-3">
+        <div class="flex-1 text-xs text-white/70">
+          <p class="font-semibold text-white">Deal ends in <span id="countdown-sticky" class="text-warning-500"></span></p>
+          <p>Only <span id="stock-sticky" class="font-bold text-warning-500"></span> sets left before price jumps back to $189</p>
+        </div>
+        <a href="#purchase" class="cta-scroll flex-1 rounded-full bg-warning-500 px-4 py-3 text-center text-sm font-black text-slate-950 shadow-lg shadow-warning-500/40" role="button">
+          Grab mine now
+        </a>
+      </div>
+    </div>
+
+    <footer class="bg-slate-950/90 py-10 text-xs text-white/60">
+      <div class="mx-auto flex max-w-screen-xl flex-wrap justify-between gap-6 px-6">
+        <div>
+          <p class="font-semibold text-white">A'DAR peace-of-mind promise</p>
+          <p class="mt-2 max-w-xs">Every order comes with 30-day risk-free returns, worldwide free shipping, and round-the-clock human support.</p>
+        </div>
+        <div>
+          <p class="font-semibold text-white">Shop with confidence</p>
+          <ul class="mt-2 space-y-2">
+            <li>SSL encrypted checkout</li>
+            <li>3rd-party payment protection</li>
+            <li>Discreet packaging that keeps gifts secret</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-white">Move now</p>
+          <p class="mt-2">Once the timer hits zero, the bundle reverts to full price. Complete checkout now to lock in your spot.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const refreshIcons = () => {
+          if (window.lucide?.createIcons) {
+            lucide.createIcons();
+          }
+        };
+        const countdownSeconds = 14 * 60 + 29;
+        const stockState = {
+          current: 96,
+          min: 12
+        };
+        let carouselImages = [];
+        const checkoutConfig = window.CHECKOUT_CONFIG;
+        const purchaseForm = document.getElementById("purchase-form");
+        const checkoutCtaButton = purchaseForm?.querySelector('[data-checkout-trigger]');
+        const checkoutCtaLabel = purchaseForm?.querySelector('[data-checkout-cta-text]');
+        let defaultCtaText = checkoutCtaLabel?.textContent ?? "";
+
+        const toPlainMeta = (metaValue) => {
+          if (typeof metaValue === "string") return metaValue;
+          if (metaValue && typeof metaValue === "object") {
+            try {
+              return JSON.stringify(metaValue);
+            } catch (error) {
+              console.warn("Unable to serialize product meta.", error);
+            }
+          }
+          return "";
+        };
+
+        const basePlainMeta = toPlainMeta(checkoutConfig?.product?.meta);
+
+        if (checkoutConfig && purchaseForm) {
+          if (checkoutConfig.apiEndpoint) {
+            purchaseForm.action = checkoutConfig.apiEndpoint;
+          }
+          if (checkoutCtaLabel && checkoutConfig.product?.price) {
+            checkoutCtaLabel.textContent = `Buy now — $${checkoutConfig.product.price}`;
+            defaultCtaText = checkoutCtaLabel.textContent;
+          }
+        }
+
+        const sanitizeQuantity = (value) => {
+          const parsed = Number.parseInt(String(value ?? "1"), 10);
+          if (Number.isNaN(parsed) || parsed < 1) return "1";
+          return String(Math.min(parsed, 99));
+        };
+
+        const encodeMeta = (plainValue) => {
+          if (!plainValue) return "";
+          try {
+            const encodedBytes = new TextEncoder().encode(plainValue);
+            let binary = "";
+            encodedBytes.forEach((byte) => {
+              binary += String.fromCharCode(byte);
+            });
+            const base64 = window.btoa(binary);
+            return base64.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+          } catch (error) {
+            console.error("Failed to encode meta payload.", error);
+            return null;
+          }
+        };
+
+        const createCheckoutParams = (quantityValue, encodedMeta) => ({
+          wdp: checkoutConfig?.product?.wdp ?? "1",
+          product_id: checkoutConfig?.product?.id ?? "",
+          product_name: checkoutConfig?.product?.name ?? "",
+          price: checkoutConfig?.product?.price ?? "",
+          quantity: quantityValue,
+          image_url: checkoutConfig?.product?.imageUrl ?? "",
+          meta: encodedMeta
+        });
+
+        const buildCheckoutPayload = (params) => {
+          const availableEntries = Object.entries(params).filter(([, value]) => value !== "" && value !== null && value !== undefined);
+          return availableEntries
+            .sort(([aKey], [bKey]) => (aKey > bKey ? 1 : aKey < bKey ? -1 : 0))
+            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+            .join("&");
+        };
+
+        const normalizeEndpoint = (endpoint) => String(endpoint ?? "").replace(/\/+$/, "");
+
+        const setCheckoutCtaState = (state) => {
+          if (!checkoutCtaButton) return;
+          const isLoading = state === "loading";
+          checkoutCtaButton.disabled = isLoading;
+          checkoutCtaButton.classList.toggle("opacity-70", isLoading);
+          checkoutCtaButton.classList.toggle("is-loading", isLoading);
+          if (checkoutCtaLabel) {
+            checkoutCtaLabel.textContent = isLoading ? "Creating order..." : defaultCtaText;
+          }
+        };
+
+        if (purchaseForm) {
+          purchaseForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (!checkoutConfig) {
+              console.error("CHECKOUT_CONFIG is undefined. Unable to create order.");
+              alert("Checkout configuration is missing. Please contact the site administrator.");
+              return;
+            }
+            setCheckoutCtaState("loading");
+            const endpoint = normalizeEndpoint(checkoutConfig.apiEndpoint);
+            if (!endpoint) {
+              setCheckoutCtaState("idle");
+              alert("Checkout endpoint is not configured. Please verify CHECKOUT_CONFIG.apiEndpoint.");
+              return;
+            }
+            const quantityInput = purchaseForm.querySelector("#purchase-qty");
+            const quantityValue = sanitizeQuantity(quantityInput?.value);
+            if (quantityInput) {
+              quantityInput.value = quantityValue;
+            }
+            const encodedMeta = encodeMeta(basePlainMeta);
+            if (encodedMeta === null) {
+              setCheckoutCtaState("idle");
+              alert("Failed to encode product details. Please try again later.");
+              return;
+            }
+            const checkoutParams = createCheckoutParams(quantityValue, encodedMeta);
+            const payload = buildCheckoutPayload(checkoutParams);
+            if (!payload) {
+              setCheckoutCtaState("idle");
+              alert("Failed to generate checkout payload. Please refresh and try again.");
+              return;
+            }
+            const checkoutUrl = `${endpoint}/?${payload}`;
+            purchaseForm.action = checkoutUrl;
+            window.location.assign(checkoutUrl);
+          });
+        }
+
+        // Try loading external JSON for easier content management
+        let remoteContent = null;
+        try {
+          const resp = await fetch('data/site-content.json', { cache: 'no-store' });
+          if (resp.ok) remoteContent = await resp.json();
+        } catch (e) { /* ignore, will use fallback */ }
+
+        // Fallback images if JSON not available
+        if (!Array.isArray(remoteContent?.carouselImages)) {
+          carouselImages = [
+            { src: "https://ekontravel.com/cdn/shop/files/18_ad667c8e-7bc8-44c2-89ce-619609932391.png?v=1758264589", alt: "A'DAR NordCharge power bank with packaging" },
+            { src: "https://ekontravel.com/cdn/shop/files/12_70f9798d-00e4-4469-89bb-6c0e7263efb3.png?v=1758264609", alt: "A'DAR NordCharge snapping securely onto a phone" },
+            { src: "https://ekontravel.com/cdn/shop/files/01_4f52a013-1155-4da5-8a04-831b3c656e8f.png?v=1758264609", alt: "Fast-charging indicator while A'DAR NordCharge powers a device" },
+            { src: "https://ekontravel.com/cdn/shop/files/06_c5a75e12-3f21-40fe-8ceb-42bd8efb5d1d.png?v=1758264609", alt: "LED battery display glowing in low light" }
+          ];
+        } else {
+          carouselImages = remoteContent.carouselImages;
+        }
+
+        const heroCarousel = document.getElementById("hero-carousel");
+        const heroSlidesContainer = document.getElementById("hero-slides");
+        const heroDotsContainer = document.getElementById("hero-dots");
+        const heroSkeleton = heroCarousel?.querySelector(".skeleton") || null;
+        const heroNavButtons = heroCarousel ? heroCarousel.querySelectorAll("button[data-direction]") : [];
+        let heroIndex = 0;
+        let heroTimerId = null;
+        const heroSlides = [];
+        const stockEls = {
+          remaining: document.getElementById("stock-remaining"),
+          bar: document.getElementById("stock-bar"),
+          alert: document.getElementById("stock-alert"),
+          sticky: document.getElementById("stock-sticky")
+        };
+
+        refreshIcons();
+
+        const setHeroSlide = (nextIndex) => {
+          if (!heroSlides.length) return;
+          heroSlides[heroIndex].classList.remove("opacity-100","z-10");
+          heroSlides[nextIndex].classList.add("opacity-100","z-10");
+          heroIndex = nextIndex;
+          if (heroDotsContainer) {
+            Array.from(heroDotsContainer.children).forEach((dot, dotIndex) => {
+              dot.classList.toggle("bg-brand-500", dotIndex === heroIndex);
+              dot.classList.toggle("bg-white/30", dotIndex !== heroIndex);
+            });
+          }
+        };
+
+        const goToHeroSlide = (index) => {
+          if (!heroSlides.length) return;
+          const nextIndex = (index + heroSlides.length) % heroSlides.length;
+          setHeroSlide(nextIndex);
+        };
+
+        const stepHero = (direction) => {
+          goToHeroSlide(heroIndex + direction);
+        };
+
+        const stopHeroAutoplay = () => {
+          if (heroTimerId) {
+            clearInterval(heroTimerId);
+            heroTimerId = null;
+          }
+        };
+
+        const startHeroAutoplay = () => {
+          if (heroSlides.length <= 1) return;
+          stopHeroAutoplay();
+          heroTimerId = setInterval(() => {
+            stepHero(1);
+          }, 4500);
+        };
+
+        if (heroCarousel && heroSlidesContainer && heroDotsContainer) {
+          heroSlidesContainer.classList.add("relative");
+          carouselImages.forEach((image, index) => {
+            const slide = document.createElement("div");
+            slide.className = "absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out";
+            if (index === 0) {
+              slide.classList.add("opacity-100", "z-10");
+            }
+            const img = document.createElement("img");
+        // Use object-contain to show full square imagery without cropping
+            img.className = "h-full w-full object-contain bg-slate-900 opacity-0 transition-opacity duration-700";
+            img.dataset.src = image.src;
+            img.dataset.hero = "true";
+            img.alt = image.alt;
+            slide.appendChild(img);
+            heroSlidesContainer.appendChild(slide);
+            heroSlides.push(slide);
+
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "h-2 w-6 rounded-full bg-white/30 transition hover:bg-brand-500";
+            dot.setAttribute("aria-label", `Show image ${index + 1}`);
+            dot.dataset.index = String(index);
+            dot.addEventListener("click", () => {
+              stopHeroAutoplay();
+              goToHeroSlide(index);
+              startHeroAutoplay();
+            });
+            heroDotsContainer.appendChild(dot);
+          });
+
+          heroDotsContainer.setAttribute("role", "tablist");
+          heroDotsContainer.setAttribute("aria-label", "Product image gallery");
+          setHeroSlide(heroIndex);
+
+          heroNavButtons.forEach((button) => {
+            const direction = button.dataset.direction === "prev" ? -1 : 1;
+            button.addEventListener("click", () => {
+              stopHeroAutoplay();
+              stepHero(direction);
+              startHeroAutoplay();
+            });
+            if (heroSlides.length > 1) {
+              button.classList.remove("hidden");
+              button.classList.add("flex");
+            }
+          });
+
+          let pointerStartX = null;
+          heroCarousel.addEventListener("pointerdown", (event) => {
+            pointerStartX = event.clientX;
+            stopHeroAutoplay();
+          });
+          heroCarousel.addEventListener("pointerup", (event) => {
+            if (pointerStartX === null) return;
+            const deltaX = event.clientX - pointerStartX;
+            if (Math.abs(deltaX) > 40) {
+              stepHero(deltaX > 0 ? -1 : 1);
+            }
+            pointerStartX = null;
+            startHeroAutoplay();
+          });
+          heroCarousel.addEventListener("pointerleave", () => {
+            pointerStartX = null;
+            startHeroAutoplay();
+          });
+
+          heroCarousel.addEventListener("pointercancel", () => {
+            pointerStartX = null;
+            startHeroAutoplay();
+          });
+
+          startHeroAutoplay();
+        }
+
+        // Gradually remove skeletons and lazy-load images
+        const lazyImages = document.querySelectorAll("img[data-src]");
+        const skeletons = document.querySelectorAll(".skeleton");
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const skeletonLayer = img.previousElementSibling?.classList?.contains("skeleton") ? img.previousElementSibling : null;
+              img.src = img.dataset.src;
+              img.onload = () => {
+                img.classList.remove("opacity-0");
+                img.classList.add("opacity-100");
+                if (skeletonLayer) skeletonLayer.remove();
+                if (img.dataset.hero && heroSkeleton) {
+                  heroSkeleton.remove();
+                }
+              };
+              io.unobserve(img);
+            }
+          });
+        }, { rootMargin: "200px" });
+        lazyImages.forEach((img) => io.observe(img));
+        // Keep skeleton visible if an image fails to load
+        skeletons.forEach((layer) => {
+          setTimeout(() => {
+            layer.classList.add("animate-pulse");
+          }, 300);
+        });
+
+        // Format countdown text output
+        let remaining = countdownSeconds;
+        const formatTime = (secs) => {
+          const minutes = String(Math.floor(secs / 60)).padStart(2, "0");
+          const seconds = String(secs % 60).padStart(2, "0");
+          return `${minutes}m ${seconds}s`;
+        };
+        const countdownEls = {
+          main: document.getElementById("countdown-main"),
+          top: document.getElementById("countdown-top"),
+          sticky: document.getElementById("countdown-sticky")
+        };
+        const updateCountdown = () => {
+          remaining = Math.max(0, remaining - 1);
+          const formatted = formatTime(remaining);
+          Object.values(countdownEls).forEach((el) => {
+            if (el) el.textContent = formatted;
+          });
+          if (remaining === 0) {
+            const alertMessage = "We extended the deal for 2 grace minutes—finish checkout now.";
+            if (stockEls.alert.textContent !== alertMessage) {
+              stockEls.alert.textContent = alertMessage;
+            }
+          }
+        };
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Simulate pseudo-random stock countdown messaging
+        const updateStock = () => {
+          const decay = Math.random() < 0.4 ? 2 : 1;
+          stockState.current = Math.max(stockState.min, stockState.current - decay);
+          const percent = (stockState.current / 120) * 100;
+          stockEls.remaining.textContent = stockState.current;
+          stockEls.bar.style.width = `${percent}%`;
+          stockEls.sticky.textContent = stockState.current;
+          if (stockState.current <= 20) {
+            stockEls.alert.textContent = "Under 20 bundles left. The buy-one-get-one bonus will disappear any moment.";
+          } else if (stockState.current <= 35) {
+            stockEls.alert.textContent = "Inventory is thinning fast—many shoppers are already in queue.";
+          } else {
+            stockEls.alert.textContent = "Hot demand: another order closes every 37 seconds.";
+          }
+        };
+        updateStock();
+        setInterval(updateStock, 4500);
+
+        // Render review cards from JSON data
+        const commentsContainer = document.getElementById("comments");
+        const commentsDots = document.getElementById("comments-dots");
+        const commentsPrev = document.getElementById("comments-prev");
+        const commentsNext = document.getElementById("comments-next");
+        const commentData = Array.isArray(remoteContent?.reviews)
+          ? remoteContent.reviews
+          : JSON.parse(document.getElementById("comment-data").textContent);
+        const reviewsPerPage = 5;
+        const totalPages = Math.ceil(commentData.length / reviewsPerPage);
+        let currentReviewPage = 1;
+
+        const renderComments = (page) => {
+          if (!commentsContainer) return;
+          const startIndex = (page - 1) * reviewsPerPage;
+          const pageItems = commentData.slice(startIndex, startIndex + reviewsPerPage);
+          commentsContainer.innerHTML = pageItems
+            .map((comment) => `
+              <article class="rounded-3xl border border-white/5 bg-slate-950/70 p-5 shadow-lg shadow-black/30">
+                <header class="flex items-center gap-3">
+                  <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src="${comment.avatar}" alt="${comment.name}">
+                  <div>
+                    <p class="text-sm font-semibold text-white">${comment.name}</p>
+                    <p class="text-xs text-white/40">${comment.timestamp}</p>
+                  </div>
+                  <div class="ml-auto flex gap-1">${Array.from({ length: 5 }).map((_, index) => `<span data-lucide="star" class="h-4 w-4 ${index < comment.stars ? "text-warning-500 icon-solid" : "text-white/20"}"></span>`).join("")}</div>
+                </header>
+                <p class="mt-4 text-sm leading-relaxed text-white/80">${comment.content}</p>
+                <footer class="mt-4 flex items-center justify-between text-xs text-white/40">
+                  <span>Verified buyer</span>
+                  <span>👍 ${Math.floor(Math.random() * 240) + 80}</span>
+                </footer>
+              </article>`)
+            .join("");
+          if (commentsPrev && commentsNext) {
+            commentsPrev.disabled = page === 1;
+            commentsNext.disabled = page === totalPages;
+            commentsPrev.setAttribute("aria-disabled", String(commentsPrev.disabled));
+            commentsNext.setAttribute("aria-disabled", String(commentsNext.disabled));
+            commentsPrev.classList.toggle("opacity-40", Boolean(commentsPrev.disabled));
+            commentsNext.classList.toggle("opacity-40", Boolean(commentsNext.disabled));
+          }
+          if (commentsDots) {
+            Array.from(commentsDots.children).forEach((dot, index) => {
+              dot.classList.toggle("bg-brand-500", index + 1 === page);
+              dot.classList.toggle("bg-white/30", index + 1 !== page);
+              dot.setAttribute("aria-current", index + 1 === page ? "page" : "false");
+            });
+          }
+          currentReviewPage = page;
+          refreshIcons();
+        };
+
+        if (commentsDots && totalPages > 0) {
+          commentsDots.innerHTML = "";
+          for (let page = 1; page <= totalPages; page += 1) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "h-2 w-6 rounded-full bg-white/30 transition hover:bg-brand-500";
+            dot.dataset.page = String(page);
+            dot.setAttribute("aria-label", `Go to review page ${page}`);
+            dot.addEventListener("click", () => {
+              renderComments(page);
+            });
+            commentsDots.appendChild(dot);
+          }
+        }
+
+        if (commentsPrev && commentsNext) {
+          commentsPrev.addEventListener("click", () => {
+            if (currentReviewPage > 1) {
+              renderComments(currentReviewPage - 1);
+            }
+          });
+          commentsNext.addEventListener("click", () => {
+            if (currentReviewPage < totalPages) {
+              renderComments(currentReviewPage + 1);
+            }
+          });
+        }
+
+        if (totalPages > 0) {
+          renderComments(currentReviewPage);
+        }
+
+        // Display recent order activity hints
+        const activityEl = document.getElementById("recent-activity");
+        const activityMessages = [
+          "3 fresh 5-star reviews just posted",
+          "Sophia in Taipei just added the magnetic ring bundle",
+          "Jason from Singapore completed his payment",
+          "Concierge alert: fewer than 25 bundles remain"
+        ];
+        let activityIndex = 0;
+        if (activityEl) {
+          activityEl.textContent = activityMessages[activityIndex];
+          setInterval(() => {
+            activityIndex = (activityIndex + 1) % activityMessages.length;
+            activityEl.textContent = activityMessages[activityIndex];
+          }, 6000);
+        }
+
+        // Toggle sticky CTA visibility on scroll
+        const sticky = document.getElementById("sticky-cta");
+        const purchaseSection = document.getElementById("purchase");
+        if (sticky && purchaseSection) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                sticky.classList.toggle("hidden", entry.isIntersecting);
+              });
+            },
+            { threshold: 0.4 }
+          );
+          observer.observe(purchaseSection);
+        }
+
+        // Smooth scroll for all CTA anchors to purchase section
+        document.querySelectorAll('.cta-scroll').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            const target = document.getElementById('purchase');
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+
+        // Quantity stepper in purchase section
+        const qtyInput = document.getElementById('purchase-qty');
+        const btnDec = document.getElementById('qty-dec');
+        const btnInc = document.getElementById('qty-inc');
+        if (qtyInput && btnDec && btnInc) {
+          const clamp = (v) => Math.max(1, Math.min(99, v));
+          btnDec.addEventListener('click', () => {
+            qtyInput.value = String(clamp(parseInt(qtyInput.value || '1', 10) - 1));
+          });
+          btnInc.addEventListener('click', () => {
+            qtyInput.value = String(clamp(parseInt(qtyInput.value || '1', 10) + 1));
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

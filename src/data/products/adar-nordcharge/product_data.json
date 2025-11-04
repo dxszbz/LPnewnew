@@ -1,0 +1,37 @@
+{
+  "sku": "adar-nordcharge",
+  "name": "A'DAR NordCharge",
+  "price": {
+    "currency": "USD",
+    "current": 94,
+    "original": 189
+  },
+  "mainImage": {
+    "url": "/products/adar-nordcharge/images/01.png",
+    "alt": "A'DAR NordCharge 磁吸快充行動電源"
+  },
+  "gallery": [
+    { "url": "/products/adar-nordcharge/images/01.png", "alt": "A'DAR NordCharge 正面展示" },
+    { "url": "/products/adar-nordcharge/images/02.png", "alt": "A'DAR NordCharge 磁吸對位" },
+    { "url": "/products/adar-nordcharge/images/03.png", "alt": "A'DAR NordCharge 快充示意" },
+    { "url": "/products/adar-nordcharge/images/04.png", "alt": "A'DAR NordCharge LED 電量顯示" },
+    { "url": "/products/adar-nordcharge/images/05.png", "alt": "A'DAR NordCharge 產品包裝" },
+    { "url": "/products/adar-nordcharge/images/06.png", "alt": "A'DAR NordCharge 生活情境" },
+    { "url": "/products/adar-nordcharge/images/07.png", "alt": "A'DAR NordCharge 辦公桌面" },
+    { "url": "/products/adar-nordcharge/images/08.png", "alt": "A'DAR NordCharge 床頭使用" },
+    { "url": "/products/adar-nordcharge/images/09.png", "alt": "A'DAR NordCharge 多設備充電" },
+    { "url": "/products/adar-nordcharge/images/10.png", "alt": "A'DAR NordCharge 配件特寫" },
+    { "url": "/products/adar-nordcharge/images/11.png", "alt": "A'DAR NordCharge 旅遊場景" },
+    { "url": "/products/adar-nordcharge/images/12.png", "alt": "A'DAR NordCharge 磁吸動態" },
+    { "url": "/products/adar-nordcharge/images/13.png", "alt": "A'DAR NordCharge 戶外使用" },
+    { "url": "/products/adar-nordcharge/images/14.jpg", "alt": "A'DAR NordCharge 俯視合照" },
+    { "url": "/products/adar-nordcharge/images/15.png", "alt": "A'DAR NordCharge 電量指示燈" }
+  ],
+  "meta": {
+    "bundle": "bogo",
+    "colorOptions": ["Slate Black"],
+    "capacity": "10000mAh",
+    "product_id": "adar-nordcharge",
+    "currency": "USD"
+  }
+}

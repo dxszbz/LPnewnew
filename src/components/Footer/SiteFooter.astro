@@ -1,0 +1,25 @@
+---
+import type { FooterContent } from '../../utils/types';
+
+export interface Props {
+  content: FooterContent;
+}
+
+const { content } = Astro.props satisfies Props;
+---
+
+<footer class="bg-slate-950/90 py-10 text-xs text-white/60">
+  <div class="mx-auto flex max-w-screen-xl flex-wrap justify-between gap-6 px-6">
+    {content.columns.map((column) => (
+      <div class="max-w-xs space-y-2">
+        <p class="font-semibold text-white">{column.title}</p>
+        {column.body ? <p>{column.body}</p> : null}
+        {column.items ? (
+          <ul class="space-y-2">
+            {column.items.map((item) => <li>{item}</li>)}
+          </ul>
+        ) : null}
+      </div>
+    ))}
+  </div>
+</footer>

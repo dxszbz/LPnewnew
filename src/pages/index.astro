@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+import { loadProduct } from '../utils/loadProduct';
+import TopBar from '../components/TopBar/Primary.astro';
+import HeroSection from '../components/HeroSection/FlashDeal.astro';
+import ProductDetails from '../components/ProductDetails/RichHtml.astro';
+import Comments from '../components/Comments/DynamicGrid.astro';
+import Guarantee from '../components/Guarantee/Promise.astro';
+import FAQ from '../components/FAQ/BasicAccordion.astro';
+import BuySection from '../components/BuySection/Primary.astro';
+import Footer from '../components/Footer/SiteFooter.astro';
+import MobileStickyFooter from '../components/MobileStickyFooter/Primary.astro';
+import Copyright from '../components/Copyright/Default.astro';
+import landingRuntime from '../scripts/landing-init.ts?url';
+
+const productId = siteConfig.products.defaultSku;
+const { data: product, info } = loadProduct(productId);
+
+const runtimeData = {
+  product: {
+    sku: product.sku,
+    name: product.name,
+    price: product.price,
+    meta: product.meta ?? ''
+  },
+  checkout: siteConfig.checkout,
+  countdown: info.countdown,
+  inventory: info.inventory,
+  comments: {
+    reviews: info.comments.reviews,
+    perPage: info.comments.perPage,
+    activityMessages: info.comments.activityMessages ?? []
+  }
+};
+
+const runtimeJson = JSON.stringify(runtimeData);
+const copyright =
+  info.footer.copyright ?? `© ${new Date().getFullYear()} ${product.name}. All rights reserved.`;
+---
+
+<BaseLayout
+  title={`${product.name} | Flash Deal`}
+  description={info.hero.description.replace(/<[^>]+>/g, '')}
+  lang={siteConfig.locales.default}
+  theme="system"
+  availableThemes={[...siteConfig.themes]}
+  supportedLocales={[...siteConfig.locales.supported]}
+>
+  <TopBar
+    icon={info.topBar.icon}
+    message={info.topBar.message}
+    countdownLabel={info.topBar.countdownLabel}
+  />
+
+  <main class="mx-auto mt-16 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-20 sm:px-6 lg:px-10">
+    <HeroSection hero={info.hero} product={product} />
+    <ProductDetails html={info.detailHtml} />
+    <Guarantee content={info.guarantee} />
+    <Comments content={info.comments} />
+    <FAQ title="Frequently asked questions" entries={info.faq} />
+    <BuySection product={product} content={info.purchase} />
+  </main>
+
+  <MobileStickyFooter
+    headline={info.stickyFooter.headline}
+    stockMessage={info.stickyFooter.stockMessage}
+    ctaLabel={info.stickyFooter.ctaLabel}
+  />
+  <Footer content={info.footer} />
+  <Copyright text={copyright} />
+
+  <script type="application/json" id="landing-runtime">{runtimeJson}</script>
+  <script type="module" src={landingRuntime}></script>
+</BaseLayout>
