@@ -18,9 +18,9 @@ const initialThemeSerialized = JSON.stringify(initialTheme);
 
 <script is:inline>
   // 中文註解：主題腳本負責讀寫本地儲存並在頁面載入前設定 data-theme
-  const STORAGE_KEY = ${storageKeySerialized};
-  const AVAILABLE_THEMES = ${availableThemesSerialized};
-  const INITIAL_THEME = ${initialThemeSerialized};
+  const STORAGE_KEY = {storageKeySerialized};
+  const AVAILABLE_THEMES = {availableThemesSerialized};
+  const INITIAL_THEME = {initialThemeSerialized};
   const prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
   const resolveTheme = (theme) =>
