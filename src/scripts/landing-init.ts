@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { createIcons, icons } from 'lucide';
 type RuntimeProduct = {
   sku: string;
   name: string;
@@ -36,14 +37,6 @@ type RuntimeConfig = {
   };
 };
 
-declare global {
-  interface Window {
-    lucide?: {
-      createIcons: () => void;
-    };
-  }
-}
-
 const getRuntimeConfig = (): RuntimeConfig | null => {
     const host = document.getElementById('landing-runtime') as HTMLScriptElement | null;
     if (!host?.textContent) return null;
@@ -56,9 +49,7 @@ const getRuntimeConfig = (): RuntimeConfig | null => {
 };
 
 const refreshIcons = () => {
-  if (window.lucide?.createIcons) {
-    window.lucide.createIcons();
-  }
+  createIcons({ icons });
 };
 
 const initCountdown = (durationSeconds: number, alertEl: HTMLElement | null) => {
