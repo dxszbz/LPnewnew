@@ -119,6 +119,20 @@ export interface FooterContent {
   copyright?: string;
 }
 
+export interface ComponentPreset {
+  layout?: string;
+  topBar?: string;
+  hero?: string;
+  productDetails?: string;
+  guarantee?: string;
+  comments?: string;
+  faq?: string;
+  buySection?: string;
+  mobileStickyFooter?: string;
+  footer?: string;
+  copyright?: string;
+}
+
 export interface ProductInfo {
   topBar: {
     icon: string;
@@ -149,4 +163,5 @@ export interface ProductInfo {
 export interface LoadedProduct {
   data: ProductData;
   info: ProductInfo;
+  components?: ComponentPreset;
 }

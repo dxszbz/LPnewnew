@@ -1,5 +1,5 @@
 import { siteConfig } from '../config';
-import type { LoadedProduct, ProductData, ProductInfo } from './types';
+import type { ComponentPreset, LoadedProduct, ProductData, ProductInfo } from './types';
 
 const dataModules = import.meta.glob('../data/products/*/product_data.json', {
   import: 'default',
@@ -10,6 +10,11 @@ const infoModules = import.meta.glob('../data/products/*/product_info.json', {
   import: 'default',
   eager: true
 }) as Record<string, ProductInfo>;
+
+const presetModules = import.meta.glob('../data/products/*/component-presets.json', {
+  import: 'default',
+  eager: true
+}) as Record<string, ComponentPreset>;
 
 const normalizeId = (modulePath: string): string => {
   const segments = modulePath.split('/products/')[1]?.split('/') ?? [];
@@ -43,6 +48,7 @@ export const loadProduct = (productId?: string): LoadedProduct => {
 
   const dataPath = Object.keys(dataModules).find((key) => normalizeId(key) === targetId);
   const infoPath = Object.keys(infoModules).find((key) => normalizeId(key) === targetId);
+  const presetPath = Object.keys(presetModules).find((key) => normalizeId(key) === targetId);
 
   if (!dataPath || !infoPath) {
     throw new Error(`產品 ${targetId} 的資料或文案檔案缺失。`);
@@ -50,7 +56,8 @@ export const loadProduct = (productId?: string): LoadedProduct => {
 
   const loaded: LoadedProduct = {
     data: dataModules[dataPath],
-    info: infoModules[infoPath]
+    info: infoModules[infoPath],
+    components: presetPath ? presetModules[presetPath] : undefined
   };
 
   productCache.set(targetId, loaded);

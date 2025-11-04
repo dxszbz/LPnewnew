@@ -16,11 +16,11 @@ const supportedLocalesSerialized = JSON.stringify(supportedLocales);
 const initialLocaleSerialized = JSON.stringify(initialLocale);
 ---
 
-<script is:inline>
+<script define:vars={{ storageKeySerialized, supportedLocalesSerialized, initialLocaleSerialized }}>
   // 中文註解：語言腳本負責同步語言設定並提供全局切換接口
-  const STORAGE_KEY = {storageKeySerialized};
-  const SUPPORTED_LOCALES = {supportedLocalesSerialized};
-  const INITIAL_LOCALE = {initialLocaleSerialized};
+  const STORAGE_KEY = storageKeySerialized;
+  const SUPPORTED_LOCALES = supportedLocalesSerialized;
+  const INITIAL_LOCALE = initialLocaleSerialized;
 
   const applyLocale = (locale) => {
     document.documentElement.lang = locale;
