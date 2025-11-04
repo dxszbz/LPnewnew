@@ -1,6 +1,7 @@
 ---
 import { formatCurrency, encodeMetaPayload } from '../../utils/format';
 import type { ProductData, PurchaseContent } from '../../utils/types';
+import { LAZY_MEDIA_PLACEHOLDER } from '../../utils/lazyMedia';
 
 export interface Props {
   product: ProductData;
@@ -17,7 +18,15 @@ const buttonLabel = content.ctaLabel.replace('{{price}}', priceLabel);
   <h2 class="text-3xl font-bold text-white">{content.title}</h2>
   <div class="mt-6 grid gap-6 sm:grid-cols-2">
     <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60">
-      <img class="h-full w-full object-cover" src={product.mainImage.url} alt={content.mediaAlt} loading="lazy" />
+      <img
+        class="lazyload h-full w-full object-cover"
+        src={LAZY_MEDIA_PLACEHOLDER}
+        data-src={product.mainImage.url}
+        alt={content.mediaAlt}
+      />
+      <noscript>
+        <img class="h-full w-full object-cover" src={product.mainImage.url} alt={content.mediaAlt} />
+      </noscript>
     </div>
     <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-6">
       <p class="text-xl font-bold text-white">{product.name}</p>

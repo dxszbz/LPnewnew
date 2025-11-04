@@ -1,6 +1,7 @@
 ---
 import IconBadge from '../shared/IconBadge.astro';
 import type { HeroContent, ProductData } from '../../utils/types';
+import { LAZY_MEDIA_PLACEHOLDER } from '../../utils/lazyMedia';
 
 export interface Props {
   hero: HeroContent;
@@ -28,11 +29,14 @@ const gallery = product.gallery.length ? product.gallery : [product.mainImage];
               data-hero-slide={index}
             >
               <img
-                src={image.url}
+                src={LAZY_MEDIA_PLACEHOLDER}
+                data-src={image.url}
                 alt={image.alt}
-                class="h-full w-full object-contain bg-slate-900"
-                loading={index === 0 ? 'eager' : 'lazy'}
+                class="lazyload h-full w-full object-contain bg-slate-900"
               />
+              <noscript>
+                <img src={image.url} alt={image.alt} class="h-full w-full object-contain bg-slate-900" />
+              </noscript>
             </div>
           ))}
         </div>

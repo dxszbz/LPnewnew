@@ -14,3 +14,80 @@ html,
 body {
   min-height: 100%;
 }
+
+body.has-skeleton .page-shell {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+body:not(.has-skeleton) .skeleton-shell {
+  display: none;
+}
+
+.skeleton-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.12), transparent 55%),
+    rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(8px);
+  transition: opacity 0.35s ease;
+}
+
+.skeleton-header {
+  height: 2.75rem;
+  border-radius: 9999px;
+}
+
+.skeleton-hero {
+  flex: 0 0 18rem;
+  border-radius: 1.5rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.skeleton-card {
+  height: 9rem;
+  border-radius: 1.25rem;
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.12) 25%, rgba(148, 163, 184, 0.28) 50%, rgba(148, 163, 184, 0.12) 75%);
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: skeletonGlide 1.6s ease-in-out infinite;
+}
+
+@keyframes skeletonGlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

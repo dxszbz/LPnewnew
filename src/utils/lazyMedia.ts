@@ -1,0 +1,2 @@
+export const LAZY_MEDIA_PLACEHOLDER =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';

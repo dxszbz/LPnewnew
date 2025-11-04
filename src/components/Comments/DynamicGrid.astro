@@ -1,5 +1,6 @@
 ---
 import type { CommentsContent } from '../../utils/types';
+import { LAZY_MEDIA_PLACEHOLDER } from '../../utils/lazyMedia';
 
 export interface Props {
   content: CommentsContent;
@@ -23,7 +24,15 @@ const initialReviews = content.reviews.slice(0, content.perPage);
     {initialReviews.map((comment) => (
       <article class="rounded-3xl border border-white/5 bg-slate-950/70 p-5 shadow-lg shadow-black/30">
         <header class="flex items-center gap-3">
-          <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src={comment.avatar} alt={comment.name} loading="lazy" />
+          <img
+            class="lazyload h-12 w-12 rounded-full border border-white/20 object-cover"
+            src={LAZY_MEDIA_PLACEHOLDER}
+            data-src={comment.avatar}
+            alt={comment.name}
+          />
+          <noscript>
+            <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src={comment.avatar} alt={comment.name} />
+          </noscript>
           <div>
             <p class="text-sm font-semibold text-white">{comment.name}</p>
             <p class="text-xs text-white/40">{comment.timestamp}</p>

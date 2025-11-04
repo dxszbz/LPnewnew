@@ -35,7 +35,18 @@ const initialThemeAttribute = theme === 'system' ? 'night' : theme;
     <ThemeScript initialTheme={theme} availableThemes={availableThemes} />
     <LocaleScript initialLocale={lang} supportedLocales={supportedLocales} />
   </head>
-  <body class="bg-slate-950 text-slate-50 antialiased">
-    <slot />
+  <body class="bg-slate-950 text-slate-50 antialiased has-skeleton" data-skeleton-state="pending">
+    <div id="global-skeleton" class="skeleton-shell" aria-hidden="true">
+      <div class="skeleton-header skeleton-shimmer"></div>
+      <div class="skeleton-hero skeleton-shimmer"></div>
+      <div class="skeleton-grid">
+        <div class="skeleton-card skeleton-shimmer"></div>
+        <div class="skeleton-card skeleton-shimmer"></div>
+        <div class="skeleton-card skeleton-shimmer"></div>
+      </div>
+    </div>
+    <div id="page-root" class="page-shell">
+      <slot />
+    </div>
   </body>
 </html>

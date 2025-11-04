@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 import { createIcons, icons } from 'lucide';
+import LazyLoad from 'vanilla-lazyload';
+import { LAZY_MEDIA_PLACEHOLDER } from '../utils/lazyMedia';
 type RuntimeProduct = {
   sku: string;
   name: string;
@@ -35,6 +37,71 @@ type RuntimeConfig = {
     perPage: number;
     activityMessages?: string[];
   };
+};
+
+let lazyLoader: LazyLoad | null = null;
+
+const prepareLazyMedia = () => {
+  const images = Array.from(document.querySelectorAll<HTMLImageElement>('img:not([data-no-lazy])'));
+  images.forEach((img) => {
+    if (img.dataset.lazyPrepared === 'true') return;
+    const dataSrc = img.getAttribute('data-src') ?? img.dataset.src ?? img.getAttribute('src');
+    if (dataSrc && dataSrc !== LAZY_MEDIA_PLACEHOLDER) {
+      img.setAttribute('data-src', dataSrc);
+      const srcset = img.getAttribute('srcset');
+      if (srcset) {
+        img.setAttribute('data-srcset', srcset);
+        img.removeAttribute('srcset');
+      }
+      if (img.getAttribute('src') !== LAZY_MEDIA_PLACEHOLDER) {
+        img.setAttribute('src', LAZY_MEDIA_PLACEHOLDER);
+      }
+    }
+    img.classList.add('lazyload');
+    img.setAttribute('loading', 'lazy');
+    img.dataset.lazyPrepared = 'true';
+  });
+
+  const videos = Array.from(document.querySelectorAll<HTMLVideoElement>('video:not([data-no-lazy])'));
+  videos.forEach((video) => {
+    if (video.dataset.lazyPrepared === 'true') return;
+    const poster = video.getAttribute('poster');
+    if (poster) {
+      video.setAttribute('data-poster', poster);
+      video.removeAttribute('poster');
+    }
+    Array.from(video.querySelectorAll('source')).forEach((source) => {
+      const sourceSrc = source.getAttribute('data-src') ?? source.getAttribute('src');
+      if (!sourceSrc) return;
+      source.setAttribute('data-src', sourceSrc);
+      source.removeAttribute('src');
+    });
+    video.classList.add('lazyload');
+    video.preload = 'none';
+    video.dataset.lazyPrepared = 'true';
+  });
+};
+
+const refreshLazyMedia = () => {
+  prepareLazyMedia();
+  if (lazyLoader) {
+    lazyLoader.update();
+  }
+};
+
+const revealContent = () => {
+  const body = document.body;
+  if (!body || !body.classList.contains('has-skeleton')) return;
+  body.classList.remove('has-skeleton');
+  body.setAttribute('data-skeleton-state', 'complete');
+  const skeletonLayer = document.getElementById('global-skeleton');
+  if (skeletonLayer) {
+    skeletonLayer.style.opacity = '0';
+    skeletonLayer.style.pointerEvents = 'none';
+    window.setTimeout(() => {
+      skeletonLayer.remove();
+    }, 400);
+  }
 };
 
 const getRuntimeConfig = (): RuntimeConfig | null => {
@@ -212,7 +279,7 @@ const renderComments = (container: HTMLElement, reviews: RuntimeConfig['comments
     article.className = 'rounded-3xl border border-white/5 bg-slate-950/70 p-5 shadow-lg shadow-black/30';
     article.innerHTML = `
       <header class="flex items-center gap-3">
-        <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src="${comment.avatar}" alt="${comment.name}" loading="lazy" />
+        <img class="lazyload h-12 w-12 rounded-full border border-white/20 object-cover" src="${LAZY_MEDIA_PLACEHOLDER}" data-src="${comment.avatar}" alt="${comment.name}" />
         <div>
           <p class="text-sm font-semibold text-white">${comment.name}</p>
           <p class="text-xs text-white/40">${comment.timestamp}</p>
@@ -237,6 +304,7 @@ const renderComments = (container: HTMLElement, reviews: RuntimeConfig['comments
     fragment.appendChild(article);
   });
   container.appendChild(fragment);
+  refreshLazyMedia();
   refreshIcons();
 };
 
@@ -430,6 +498,15 @@ const init = () => {
   const runtime = getRuntimeConfig();
   if (!runtime) return;
 
+  prepareLazyMedia();
+  lazyLoader = new LazyLoad({
+    elements_selector: '.lazyload',
+    threshold: 300,
+    data_src: 'src',
+    data_srcset: 'srcset'
+  });
+  refreshLazyMedia();
+
   refreshIcons();
   const alertEl = document.querySelector<HTMLElement>('[data-stock-alert]');
   initCountdown(runtime.countdown.durationSeconds, alertEl);
@@ -441,6 +518,12 @@ const init = () => {
   initSmoothScroll();
   initQuantityStepper();
   initCheckout(runtime);
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      revealContent();
+    });
+  });
 };
 
 if (document.readyState === 'loading') {
@@ -448,3 +531,7 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+window.addEventListener('load', () => {
+  revealContent();
+});
