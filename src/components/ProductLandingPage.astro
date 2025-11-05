@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config';
+import { loadProduct } from '../utils/loadProduct';
+import landingInit from '../scripts/landing-init.ts?url';
+
+import TopBar from './TopBar/Primary.astro';
+import HeroSection from './HeroSection/FlashDeal.astro';
+import ProductDetails from './ProductDetails/RichHtml.astro';
+import Comments from './Comments/DynamicGrid.astro';
+import Guarantee from './Guarantee/Promise.astro';
+import FAQ from './FAQ/BasicAccordion.astro';
+import BuySection from './BuySection/Primary.astro';
+import Footer from './Footer/SiteFooter.astro';
+import MobileStickyFooter from './MobileStickyFooter/Primary.astro';
+import Copyright from './Copyright/Default.astro';
+
+type Props = {
+  productId: string;
+};
+
+const { productId } = Astro.props as Props;
+const { data: product, info, components } = loadProduct(productId);
+
+const componentRegistry = {
+  BaseLayout,
+  'TopBar/Primary': TopBar,
+  'HeroSection/FlashDeal': HeroSection,
+  'ProductDetails/RichHtml': ProductDetails,
+  'Guarantee/Promise': Guarantee,
+  'Comments/DynamicGrid': Comments,
+  'FAQ/BasicAccordion': FAQ,
+  'BuySection/Primary': BuySection,
+  'MobileStickyFooter/Primary': MobileStickyFooter,
+  'Footer/SiteFooter': Footer,
+  'Copyright/Default': Copyright
+} as const;
+
+const defaultPreset = {
+  layout: 'BaseLayout',
+  topBar: 'TopBar/Primary',
+  hero: 'HeroSection/FlashDeal',
+  productDetails: 'ProductDetails/RichHtml',
+  guarantee: 'Guarantee/Promise',
+  comments: 'Comments/DynamicGrid',
+  faq: 'FAQ/BasicAccordion',
+  buySection: 'BuySection/Primary',
+  mobileStickyFooter: 'MobileStickyFooter/Primary',
+  footer: 'Footer/SiteFooter',
+  copyright: 'Copyright/Default'
+} as const;
+
+type ComponentSlot = keyof typeof defaultPreset;
+
+const registry = componentRegistry as Record<string, unknown>;
+const hasCustomPreset = Boolean(components);
+
+const resolveComponent = (slot: ComponentSlot) => {
+  const key = hasCustomPreset ? components?.[slot] : defaultPreset[slot];
+  if (!key) {
+    if (hasCustomPreset) {
+      return null;
+    }
+    const fallbackKey = defaultPreset[slot];
+    return fallbackKey ? registry[fallbackKey] ?? null : null;
+  }
+  return registry[key] ?? null;
+};
+
+const LayoutComponent = (resolveComponent('layout') as typeof BaseLayout | null) ?? BaseLayout;
+const TopBarComponent = resolveComponent('topBar') as typeof TopBar | null;
+const HeroComponent = (resolveComponent('hero') as typeof HeroSection | null) ?? HeroSection;
+const ProductDetailsComponent =
+  (resolveComponent('productDetails') as typeof ProductDetails | null) ?? ProductDetails;
+const GuaranteeComponent =
+  (resolveComponent('guarantee') as typeof Guarantee | null) ?? Guarantee;
+const CommentsComponent = (resolveComponent('comments') as typeof Comments | null) ?? Comments;
+const FAQComponent = resolveComponent('faq') as typeof FAQ | null;
+const BuySectionComponent =
+  (resolveComponent('buySection') as typeof BuySection | null) ?? BuySection;
+const MobileStickyFooterComponent =
+  (resolveComponent('mobileStickyFooter') as typeof MobileStickyFooter | null) ?? MobileStickyFooter;
+const FooterComponent = (resolveComponent('footer') as typeof Footer | null) ?? Footer;
+const CopyrightComponent =
+  (resolveComponent('copyright') as typeof Copyright | null) ?? Copyright;
+
+const runtimeData = {
+  product: {
+    sku: product.sku,
+    name: product.name,
+    price: product.price,
+    meta: product.meta ?? ''
+  },
+  checkout: siteConfig.checkout,
+  countdown: info.countdown,
+  inventory: info.inventory,
+  comments: {
+    reviews: info.comments.reviews,
+    perPage: info.comments.perPage,
+    activityMessages: info.comments.activityMessages ?? []
+  }
+};
+
+const runtimeJson = JSON.stringify(runtimeData);
+const copyright =
+  info.footer.copyright ?? `© ${new Date().getFullYear()} ${product.name}. All rights reserved.`;
+---
+<LayoutComponent
+  title={`${product.name} | Flash Deal`}
+  description={info.hero.description.replace(/<[^>]+>/g, '')}
+  lang={siteConfig.locales.default}
+  theme="system"
+  availableThemes={[...siteConfig.themes]}
+  supportedLocales={[...siteConfig.locales.supported]}
+>
+  {TopBarComponent && (
+    <TopBarComponent
+      icon={info.topBar.icon}
+      message={info.topBar.message}
+      countdownLabel={info.topBar.countdownLabel}
+    />
+  )}
+
+  <main class="mx-auto mt-16 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-20 sm:px-6 lg:px-10">
+    {HeroComponent && <HeroComponent hero={info.hero} product={product} />}
+    {ProductDetailsComponent && <ProductDetailsComponent html={info.detailHtml} />}
+    {GuaranteeComponent && <GuaranteeComponent content={info.guarantee} />}
+    {CommentsComponent && <CommentsComponent content={info.comments} />}
+    {FAQComponent && <FAQComponent title="Frequently asked questions" entries={info.faq} />}
+    {BuySectionComponent && <BuySectionComponent product={product} content={info.purchase} />}
+  </main>
+
+  {MobileStickyFooterComponent && (
+    <MobileStickyFooterComponent
+      headline={info.stickyFooter.headline}
+      stockMessage={info.stickyFooter.stockMessage}
+      ctaLabel={info.stickyFooter.ctaLabel}
+    />
+  )}
+  {FooterComponent && <FooterComponent content={info.footer} />}
+  {CopyrightComponent && <CopyrightComponent text={copyright} />}
+
+  <script type="application/json" id="landing-runtime" set:html={runtimeJson}></script>
+  <script type="module" src={landingInit}></script>
+</LayoutComponent>

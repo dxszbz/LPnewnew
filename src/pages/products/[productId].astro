@@ -1,0 +1,19 @@
+---
+import ProductLandingPage from '../../components/ProductLandingPage.astro';
+import { listAvailableProducts } from '../../utils/loadProduct';
+
+export const getStaticPaths = () => {
+  const products = listAvailableProducts();
+  return products.map((productId) => ({
+    params: { productId }
+  }));
+};
+
+const { productId } = Astro.params;
+const availableProducts = listAvailableProducts();
+
+if (!productId || !availableProducts.includes(productId)) {
+  throw new Error(`找不到產品 ${productId}，請確認資料夾是否存在。`);
+}
+---
+<ProductLandingPage productId={productId} />
