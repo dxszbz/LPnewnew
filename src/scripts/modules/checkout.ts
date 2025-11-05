@@ -44,7 +44,7 @@ export const initCheckout = (config: RuntimeConfig) => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const endpoint = String(config.checkout.endpoint ?? '').replace(/\\/+$/, '');
+    const endpoint = String(config.checkout.endpoint ?? '').replace(/\/+$/, '');
     if (!endpoint) {
       alert('Checkout endpoint is not configured.');
       return;
