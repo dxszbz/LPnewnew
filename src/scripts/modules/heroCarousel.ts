@@ -26,18 +26,12 @@ export const initHeroCarousel = () => {
     spaceBetween: 16,
     watchSlidesProgress: true,
     slideToClickedSlide: true,
-    slidesOffsetBefore: 8,
-    slidesOffsetAfter: 8,
     breakpoints: {
       768: {
         slidesPerView: Math.min(slidesCount, 5),
-        slidesOffsetBefore: 12,
-        slidesOffsetAfter: 12
       },
       1024: {
-        slidesPerView: Math.min(slidesCount, 6),
-        slidesOffsetBefore: 16,
-        slidesOffsetAfter: 16
+        slidesPerView: Math.min(slidesCount, 5),
       }
     }
   });

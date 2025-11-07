@@ -18,11 +18,6 @@ export interface ProductData {
   meta?: Record<string, unknown> | string;
 }
 
-export interface HeroFeatureIcon {
-  icon: string;
-  label: string;
-}
-
 export interface HeroTrustSignal {
   icon: string;
   text: string;
@@ -47,7 +42,6 @@ export interface HeroContent {
   headline: string;
   description: string;
   highlights: string[];
-  featureIcons: HeroFeatureIcon[];
   inventoryCard: {
     countdownLabel: string;
     stockLabel: string;

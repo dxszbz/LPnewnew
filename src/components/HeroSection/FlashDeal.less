@@ -1,0 +1,72 @@
+:global([data-hero-main] .swiper) {
+  min-height: 22rem;
+}
+
+:global([data-hero-main] .swiper-slide) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global([data-hero-main] .swiper-slide img) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+:global([data-hero-thumbs] .swiper-wrapper) {
+  align-items: center;
+}
+
+:global([data-hero-thumbs]) {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+:global([data-hero-thumbs] .swiper-slide) {
+  width: 6rem;
+  height: 4.5rem;
+  opacity: 0.6;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+:global([data-hero-thumbs] .swiper-slide img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:global([data-hero-thumbs] .swiper-slide-thumb-active) {
+  opacity: 1;
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35), 0 10px 30px rgba(15, 23, 42, 0.65);
+}
+
+@media (min-width: 640px) {
+  :global([data-hero-main] .swiper) {
+    min-height: 26rem;
+  }
+  :global([data-hero-thumbs]) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  :global([data-hero-thumbs] .swiper-slide) {
+    width: 6.5rem;
+    height: 4.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :global([data-hero-main] .swiper) {
+    min-height: 30rem;
+  }
+  :global([data-hero-thumbs]) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  :global([data-hero-thumbs] .swiper-slide) {
+    width: 7rem;
+    height: 5rem;
+  }
+}

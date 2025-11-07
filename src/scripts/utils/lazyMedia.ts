@@ -1,7 +1,7 @@
 import LazyLoad from 'vanilla-lazyload';
 import { LAZY_MEDIA_PLACEHOLDER } from '../../utils/lazyMedia';
 
-let lazyLoader: LazyLoad | null = null;
+let lazyLoader: InstanceType<typeof LazyLoad> | null = null;
 
 export const prepareLazyMedia = () => {
   const images = Array.from(document.querySelectorAll<HTMLImageElement>('img:not([data-no-lazy])'));

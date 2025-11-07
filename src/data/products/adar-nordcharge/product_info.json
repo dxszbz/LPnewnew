@@ -21,20 +21,6 @@
       "Strong MagSafe hold",
       "LED power display"
     ],
-    "featureIcons": [
-      {
-        "icon": "magnet",
-        "label": "Snap-on magnetic alignment"
-      },
-      {
-        "icon": "battery-charging",
-        "label": "60% battery in 30 minutes"
-      },
-      {
-        "icon": "usb",
-        "label": "Two-way fast charging"
-      }
-    ],
     "inventoryCard": {
       "countdownLabel": "Limited-time sale ends in",
       "stockLabel": "Live inventory",
@@ -43,11 +29,11 @@
       "trustSignals": [
         {
           "icon": "shield-check",
-          "text": "10-year worry-free warranty"
+          "text": "10-year warranty"
         },
         {
           "icon": "printer",
-          "text": "Orders print within 30 seconds"
+          "text": "Orders ship today"
         },
         {
           "icon": "truck",
