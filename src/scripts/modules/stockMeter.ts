@@ -1,5 +1,10 @@
 import type { RuntimeConfig } from '../types';
 
+const INITIAL_DROP_RATIO = 0.5;
+const INITIAL_DROP_DURATION = 1000;
+const MIN_BAR_PERCENT = 8;
+const UPDATE_INTERVAL = 4500;
+
 export const initStockMeter = (inventory: RuntimeConfig['inventory']) => {
   const stockEls = {
     bar: document.querySelector<HTMLElement>('[data-stock-bar]'),
@@ -23,17 +28,54 @@ export const initStockMeter = (inventory: RuntimeConfig['inventory']) => {
     }
   };
 
-  const update = () => {
-    const decay = Math.random() < 0.4 ? 2 : 1;
-    current = Math.max(minimum, current - decay);
-    const percent = Math.max(8, Math.min(100, (current / start) * 100));
+  const render = (value: number) => {
+    const normalized = Math.max(minimum, Math.min(start, Math.round(value)));
+    current = normalized;
+    const percent = Math.max(MIN_BAR_PERCENT, Math.min(100, (normalized / start) * 100));
     stockEls.bar!.style.width = `${percent}%`;
     stockEls.counters.forEach((el) => {
-      el.textContent = String(current);
+      el.textContent = String(normalized);
     });
-    setAlert(current);
+    setAlert(normalized);
   };
 
-  update();
-  setInterval(update, 4500);
+  const update = () => {
+    const decay = Math.random() < 0.4 ? 2 : 1;
+    render(Math.max(minimum, current - decay));
+  };
+
+  // 初始載入時先在 1 秒內平滑降至指定占比
+  const animateInitialDrop = () =>
+    new Promise<void>((resolve) => {
+      const target = Math.max(minimum, Math.round(start * INITIAL_DROP_RATIO));
+      if (target >= current) {
+        render(target);
+        resolve();
+        return;
+      }
+
+      const startValue = current;
+      const totalDrop = startValue - target;
+      const initialTime = performance.now();
+
+      const tick = (timestamp: number) => {
+        const elapsed = timestamp - initialTime;
+        const progress = Math.min(1, elapsed / INITIAL_DROP_DURATION);
+        const nextValue = startValue - totalDrop * progress;
+        render(nextValue);
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          resolve();
+        }
+      };
+
+      requestAnimationFrame(tick);
+    });
+
+  render(current);
+  animateInitialDrop().then(() => {
+    setInterval(update, UPDATE_INTERVAL);
+  });
 };
