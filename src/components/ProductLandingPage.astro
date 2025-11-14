@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
 import { loadProduct } from '../utils/loadProduct';
-import landingInit from '../scripts/landing-init.ts?url';
 
 import TopBar from './TopBar/Primary.astro';
 import HeroSection from './HeroSection/FlashDeal.astro';
@@ -141,5 +140,5 @@ const copyright =
   {CopyrightComponent && <CopyrightComponent text={copyright} />}
 
   <script type="application/json" id="landing-runtime" set:html={runtimeJson}></script>
-  <script type="module" src={landingInit}></script>
+  <script src="../scripts/landing-init.ts"></script>
 </LayoutComponent>
