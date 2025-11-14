@@ -1,14 +1,14 @@
 {
   "topBar": {
     "icon": "sparkles",
-    "message": "Black Friday emergency drop: 86% OFF + 30-day risk-free trial + lifetime support",
+    "message": "Black Friday emergency drop: 90% OFF + 30-day risk-free trial + lifetime support",
     "countdownLabel": "Black Friday deal ends in"
   },
   "hero": {
     "badgeLines": [
       "Black",
       "Friday",
-      "86% OFF"
+      "90% OFF"
     ],
     "socialProof": {
       "icon": "star",
@@ -25,7 +25,7 @@
       "countdownLabel": "Black Friday sale ends in",
       "stockLabel": "Real-time stock",
       "stockUnit": "units",
-      "stockAlert": "Only 18 units left at €69 before price jumps to €499",
+      "stockAlert": "Only 18 units left at €49 before price jumps to €499",
       "trustSignals": [
         {
           "icon": "shield-check",
@@ -203,7 +203,7 @@
     }
   ],
   "purchase": {
-    "title": "Lock your Black Friday price—€69 (was €499)",
+    "title": "Lock your Black Friday price—€49 (was €499)",
     "subtitle": "Popur X5 · 24\" tray · 30-day capacity · DuoTilt™ cleaning · 99% odor sealed · Lifetime support",
     "quantityLabel": "Quantity",
     "ctaLabel": "Rush my order NOW",
