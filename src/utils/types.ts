@@ -15,6 +15,7 @@ export interface ProductData {
   price: ProductPrice;
   mainImage: ProductImage;
   gallery: ProductImage[];
+  checkoutURL?: string;
   meta?: Record<string, unknown> | string;
 }
 

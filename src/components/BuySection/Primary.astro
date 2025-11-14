@@ -12,6 +12,10 @@ const { product, content } = Astro.props satisfies Props;
 const priceLabel = formatCurrency(product.price.current, product.price.currency);
 const metaPayload = encodeMetaPayload(product.meta);
 const buttonLabel = content.ctaLabel.replace('{{price}}', priceLabel);
+const directCheckoutURL = product.checkoutURL?.trim();
+const hasDirectCheckout = Boolean(directCheckoutURL);
+const ctaClasses =
+  'group flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-lg font-black text-white shadow-glow transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-500/60';
 ---
 
 <section id="purchase" class="mt-16 rounded-3xl border border-white/5 bg-slate-900/50 p-6 sm:p-10">
@@ -31,33 +35,38 @@ const buttonLabel = content.ctaLabel.replace('{{price}}', priceLabel);
     <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-6">
       <p class="text-xl font-bold text-white">{product.name}</p>
       <p class="mt-1 text-sm text-white/60">{content.subtitle}</p>
-      <form
-        id="purchase-form"
-        class="mt-6 space-y-4"
-        action="#"
-        method="post"
-        data-checkout-sku={product.sku}
-        data-checkout-price={product.price.current}
-        data-checkout-currency={product.price.currency}
-        data-checkout-meta={metaPayload}
-        data-image-url={product.mainImage.url}
-      >
-        <div class="flex items-center gap-3">
-          <span class="text-sm text-white/70">{content.quantityLabel}</span>
-          <div class="inline-flex items-center overflow-hidden rounded-full border border-white/20">
-            <button type="button" id="qty-dec" class="px-3 py-2 text-white/80 hover:bg-white/10" aria-label="Decrease quantity">−</button>
-            <input id="purchase-qty" class="w-12 bg-transparent text-center text-white" type="number" name="quantity" value="1" min="1" max="99">
-            <button type="button" id="qty-inc" class="px-3 py-2 text-white/80 hover:bg-white/10" aria-label="Increase quantity">＋</button>
-          </div>
-        </div>
-        <button
-          type="submit"
-          data-checkout-trigger
-          class="group flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-lg font-black text-white shadow-glow transition hover:bg-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-500/60"
-        >
-          <span data-checkout-cta-text>{buttonLabel}</span>
-          <i data-checkout-cta-icon data-lucide="arrow-right" class="checkout-icon h-5 w-5 transition-transform group-hover:translate-x-1"></i>
-        </button>
+      <div class="mt-6 space-y-4">
+        {hasDirectCheckout ? (
+          <a href={directCheckoutURL} class={ctaClasses} rel="noreferrer">
+            <span>{buttonLabel}</span>
+            <i data-lucide="arrow-right" class="checkout-icon h-5 w-5 transition-transform group-hover:translate-x-1"></i>
+          </a>
+        ) : (
+          <form
+            id="purchase-form"
+            class="space-y-4"
+            action="#"
+            method="post"
+            data-checkout-sku={product.sku}
+            data-checkout-price={product.price.current}
+            data-checkout-currency={product.price.currency}
+            data-checkout-meta={metaPayload}
+            data-image-url={product.mainImage.url}
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-white/70">{content.quantityLabel}</span>
+              <div class="inline-flex items-center overflow-hidden rounded-full border border-white/20">
+                <button type="button" id="qty-dec" class="px-3 py-2 text-white/80 hover:bg-white/10" aria-label="Decrease quantity">−</button>
+                <input id="purchase-qty" class="w-12 bg-transparent text-center text-white" type="number" name="quantity" value="1" min="1" max="99">
+                <button type="button" id="qty-inc" class="px-3 py-2 text-white/80 hover:bg-white/10" aria-label="Increase quantity">＋</button>
+              </div>
+            </div>
+            <button type="submit" data-checkout-trigger class={ctaClasses}>
+              <span data-checkout-cta-text>{buttonLabel}</span>
+              <i data-checkout-cta-icon data-lucide="arrow-right" class="checkout-icon h-5 w-5 transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </form>
+        )}
         <div class="mt-4 grid grid-cols-2 gap-2 text-xs text-white/80 sm:grid-cols-3" aria-label="Checkout assurances">
           {content.assurances.map((item) => (
             <div class="flex items-center gap-2 rounded-lg bg-slate-900/60 px-3 py-2 ring-1 ring-white/10">
@@ -66,7 +75,7 @@ const buttonLabel = content.ctaLabel.replace('{{price}}', priceLabel);
             </div>
           ))}
         </div>
-      </form>
+      </div>
       <p class="mt-2 text-center text-xs text-white/60">{content.note}</p>
     </div>
   </div>

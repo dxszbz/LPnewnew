@@ -34,7 +34,9 @@ const init = () => {
   initStickyObserver();
   initSmoothScroll();
   initQuantityStepper();
-  initCheckout(runtime);
+  if (!runtime.product.checkoutURL) {
+    initCheckout(runtime);
+  }
 
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {

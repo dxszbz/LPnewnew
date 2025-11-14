@@ -18,6 +18,9 @@ const encodeMeta = (meta: unknown): string | null => {
 };
 
 export const initCheckout = (config: RuntimeConfig) => {
+  if (config.product.checkoutURL) {
+    return;
+  }
   const form = document.getElementById('purchase-form') as HTMLFormElement | null;
   if (!form) return;
 

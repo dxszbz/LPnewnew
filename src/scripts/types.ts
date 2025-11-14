@@ -6,6 +6,7 @@ export type RuntimeProduct = {
     current: number;
     original?: number;
   };
+  checkoutURL?: string;
   meta?: unknown;
 };
 
