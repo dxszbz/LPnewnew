@@ -24,9 +24,11 @@ const stockHtml = stockMessage.replace(
     <div class="flex-1 text-xs text-white/70">
       <p class="font-semibold text-white">
         {headline}
-        <span data-countdown="sticky" class="text-warning-500"></span>
       </p>
-      <p set:html={stockHtml}></p>
+      <p class="mt-0.5 text-sm font-semibold text-warning-500">
+        <span data-countdown="sticky"></span>
+      </p>
+      <p class="mt-0.5" set:html={stockHtml}></p>
     </div>
     <a href={`#${targetId}`} class="cta-scroll flex-1 rounded-full bg-warning-500 px-4 py-3 text-center text-sm font-black text-slate-950 shadow-lg shadow-warning-500/40" role="button">
       {ctaLabel}

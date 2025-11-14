@@ -51,7 +51,7 @@
 
 ### 📚 知識查詢
 - **首選**：`Context7`（`resolve-library-id` → `get-library-docs`）查詢 Astro、Tailwind 或其他前端新技術官方文檔，確保採用最新語法和最佳實踐。
-- **備選**：`DuckDuckGo` → `Fetcher` 用於搜尋其他補充資料。
+- **備選**：`DuckDuckGo` → `firecrawl` 用於搜尋其他補充資料。
 - **降級**：必要時參考 README 或舊版檔案，但需註明來源版本。
 
 ### 🧰 開發／調試

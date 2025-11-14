@@ -1,0 +1,34 @@
+{
+  "sku": "popur-x5",
+  "name": "Popur X5 Self-Cleaning Litter Box",
+  "price": {
+    "currency": "EUR",
+    "current": 119,
+    "original": 499
+  },
+  "mainImage": {
+    "url": "/products/popur-x5/images/01.webp",
+    "alt": "Popur X5 Self-Cleaning Litter Box - Open-top split system design"
+  },
+  "gallery": [
+    { "url": "/products/popur-x5/images/01.webp", "alt": "Popur X5 front view with open-top design" },
+    { "url": "/products/popur-x5/images/02.webp", "alt": "Popur X5 DuoTilt cleaning mechanism in action" },
+    { "url": "/products/popur-x5/images/03.webp", "alt": "Popur X5 split-bin waste disposal system" },
+    { "url": "/products/popur-x5/images/04.webp", "alt": "Popur X5 24-inch spacious litter tray" },
+    { "url": "/products/popur-x5/images/05.webp", "alt": "Cat using Popur X5 litter box" },
+    { "url": "/products/popur-x5/images/06.webp", "alt": "Popur X5 sealed odor-control bin" },
+    { "url": "/products/popur-x5/images/07.webp", "alt": "Popur X5 in modern home setting" },
+    { "url": "/products/popur-x5/images/08.webp", "alt": "Popur X5 easy maintenance - cardboard bin option" },
+    { "url": "/products/popur-x5/images/09.webp", "alt": "Multiple cats using Popur X5 system" },
+    { "url": "/products/popur-x5/images/10.webp", "alt": "Popur X5 upgraded metal components close-up" }
+  ],
+  "meta": {
+    "bundle": "single",
+    "product_id": "popur-x5",
+    "currency": "EUR",
+    "capacity": "30-day waste capacity",
+    "max_cats": "Up to 12 cats",
+    "tray_size": "24 inches",
+    "weight_capacity": "33 lbs"
+  }
+}
