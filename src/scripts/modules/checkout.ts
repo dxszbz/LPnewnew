@@ -54,7 +54,16 @@ export const initCheckout = (config: RuntimeConfig) => {
     if (quantityInput) {
       quantityInput.value = quantity;
     }
-    const imageUrl = form.dataset.imageUrl ?? '';
+    const imageUrl = (() => {
+      const value = form.dataset.imageUrl ?? '';
+      if (!value) return '';
+      try {
+        const url = new URL(value, window.location.origin);
+        return url.toString();
+      } catch {
+        return value;
+      }
+    })();
 
     const encodedMeta = encodeMeta(config.product.meta);
     if (encodedMeta === null) {
