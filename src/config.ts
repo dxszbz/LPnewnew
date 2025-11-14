@@ -11,6 +11,13 @@ export const siteConfig = {
   },
   products: {
     defaultSku: 'adar-nordcharge'
+  },
+  // 分析與追蹤像素設定，可配置多組 Facebook / TikTok Pixel ID
+  analytics: {
+    pixels: {
+      facebook: ['123456789012345', '987654321000111'],
+      tiktok: ['C5AB1N2A3B4C5D6E7F8', 'TTPX1234XYZ5678']
+    }
   }
 };
 

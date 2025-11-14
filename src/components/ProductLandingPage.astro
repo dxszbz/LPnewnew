@@ -97,7 +97,8 @@ const runtimeData = {
     reviews: info.comments.reviews,
     perPage: info.comments.perPage,
     activityMessages: info.comments.activityMessages ?? []
-  }
+  },
+  analytics: siteConfig.analytics
 };
 
 const runtimeJson = JSON.stringify(runtimeData);

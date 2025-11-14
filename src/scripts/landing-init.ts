@@ -12,6 +12,7 @@ import { initSmoothScroll } from './modules/smoothScroll';
 import { initQuantityStepper } from './modules/quantityStepper';
 import { initCheckout } from './modules/checkout';
 import { revealContent } from './modules/reveal';
+import { initPixelTracker } from './modules/analytics/pixelTracker';
 
 const init = () => {
   const runtime = getRuntimeConfig();
@@ -19,6 +20,7 @@ const init = () => {
 
   initLazyLoader();
   refreshIcons();
+  initPixelTracker(runtime.analytics, runtime.product);
 
   const alertEl = document.querySelector<HTMLElement>('[data-stock-alert]');
   initCountdown(runtime.countdown.durationSeconds, alertEl);

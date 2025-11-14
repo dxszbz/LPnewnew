@@ -9,8 +9,16 @@ export type RuntimeProduct = {
   meta?: unknown;
 };
 
+export type RuntimeAnalytics = {
+  pixels: {
+    facebook: string[];
+    tiktok: string[];
+  };
+};
+
 export type RuntimeConfig = {
   product: RuntimeProduct;
+  analytics: RuntimeAnalytics;
   checkout: {
     endpoint: string;
     wdp: string;
