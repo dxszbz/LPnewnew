@@ -54,6 +54,7 @@ export const initCheckout = (config: RuntimeConfig) => {
     if (quantityInput) {
       quantityInput.value = quantity;
     }
+    const imageUrl = form.dataset.imageUrl ?? '';
 
     const encodedMeta = encodeMeta(config.product.meta);
     if (encodedMeta === null) {
@@ -70,6 +71,9 @@ export const initCheckout = (config: RuntimeConfig) => {
       meta: encodedMeta ?? '',
       currency: config.product.price.currency
     });
+    if (imageUrl) {
+      params.set('image_url', imageUrl);
+    }
 
     setState('loading');
     let checkoutUrl = '';

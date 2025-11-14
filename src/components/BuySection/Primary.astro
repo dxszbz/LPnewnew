@@ -40,6 +40,7 @@ const buttonLabel = content.ctaLabel.replace('{{price}}', priceLabel);
         data-checkout-price={product.price.current}
         data-checkout-currency={product.price.currency}
         data-checkout-meta={metaPayload}
+        data-image-url={product.mainImage.url}
       >
         <div class="flex items-center gap-3">
           <span class="text-sm text-white/70">{content.quantityLabel}</span>
