@@ -44,7 +44,7 @@ export const initCheckout = (config: RuntimeConfig) => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const endpoint = String(config.checkout.endpoint ?? '').replace(/\/+$/, '');
+    const endpoint = String(config.checkout.endpoint ?? '');
     if (!endpoint) {
       alert('Checkout endpoint is not configured.');
       return;
@@ -72,7 +72,22 @@ export const initCheckout = (config: RuntimeConfig) => {
     });
 
     setState('loading');
-    const checkoutUrl = `${endpoint}/?${params.toString()}`;
+    let checkoutUrl = '';
+    try {
+      const endpointUrl = new URL(endpoint);
+      params.forEach((value, key) => {
+        endpointUrl.searchParams.set(key, value);
+      });
+      checkoutUrl = endpointUrl.toString();
+    } catch {
+      const sanitizedEndpoint = endpoint.replace(/\/+$/, '');
+      const connector = sanitizedEndpoint.includes('?')
+        ? sanitizedEndpoint.endsWith('?') || sanitizedEndpoint.endsWith('&')
+          ? ''
+          : '&'
+        : '/?';
+      checkoutUrl = `${sanitizedEndpoint}${connector}${params.toString()}`;
+    }
     form.action = checkoutUrl;
     window.location.assign(checkoutUrl);
   });

@@ -83,6 +83,35 @@ const FooterComponent = (resolveComponent('footer') as typeof Footer | null) ?? 
 const CopyrightComponent =
   (resolveComponent('copyright') as typeof Copyright | null) ?? Copyright;
 
+const formatPixelQuery = (ids: string[] | readonly string[] | undefined) => {
+  if (!ids?.length) return '';
+  const filtered = ids.map((id) => id.trim()).filter(Boolean);
+  return filtered.length ? filtered.join('|') : '';
+};
+
+const analyticsPixels = siteConfig.analytics?.pixels ?? { facebook: [], tiktok: [] };
+
+const composeCheckoutEndpoint = () => {
+  try {
+    const url = new URL(siteConfig.checkout.endpoint);
+    const facebookParam = formatPixelQuery(analyticsPixels.facebook);
+    const tiktokParam = formatPixelQuery(analyticsPixels.tiktok);
+    if (facebookParam) {
+      url.searchParams.set('fbp', facebookParam);
+    } else {
+      url.searchParams.delete('fbp');
+    }
+    if (tiktokParam) {
+      url.searchParams.set('ttp', tiktokParam);
+    } else {
+      url.searchParams.delete('ttp');
+    }
+    return url.toString();
+  } catch {
+    return siteConfig.checkout.endpoint;
+  }
+};
+
 const runtimeData = {
   product: {
     sku: product.sku,
@@ -90,7 +119,10 @@ const runtimeData = {
     price: product.price,
     meta: product.meta ?? ''
   },
-  checkout: siteConfig.checkout,
+  checkout: {
+    ...siteConfig.checkout,
+    endpoint: composeCheckoutEndpoint()
+  },
   countdown: info.countdown,
   inventory: info.inventory,
   comments: {
