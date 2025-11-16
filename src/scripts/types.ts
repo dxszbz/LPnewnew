@@ -1,3 +1,5 @@
+import type { ExitIntentContent } from '../utils/types';
+
 export type RuntimeProduct = {
   sku: string;
   name: string;
@@ -42,4 +44,5 @@ export type RuntimeConfig = {
     perPage: number;
     activityMessages?: string[];
   };
+  exitIntent?: ExitIntentContent | null;
 };

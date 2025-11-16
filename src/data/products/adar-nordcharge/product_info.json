@@ -282,8 +282,29 @@
     "note": "256-bit secured checkout \u00b7 30-day money-back guarantee",
     "mediaAlt": "A'DAR NordCharge power bank"
   },
+  "exitIntent": {
+    "enabled": true,
+    "badge": "Don't leave empty-handed",
+    "title": "Lock the NordCharge BOGO bundle before the timer resets",
+    "description": "Complete checkout now to keep both your phone and emergency backup at full power. Walk away and regular pricing snaps back instantly.",
+    "highlight": "We reserved the $89 dual-pack for you for a few more minutes.",
+    "bullets": [
+      "Instant $100 savings locked for today only",
+      "Free worldwide priority shipping",
+      "10-year warranty + 30-day money-back"
+    ],
+    "ctaLabel": "I'm keeping the offer",
+    "ctaHref": "#purchase",
+    "secondaryCtaLabel": "Keep browsing",
+    "secondaryCtaHref": "#value-details",
+    "dismissLabel": "Close this reminder",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=900&q=80",
+      "alt": "NordCharge kit packed next to travel essentials"
+    }
+  },
   "stickyFooter": {
-    "headline": "Deal ends in",
+    "headline": "Flash SALE Deal ends in",
     "stockMessage": "Only {stock} sets left before price jumps back to $189",
     "ctaLabel": "Grab mine now"
   },

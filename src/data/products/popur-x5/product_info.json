@@ -236,6 +236,27 @@
     "note": "Secure checkout · 30-day trial · No-hassle returns · Price jumps to €499 at midnight",
     "mediaAlt": "Popur X5 Self-Cleaning Litter Box hero image"
   },
+  "exitIntent": {
+    "enabled": true,
+    "badge": "Don't miss Black Friday",
+    "title": "Keep Popur X5 at €49 before it jumps back to €499",
+    "description": "Zero scooping, zero smell. Secure your Black Friday slot now and keep lifetime support plus the 30-day risk-free trial.",
+    "highlight": "We held this price for you for a few more minutes.",
+    "bullets": [
+      "Handles up to 12 cats without scooping",
+      "Seals 99% of odor for 30 days",
+      "Lifetime support + 30-day money-back"
+    ],
+    "ctaLabel": "Lock my Black Friday deal",
+    "ctaHref": "#purchase",
+    "secondaryCtaLabel": "Keep browsing",
+    "secondaryCtaHref": "#value-details",
+    "dismissLabel": "Close this reminder",
+    "image": {
+      "url": "https://popur.com/cdn/shop/files/Traps-99.9-percent-odor-sensible-to-you-and-your-cats.webp?v=1746713158&width=1600",
+      "alt": "Popur X5 sealed trash can keeping litter box odor contained"
+    }
+  },
   "stickyFooter": {
     "headline": "Black Friday deal ends in",
     "stockMessage": "Only {stock} units left, price jumps to €499 at midnight",

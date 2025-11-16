@@ -13,6 +13,7 @@ import { initQuantityStepper } from './modules/quantityStepper';
 import { initCheckout } from './modules/checkout';
 import { revealContent } from './modules/reveal';
 import { initPixelTracker } from './modules/analytics/pixelTracker';
+import { initExitIntent } from './modules/exitIntent';
 
 const init = () => {
   const runtime = getRuntimeConfig();
@@ -37,6 +38,7 @@ const init = () => {
   if (!runtime.product.checkoutURL) {
     initCheckout(runtime);
   }
+  initExitIntent(runtime.exitIntent);
 
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => {

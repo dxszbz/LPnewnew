@@ -103,6 +103,21 @@ export interface PurchaseContent {
   mediaAlt: string;
 }
 
+export interface ExitIntentContent {
+  enabled: boolean;
+  badge?: string;
+  title: string;
+  description: string;
+  highlight?: string;
+  bullets?: string[];
+  ctaLabel: string;
+  ctaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  dismissLabel: string;
+  image?: ProductImage;
+}
+
 export interface FooterColumn {
   title: string;
   body?: string;
@@ -147,6 +162,7 @@ export interface ProductInfo {
   comments: CommentsContent;
   faq: FaqEntry[];
   purchase: PurchaseContent;
+  exitIntent?: ExitIntentContent;
   stickyFooter: {
     headline: string;
     stockMessage: string;

@@ -13,6 +13,7 @@ import BuySection from './BuySection/Primary.astro';
 import Footer from './Footer/SiteFooter.astro';
 import MobileStickyFooter from './MobileStickyFooter/Primary.astro';
 import Copyright from './Copyright/Default.astro';
+import ExitIntent from './ExitIntent/Primary.astro';
 
 type Props = {
   productId: string;
@@ -20,6 +21,7 @@ type Props = {
 
 const { productId } = Astro.props as Props;
 const { data: product, info, components } = loadProduct(productId);
+const exitIntentContent = info.exitIntent;
 
 const componentRegistry = {
   BaseLayout,
@@ -131,7 +133,8 @@ const runtimeData = {
     perPage: info.comments.perPage,
     activityMessages: info.comments.activityMessages ?? []
   },
-  analytics: siteConfig.analytics
+  analytics: siteConfig.analytics,
+  exitIntent: exitIntentContent ?? null
 };
 
 const runtimeJson = JSON.stringify(runtimeData);
@@ -172,6 +175,9 @@ const copyright =
   )}
   {FooterComponent && <FooterComponent content={info.footer} />}
   {CopyrightComponent && <CopyrightComponent text={copyright} />}
+  {exitIntentContent?.enabled && (
+    <ExitIntent product={product} content={exitIntentContent} />
+  )}
 
   <script type="application/json" id="landing-runtime" set:html={runtimeJson}></script>
   <script src="../scripts/landing-init.ts"></script>
