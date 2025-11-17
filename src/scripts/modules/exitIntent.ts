@@ -18,12 +18,15 @@ export const initExitIntent = (config: ExitIntentConfig) => {
 
   const root = document.querySelector<HTMLElement>('[data-exit-intent-root]');
   const dialog = root?.querySelector<HTMLElement>('[data-exit-dialog]');
+  const backdrop = root?.querySelector<HTMLElement>('[data-exit-backdrop]');
   if (!root || !dialog) return;
 
   const primaryAction = root.querySelector<HTMLElement>('[data-exit-primary]');
   const dismissTriggers = root.querySelectorAll<HTMLElement>('[data-exit-dismiss]');
   const primaryButton = root.querySelector<HTMLElement>('[data-exit-primary]');
   const settings = { ...DEFAULT_SETTINGS };
+
+  type ModalState = 'open' | 'closed';
 
   let hasOpened = false;
   let dismissed = false;
@@ -32,6 +35,14 @@ export const initExitIntent = (config: ExitIntentConfig) => {
   let lastScrollY = window.scrollY;
   const triggerCleanups: Array<() => void> = [];
   let keydownCleanup: (() => void) | null = null;
+
+  const setState = (state: ModalState) => {
+    root.dataset.state = state;
+    dialog.dataset.state = state;
+    if (backdrop) {
+      backdrop.dataset.state = state;
+    }
+  };
 
   const addTriggerListener = <K extends keyof DocumentEventMap>(
     target: Document | Window,
@@ -66,6 +77,11 @@ export const initExitIntent = (config: ExitIntentConfig) => {
     root.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('exit-intent-open');
     document.body.classList.add('overflow-hidden');
+    // 延遲到下一幀切換狀態，讓過渡動畫生效
+    setState('closed');
+    window.requestAnimationFrame(() => {
+      setState('open');
+    });
     window.requestAnimationFrame(() => {
       (primaryAction ?? dialog).focus?.();
     });
@@ -85,6 +101,7 @@ export const initExitIntent = (config: ExitIntentConfig) => {
       removeDetectionListeners();
       return;
     }
+    setState('closed');
     root.classList.add('pointer-events-none', 'hidden');
     root.setAttribute('aria-hidden', 'true');
     document.documentElement.classList.remove('exit-intent-open');

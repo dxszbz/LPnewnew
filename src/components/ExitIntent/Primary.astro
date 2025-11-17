@@ -15,18 +15,25 @@ const secondaryHref = content.secondaryCtaHref?.trim() || '#purchase';
 
 {content?.enabled && (
   <div
-    class="exit-intent pointer-events-none fixed inset-0 z-50 hidden flex items-center justify-center px-4 py-6 sm:px-6"
+    class="exit-intent pointer-events-none fixed inset-0 z-50 hidden flex items-center justify-center px-4 py-6 opacity-0 transition-opacity duration-300 ease-out data-[state=open]:pointer-events-auto data-[state=open]:opacity-100 sm:px-6"
     data-exit-intent-root
+    data-state="closed"
     aria-hidden="true"
   >
-    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" data-exit-dismiss></div>
+    <div
+      class="absolute inset-0 bg-slate-950/70 opacity-0 transition-opacity duration-300 ease-out data-[state=open]:opacity-100 backdrop-blur-sm"
+      data-exit-backdrop
+      data-state="closed"
+      data-exit-dismiss
+    ></div>
     <article
-      class="relative z-10 flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 text-white shadow-[0_25px_80px_rgba(2,6,23,0.8)]"
+      class="relative z-10 flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 text-white shadow-[0_25px_80px_rgba(2,6,23,0.8)] opacity-0 translate-y-4 scale-95 transform-gpu transition-all duration-300 ease-out data-[state=open]:translate-y-0 data-[state=open]:scale-100 data-[state=open]:opacity-100"
       role="dialog"
       aria-modal="true"
       aria-labelledby={headingId}
       aria-describedby={descriptionId}
       data-exit-dialog
+      data-state="closed"
       tabindex="-1"
     >
       <button
@@ -87,7 +94,7 @@ const secondaryHref = content.secondaryCtaHref?.trim() || '#purchase';
           </div>
         </div>
         {content.image && (
-          <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60">
+          <div class="relative hidden overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 md:block">
             <img
               src={content.image.url}
               alt={content.image.alt}
