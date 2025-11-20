@@ -15,7 +15,7 @@ export const siteConfig = {
   // 分析與追蹤像素設定，可配置多組 Facebook / TikTok Pixel ID
   analytics: {
     pixels: {
-      facebook: ['123456789012345', '987654321000111'],
+      facebook: ['1475481086858162', '987654321000111'],
       tiktok: ['D4ABK4JC77U505N97D2G', 'TTPX1234XYZ5678']
     }
   }
