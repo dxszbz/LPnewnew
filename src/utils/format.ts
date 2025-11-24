@@ -3,7 +3,7 @@ export const formatCurrency = (value: number, currency: string): string =>
     style: 'currency',
     currency,
     minimumFractionDigits: 0,
-    maximumFractionDigits: 0
+    maximumFractionDigits: 2
   }).format(value);
 
 export const encodeMetaPayload = (meta: unknown): string => {

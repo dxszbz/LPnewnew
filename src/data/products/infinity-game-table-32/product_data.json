@@ -1,0 +1,31 @@
+{
+  "sku": "infinity-game-table-32",
+  "name": "Infinity Game Table 32\"",
+  "price": {
+    "currency": "EUR",
+    "current": 82.9,
+    "original": 799
+  },
+  "mainImage": {
+    "url": "/products/infinity-game-table-32/images/1.webp",
+    "alt": "Infinity Game Table 32-inch digital board game table"
+  },
+  "gallery": [
+    { "url": "/products/infinity-game-table-32/images/1.webp", "alt": "Infinity Game Table 32-inch hero view" },
+    { "url": "/products/infinity-game-table-32/images/2.webp", "alt": "Multiplayer board game session with dynamic zoom" },
+    { "url": "/products/infinity-game-table-32/images/3.webp", "alt": "Tactile feedback and HD touchscreen detail" },
+    { "url": "/products/infinity-game-table-32/images/4.webp", "alt": "Wi-Fi connected game library interface" },
+    { "url": "/products/infinity-game-table-32/images/5.webp", "alt": "Detachable legs for tabletop setup" },
+    { "url": "/products/infinity-game-table-32/images/6.webp", "alt": "Family playing Hasbro classics on Infinity Game Table" }
+  ],
+  "meta": {
+    "product_id": "infinity-game-table-32",
+    "bundle": "single",
+    "currency": "EUR",
+    "screen_size": "32-inch",
+    "connectivity": "Wi-Fi",
+    "features": ["Dynamic Zoom", "Tactile Feedback", "Online Play"]
+  },
+  "checkoutURL": "https://velunora.shop/176666-129230/checkouts/1292300f42c7c719895022d72b667cd6?_ref=https%3A%2F%2Fvelunora.shop%2Fproducts%2Finfinity-game-table-32%3Fdata_from%3Dsearch_detail"
+
+}

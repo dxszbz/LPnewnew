@@ -1,0 +1,13 @@
+{
+  "layout": "BaseLayout",
+  "topBar": "TopBar/Primary",
+  "hero": "HeroSection/FlashDeal",
+  "productDetails": "ProductDetails/RichHtml",
+  "guarantee": "Guarantee/Promise",
+  "comments": "Comments/DynamicGrid",
+  "faq": "FAQ/BasicAccordion",
+  "buySection": "BuySection/Primary",
+  "mobileStickyFooter": "MobileStickyFooter/Primary",
+  "footer": "Footer/SiteFooter",
+  "copyright": "Copyright/Default"
+}

@@ -1,4 +1,5 @@
 ---
+import { formatCurrency } from '../../utils/format';
 import type { ExitIntentContent, ProductData } from '../../utils/types';
 
 interface Props {
@@ -11,6 +12,10 @@ const headingId = `exit-intent-title-${product.sku}`;
 const descriptionId = `exit-intent-description-${product.sku}`;
 const primaryHref = content.ctaHref?.trim() || '#purchase';
 const secondaryHref = content.secondaryCtaHref?.trim() || '#purchase';
+const priceLabel = content.ctaLabel?.includes('{{price}}')
+  ? formatCurrency(product.price.current, product.price.currency)
+  : null;
+const primaryLabel = priceLabel ? content.ctaLabel.replace('{{price}}', priceLabel) : content.ctaLabel;
 ---
 
 {content?.enabled && (
@@ -80,7 +85,7 @@ const secondaryHref = content.secondaryCtaHref?.trim() || '#purchase';
               class="inline-flex flex-1 items-center justify-center rounded-full bg-brand-500 px-6 py-3 text-base font-black text-slate-950 transition hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
               data-exit-primary
             >
-              {content.ctaLabel}
+              {primaryLabel}
             </a>
             {content.secondaryCtaLabel && (
               <a
