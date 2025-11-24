@@ -16,7 +16,7 @@ export const siteConfig = {
   analytics: {
     pixels: {
       facebook: ['1475481086858162', '987654321000111'],
-      tiktok: ['D4ABK4JC77U505N97D2G', 'TTPX1234XYZ5678']
+      tiktok: ['D4ABK4JC77U505N97D2G', 'TTPX1234XYZ5678','D4I1B8JC77UEBGICTMI0']
     }
   }
 };
