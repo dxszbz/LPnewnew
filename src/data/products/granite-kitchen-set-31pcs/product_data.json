@@ -1,0 +1,52 @@
+{
+  "sku": "granite-kitchen-set-31pcs",
+  "name": "31 Pcs Non Stick Granite Kitchen Cooking Set with Tools",
+  "price": {
+    "currency": "USD",
+    "current": 59,
+    "original": 299
+  },
+  "mainImage": {
+    "url": "/products/granite-kitchen-set-31pcs/images/01.webp",
+    "alt": "31-piece granite non stick cookware set with tools"
+  },
+  "gallery": [
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/01.webp",
+      "alt": "Granite non stick cookware set laid out with lids and utensils"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/02.webp",
+      "alt": "Granite coating close-up with steam-ventilated lid"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/03.webp",
+      "alt": "31-piece pots, pans, grill pan, and utensils lineup"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/04.webp",
+      "alt": "Full cookware spread with multi-size stockpots and frying pans"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/05.webp",
+      "alt": "Silicone utensils and detachable handle frying pan"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/06.webp",
+      "alt": "Die-cast aluminum base showing even heat distribution"
+    },
+    {
+      "url": "/products/granite-kitchen-set-31pcs/images/07.webp",
+      "alt": "Bonus kitchen cooking chef knife set with built-in sharpener"
+    }
+  ],
+  "meta": {
+    "product_id": "granite-kitchen-set-31pcs",
+    "bundle": "single",
+    "currency": "USD",
+    "piece_count": "31 pieces",
+    "coating": "Granite non-stick",
+    "bonus": "Chef knife set with built-in sharpener"
+  },
+  "checkoutURL": "https://watchcleannow.shop/182376-429d3c/checkouts/429d3ce54c6d42d92eb4f953ddcdbf67?_ref=https%3A%2F%2Fwatchcleannow.shop%2Fproducts%2Fyy888%3Fdata_from%3Dsearch_detail"
+}
