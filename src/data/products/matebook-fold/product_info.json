@@ -1,0 +1,230 @@
+{
+  "topBar": {
+    "icon": "sparkles",
+    "message": "Black Friday: MateBook Fold 32GB+1TB Blue now $59 (was $699)",
+    "countdownLabel": "Deal ends in"
+  },
+  "hero": {
+    "badgeLines": [
+      "BLACK FRIDAY",
+      "92%",
+      "OFF"
+    ],
+    "socialProof": {
+      "icon": "star",
+      "text": "6,140 creators locked in the foldable deal this week"
+    },
+    "headline": "MateBook Fold OLED laptop drops to $59 for Black Friday.",
+    "description": "This page is for the Blue 32GB+1TB configuration. 13.3-inch foldable OLED that switches between laptop and tablet, powered by the latest Intel Core with 32GB RAM. Under 1.2 kg, all-day battery, and Windows 11 ready for code, design, and travel.",
+    "highlights": [
+      "Foldable 13.3\" OLED for laptop or tablet mode",
+      "32GB RAM with 1TB storage in Blue finish",
+      "1.2 kg ultra-light with all-day battery"
+    ],
+    "inventoryCard": {
+      "countdownLabel": "Price locks for",
+      "stockLabel": "Live stock",
+      "stockUnit": "units",
+      "stockAlert": "Only 84 units left at $59 before returning to $699",
+      "trustSignals": [
+        {
+          "icon": "shield-check",
+          "text": "2-year limited warranty"
+        },
+        {
+          "icon": "sparkles",
+          "text": "Foldable OLED display"
+        },
+        {
+          "icon": "truck",
+          "text": "Ships in 24h"
+        }
+      ]
+    },
+    "cta": {
+      "label": "Unlock the $59 MateBook Fold",
+      "icon": "arrow-right",
+      "banner": {
+        "icon": "clock",
+        "text": "Price jumps back to $699 after Black Friday"
+      },
+      "note": "Secure checkout · Free shipping · Windows 11 ready"
+    }
+  },
+  "countdown": {
+    "durationSeconds": 1500
+  },
+  "inventory": {
+    "start": 620,
+    "minimum": 84
+  },
+  "detailHtml": "<section id=\"product-detail-media\" class=\"mt-12 space-y-6\"><div class=\"grid gap-4 md:grid-cols-2\"><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271530544828128238.png\" alt=\"MateBook Fold marketing collage\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271531206589708650.png\" alt=\"MateBook Fold unfolded workspace view\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271532222167443533.png\" alt=\"MateBook Fold hinge and screen detail\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271532335003967769.png\" alt=\"MateBook Fold tablet mode angled\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/></div><div class=\"grid gap-4 md:grid-cols-2\"><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271532502154387573.png\" alt=\"MateBook Fold performance highlight\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271533034770332062.png\" alt=\"MateBook Fold portability showcase\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271533305598482376.png\" alt=\"MateBook Fold multitasking screens\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271533437789857769.png\" alt=\"MateBook Fold stylus and keyboard setup\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/></div><div class=\"grid gap-4\"><img src=\"https://oss.earthenlys.com/v3/goods/20250527/202505271533564740898757.png\" alt=\"MateBook Fold folded profile\" class=\"w-full rounded-2xl object-cover\" loading=\"lazy\"/></div></section>",
+  "guarantee": {
+    "title": "Try MateBook Fold for 30 days, or return it",
+    "description": "Work in laptop and tablet modes for a month. If it doesn’t replace your current setup, send it back for a refund.",
+    "bullets": [
+      "30-day home trial, full refund",
+      "2-year limited warranty on hinge and display",
+      "Fast replacements if any pixel or hinge issue appears",
+      "Ships within 24 hours during Black Friday"
+    ],
+    "ctaLabel": "Start 30-day trial",
+    "ctaHref": "#purchase",
+    "note": "Return label included if you’re not satisfied"
+  },
+  "comments": {
+    "headline": "People are switching to the $59 foldable laptop",
+    "description": "Live reactions from engineers, designers, and travelers who grabbed the Black Friday price.",
+    "activity": "11 fresh 5-star reviews posted in the last 7 minutes",
+    "perPage": 6,
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "activityMessages": [
+      "Jenna just secured the foldable at $59",
+      "Ravi ordered a second unit for travel",
+      "Sophia confirmed OLED looks flawless",
+      "Liam paired the 1TB Blue unit with his travel kit"
+    ],
+    "reviews": [
+      {
+        "name": "Jenna T. | Product designer",
+        "timestamp": "9 minutes ago",
+        "avatar": "https://i.pravatar.cc/80?img=17",
+        "stars": 5,
+        "content": "The foldable screen feels premium. I’m sketching in tablet mode and typing in laptop mode without lag."
+      },
+      {
+        "name": "Ravi K. | Software lead",
+        "timestamp": "24 minutes ago",
+        "avatar": "https://i.pravatar.cc/80?img=36",
+        "stars": 5,
+        "content": "32GB RAM plus a solid hinge. Deployed code on the go and the battery still had hours left."
+      },
+      {
+        "name": "Sophia L. | UI/UX",
+        "timestamp": "33 minutes ago",
+        "avatar": "https://i.pravatar.cc/80?img=58",
+        "stars": 5,
+        "content": "OLED is bright and crease is minimal. Magnetic keyboard snaps cleanly—great for travel decks."
+      },
+      {
+        "name": "Liam P. | Video editor",
+        "timestamp": "49 minutes ago",
+        "avatar": "https://i.pravatar.cc/80?img=66",
+        "stars": 5,
+        "content": "Went with the 1TB Blue unit. Exports are smooth and the form factor fits in a sling bag."
+      },
+      {
+        "name": "Maya S. | Consultant",
+        "timestamp": "1 hour ago",
+        "avatar": "https://i.pravatar.cc/80?img=21",
+        "stars": 5,
+        "content": "1.2 kg and folds flat—airport security is easy. Tablet mode is perfect for note-taking."
+      },
+      {
+        "name": "Carlos D. | Developer advocate",
+        "timestamp": "2 hours ago",
+        "avatar": "https://i.pravatar.cc/80?img=71",
+        "stars": 5,
+        "content": "For $59 this is unreal. VS Code, terminals, and browser tabs all stay responsive."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": "Q1. What OS and processor does it use?",
+      "answer": "It ships with Windows 11 and the latest Intel Core processor as listed on the product page."
+    },
+    {
+      "question": "Q2. How durable is the hinge and screen?",
+      "answer": "The foldable OLED and hinge are covered by a 2-year limited warranty. Keep the screen clean and avoid sharp objects."
+    },
+      {
+        "question": "Q3. What storage and memory options are available?",
+        "answer": "This Black Friday page is for the Blue 32GB RAM with 1TB storage configuration."
+      },
+    {
+      "question": "Q4. How long does the battery last?",
+      "answer": "Expect all-day use for browsing, docs, and streaming. Heavier workloads like video exports reduce runtime."
+    }
+  ],
+  "purchase": {
+    "title": "Complete your MateBook Fold order",
+    "subtitle": "13.3\" foldable OLED · 32GB RAM · 1TB storage · Blue finish",
+    "quantityLabel": "Quantity",
+    "ctaLabel": "Buy now — {{price}}",
+    "assurances": [
+      {
+        "icon": "shield-check",
+        "text": "2-year limited warranty"
+      },
+      {
+        "icon": "sparkles",
+        "text": "Foldable OLED display"
+      },
+      {
+        "icon": "truck",
+        "text": "Ships within 24 hours"
+      },
+      {
+        "icon": "battery",
+        "text": "All-day battery"
+      },
+      {
+        "icon": "rotate-ccw",
+        "text": "30-day returns"
+      }
+    ],
+    "note": "Secure checkout · Black Friday price: $59 from $699",
+    "mediaAlt": "MateBook Fold OLED laptop in laptop and tablet modes"
+  },
+  "exitIntent": {
+    "enabled": true,
+    "badge": "Black Friday",
+    "title": "Hold the $59 MateBook Fold before price jumps",
+    "description": "Foldable OLED, 32GB RAM, and all-day battery. This price returns to $699 after the timer.",
+    "highlight": "$640 savings held for the next few minutes",
+    "bullets": [
+      "Laptop and tablet modes in one device",
+      "Windows 11 with Intel Core performance",
+      "Free shipping and 30-day returns"
+    ],
+    "ctaLabel": "Lock $59 now",
+    "ctaHref": "#purchase",
+    "secondaryCtaLabel": "See details",
+    "secondaryCtaHref": "#product-detail-media",
+    "dismissLabel": "Close",
+    "image": {
+      "url": "/products/matebook-fold/images/07.jpg",
+      "alt": "MateBook Fold on desk with vivid OLED display"
+    }
+  },
+  "stickyFooter": {
+    "headline": "Black Friday price live",
+    "stockMessage": "Only {stock} units left at $59 before returning to $699",
+    "ctaLabel": "Lock in $59 now"
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Work without limits",
+        "body": "Foldable OLED, 32GB RAM, and Windows 11 make it a laptop and tablet in one."
+      },
+      {
+        "title": "Hardware that ships fast",
+        "items": [
+          "Ships in 24 hours with tracking",
+          "2-year limited warranty",
+          "30-day home trial"
+        ]
+      },
+      {
+        "title": "Keep the Black Friday price",
+        "body": "Checkout now to lock $59 before stock and pricing reset to $699."
+      }
+    ],
+    "copyright": "© 2025 MateBook Fold. All rights reserved."
+  }
+}

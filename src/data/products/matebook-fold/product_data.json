@@ -1,0 +1,57 @@
+{
+  "sku": "matebook-fold",
+  "name": "MateBook Fold (32GB+1TB, Blue)",
+  "price": {
+    "currency": "USD",
+    "current": 59,
+    "original": 699
+  },
+  "mainImage": {
+    "url": "/products/matebook-fold/images/01.jpg",
+    "alt": "MateBook Fold unfolded into tablet mode with vivid OLED display"
+  },
+  "gallery": [
+    {
+      "url": "/products/matebook-fold/images/01.jpg",
+      "alt": "MateBook Fold unfolded showing edge-to-edge OLED screen"
+    },
+    {
+      "url": "/products/matebook-fold/images/02.jpg",
+      "alt": "MateBook Fold folded like a book for travel"
+    },
+    {
+      "url": "/products/matebook-fold/images/03.jpg",
+      "alt": "MateBook Fold side profile highlighting hinge"
+    },
+    {
+      "url": "/products/matebook-fold/images/04.jpg",
+      "alt": "MateBook Fold running productivity apps with keyboard"
+    },
+    {
+      "url": "/products/matebook-fold/images/05.jpg",
+      "alt": "MateBook Fold paired with stylus and trackpad"
+    },
+    {
+      "url": "/products/matebook-fold/images/06.jpg",
+      "alt": "MateBook Fold lightweight setup on a desk"
+    },
+    {
+      "url": "/products/matebook-fold/images/07.jpg",
+      "alt": "MateBook Fold lightweight setup on a desk"
+    }
+  ],
+  "meta": {
+    "product_id": "matebook-fold",
+    "bundle": "single",
+    "currency": "USD",
+    "display": "13.3-inch foldable OLED",
+    "cpu": "Intel Core (latest gen per store listing)",
+    "memory": "32GB RAM",
+    "storage": ["1TB"],
+    "color": "Blue",
+    "os": "Windows 11",
+    "battery": "All-day usage",
+    "weight": "1.2 kg"
+  },
+  "checkoutURL": "https://watchcleannow.shop/products/ccc001?data_from=search_detail&variant_sku_code=10831792-12623154-48777616-12623155-48777617-12623156-48777619"
+}
