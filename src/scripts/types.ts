@@ -8,9 +8,29 @@ export type RuntimeProduct = {
     current: number;
     original?: number;
   };
-  checkoutURL?: string;
   meta?: unknown;
 };
+
+export type RuntimeApi = {
+  checkoutEndpoint: string;
+};
+
+export type RuntimeCheckout =
+  | {
+      type: 'direct';
+      url: string;
+    }
+  | {
+      type: 'wordpress';
+      endpoint: string;
+      wdp: string;
+    }
+  | {
+      type: 'shopyy';
+      domain: string;
+      productId: string;
+      skuCode: string;
+    };
 
 export type RuntimeAnalytics = {
   pixels: {
@@ -22,10 +42,8 @@ export type RuntimeAnalytics = {
 export type RuntimeConfig = {
   product: RuntimeProduct;
   analytics: RuntimeAnalytics;
-  checkout: {
-    endpoint: string;
-    wdp: string;
-  };
+  checkout: RuntimeCheckout;
+  api: RuntimeApi;
   countdown: {
     durationSeconds: number;
   };

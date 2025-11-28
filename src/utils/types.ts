@@ -9,13 +9,29 @@ export interface ProductImage {
   alt: string;
 }
 
+export type CheckoutConfig =
+  | {
+      type: 'wordpress';
+      domain: string;
+    }
+  | {
+      type: 'direct';
+      url: string;
+    }
+  | {
+      type: 'shopyy';
+      domain: string;
+      productId: string | number;
+      skuCode: string;
+    };
+
 export interface ProductData {
   sku: string;
   name: string;
   price: ProductPrice;
   mainImage: ProductImage;
   gallery: ProductImage[];
-  checkoutURL?: string;
+  checkout: CheckoutConfig;
   meta?: Record<string, unknown> | string;
 }
 

@@ -40,6 +40,10 @@
       "alt": "Bonus kitchen cooking chef knife set with built-in sharpener"
     }
   ],
+  "checkout": {
+    "type": "direct",
+    "url": "https://watchcleannow.shop/182376-429d3c/checkouts/429d3ce54c6d42d92eb4f953ddcdbf67?_ref=https%3A%2F%2Fwatchcleannow.shop%2Fproducts%2Fyy888%3Fdata_from%3Dsearch_detail"
+  },
   "meta": {
     "product_id": "granite-kitchen-set-31pcs",
     "bundle": "single",
@@ -47,6 +51,5 @@
     "piece_count": "31 pieces",
     "coating": "Granite non-stick",
     "bonus": "Chef knife set with built-in sharpener"
-  },
-  "checkoutURL": "https://watchcleannow.shop/182376-429d3c/checkouts/429d3ce54c6d42d92eb4f953ddcdbf67?_ref=https%3A%2F%2Fwatchcleannow.shop%2Fproducts%2Fyy888%3Fdata_from%3Dsearch_detail"
+  }
 }

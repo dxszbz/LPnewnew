@@ -93,9 +93,9 @@ const formatPixelQuery = (ids: string[] | readonly string[] | undefined) => {
 
 const analyticsPixels = siteConfig.analytics?.pixels ?? { facebook: [], tiktok: [] };
 
-const composeCheckoutEndpoint = () => {
+const composeWordpressEndpoint = (domain: string) => {
   try {
-    const url = new URL(siteConfig.checkout.endpoint);
+    const url = new URL(domain);
     const facebookParam = formatPixelQuery(analyticsPixels.facebook);
     const tiktokParam = formatPixelQuery(analyticsPixels.tiktok);
     if (facebookParam) {
@@ -110,21 +110,48 @@ const composeCheckoutEndpoint = () => {
     }
     return url.toString();
   } catch {
-    return siteConfig.checkout.endpoint;
+    return domain;
   }
 };
+
+const runtimeCheckout = (() => {
+  if (product.checkout.type === 'wordpress') {
+    return {
+      type: 'wordpress' as const,
+      endpoint: composeWordpressEndpoint(product.checkout.domain),
+      wdp: '1'
+    };
+  }
+  if (product.checkout.type === 'direct') {
+    return {
+      type: 'direct' as const,
+      url: product.checkout.url
+    };
+  }
+  if (product.checkout.type === 'shopyy') {
+    return {
+      type: 'shopyy' as const,
+      domain: product.checkout.domain,
+      productId: String(product.checkout.productId),
+      skuCode: product.checkout.skuCode
+    };
+  }
+  return {
+    type: 'direct' as const,
+    url: ''
+  };
+})();
 
 const runtimeData = {
   product: {
     sku: product.sku,
     name: product.name,
     price: product.price,
-    checkoutURL: product.checkoutURL,
     meta: product.meta ?? ''
   },
-  checkout: {
-    ...siteConfig.checkout,
-    endpoint: composeCheckoutEndpoint()
+  checkout: runtimeCheckout,
+  api: {
+    checkoutEndpoint: siteConfig.api.checkoutEndpoint
   },
   countdown: info.countdown,
   inventory: info.inventory,

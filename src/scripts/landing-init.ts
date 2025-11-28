@@ -35,7 +35,7 @@ const init = () => {
   initStickyObserver();
   initSmoothScroll();
   initQuantityStepper();
-  if (!runtime.product.checkoutURL) {
+  if (runtime.checkout.type !== 'direct') {
     initCheckout(runtime);
   }
   initExitIntent(runtime.exitIntent);

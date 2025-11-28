@@ -27,6 +27,10 @@
     { "url": "/products/adar-nordcharge/images/14.jpg", "alt": "A'DAR NordCharge 俯視合照" },
     { "url": "/products/adar-nordcharge/images/15.png", "alt": "A'DAR NordCharge 電量指示燈" }
   ],
+  "checkout": {
+    "type": "wordpress",
+    "domain": "https://novacoretech.org/"
+  },
   "meta": {
     "bundle": "bogo",
     "colorOptions": ["Slate Black"],

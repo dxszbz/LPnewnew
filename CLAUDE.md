@@ -53,11 +53,11 @@ The `astro.config.mjs` includes a custom integration (`productFeedIntegration`) 
 
 ### Checkout Flow
 
-The checkout system (src/scripts/modules/checkout.ts) constructs a checkout URL with:
-- Base endpoint from `src/config.ts` (`siteConfig.checkout.endpoint`)
-- Serialized product metadata (base64-encoded)
-- Quantity and price parameters
-- Redirects to external checkout service
+Checkout is strategy-based per product (`product_data.json -> checkout`):
+- **direct**: Uses a prebuilt `url` and renders as an `<a>` link without JS.
+- **wordpress**: Requires `domain`; frontend module appends `wdp=1`, price/qty/meta, and pixel params, then redirects to the composed URL.
+- **shopyy**: 前端呼叫 Cloudflare Worker（`siteConfig.api.checkoutEndpoint`，如 `/checkout`），Worker 代表前端向 `{domain}/homeapi/cart/buynow` 發起 POST，讀取 `checkout_url` 後回傳，再由前端跳轉，避免 CORS。
+Modules live under `src/scripts/modules/checkout/`，Worker 例子見 `workers/worker.js`。
 
 ### Theme and Internationalization
 
@@ -91,7 +91,7 @@ The AI agent will:
 ### Manual Method
 
 1. Copy existing product folder in `src/data/products/` (e.g., duplicate `adar-nordcharge` to `new-sku`)
-2. Edit `product_data.json`: Update SKU, name, price, images (store in `public/products/{sku}/images/`)
+2. Edit `product_data.json`: Update SKU, name, price, images (store in `public/products/{sku}/images/`), and set `checkout` (choose `direct` with `url`, `wordpress` with `domain`, or `shopyy` with `domain`, `productId`, `skuCode`).
 3. Edit `product_info.json`: Update copy for hero, details, FAQs, comments, etc.
 4. Optional: Create `component-presets.json` to customize component variants
 5. Update `src/config.ts` to set `defaultSku` if needed, or pass SKU to `loadProduct(sku)` in pages
@@ -101,7 +101,6 @@ The AI agent will:
 ## Key Configuration
 
 `src/config.ts` (`siteConfig`) contains:
-- `checkout.endpoint`: External checkout service URL
 - `themes`: Available theme options
 - `locales`: Supported languages
 - `products.defaultSku`: Default product to load
