@@ -19,13 +19,13 @@ const stockHtml = stockMessage.replace(
 );
 ---
 
-<div class="fixed inset-x-0 bottom-0 z-40 hidden bg-slate-900/90 p-4 backdrop-blur-md md:hidden" data-sticky-cta>
+<div class="fixed inset-x-0 bottom-0 z-40 hidden bg-white/95 p-4 text-slate-900 shadow-lg backdrop-blur-md dark:bg-slate-900/90 dark:text-white md:hidden" data-sticky-cta>
   <div class="mx-auto flex max-w-xl items-center gap-3">
-    <div class="flex-1 text-xs text-white/70">
-      <p class="font-semibold text-white">
+    <div class="flex-1 text-xs text-slate-600 dark:text-white/70">
+      <p class="font-semibold text-slate-900 dark:text-white">
         {headline}
       </p>
-      <p class="mt-0.5 text-sm font-semibold text-warning-500">
+      <p class="mt-0.5 text-sm font-semibold text-warning-600 dark:text-warning-500">
         <span data-countdown="sticky"></span>
       </p>
       <p class="mt-0.5" set:html={stockHtml}></p>

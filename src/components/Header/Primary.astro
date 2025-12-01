@@ -189,9 +189,10 @@ const { productName } = Astro.props satisfies Props;
 
     // 切換選單顯示
     const toggleLocaleMenu = (show?: boolean) => {
-      const isOpen = show ?? localeMenu.classList.contains('opacity-100');
+      const isOpen = localeMenu.classList.contains('opacity-100');
+      const shouldOpen = show ?? !isOpen;
 
-      if (!isOpen) {
+      if (shouldOpen) {
         localeMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
         localeMenu.classList.add('opacity-100', 'scale-100');
         localeToggle.setAttribute('aria-expanded', 'true');
