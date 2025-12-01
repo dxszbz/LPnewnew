@@ -37,10 +37,9 @@ const { productName } = Astro.props satisfies Props;
         aria-label="Select language"
         aria-haspopup="true"
         aria-expanded="false"
-        class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+        class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
       >
-        <i data-lucide="languages" class="h-4 w-4" aria-hidden="true"></i>
-        <span id="current-locale" class="uppercase">EN</span>
+        <span id="current-locale" class="flex items-center gap-1.5"></span>
         <i data-lucide="chevron-down" class="h-3 w-3" aria-hidden="true"></i>
       </button>
 
@@ -118,11 +117,37 @@ const { productName } = Astro.props satisfies Props;
     // 確保 supportedLocales 是陣列而不是字串
     const supportedLocales = Array.isArray(localesFromApi) ? localesFromApi : Array.from(localesFromApi);
 
+    // 取得國旗代碼：未匹配時回退至美國
+    const localeToCountry = (locale: string) => {
+      const raw = (locale || '').toLowerCase();
+      const base = raw.split('-')[0];
+      const map: Record<string, string> = {
+        en: 'us',
+        fr: 'fr',
+        es: 'es',
+        de: 'de',
+        it: 'it',
+        pt: 'pt',
+        'pt-br': 'br',
+        zh: 'cn',
+        ja: 'jp',
+        ko: 'kr',
+        ar: 'sa',
+        ru: 'ru'
+      };
+      return map[raw] ?? map[base] ?? 'us';
+    };
+
+    const renderFlag = (locale: string) => {
+      const country = localeToCountry(locale);
+      return `<span class="fi fi-${country} h-4 w-6 rounded-sm shadow-sm shrink-0"></span>`;
+    };
+
     // 更新當前語言顯示
     const updateCurrentLocale = () => {
       if (!i18nApi) return;
       const current = i18nApi.getLocale();
-      currentLocaleEl.textContent = current.toUpperCase();
+      currentLocaleEl.innerHTML = `${renderFlag(current)}<span class="sr-only">${current.toUpperCase()}</span>`;
     };
 
     // 填充語言選單
@@ -145,7 +170,10 @@ const { productName } = Astro.props satisfies Props;
               role="menuitem"
             >
               ${isActive ? '<i data-lucide="check" class="h-3 w-3" aria-hidden="true"></i>' : '<span class="w-3"></span>'}
-              <span class="uppercase">${locale}</span>
+              <span class="flex items-center gap-2">
+                ${renderFlag(locale)}
+                <span class="uppercase">${locale}</span>
+              </span>
             </button>
           `;
         })
