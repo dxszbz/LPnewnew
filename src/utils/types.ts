@@ -147,6 +147,7 @@ export interface FooterContent {
 
 export interface ComponentPreset {
   layout?: string;
+  header?: string;
   topBar?: string;
   hero?: string;
   productDetails?: string;
@@ -191,4 +192,6 @@ export interface LoadedProduct {
   data: ProductData;
   info: ProductInfo;
   components?: ComponentPreset;
+  locale?: string;
+  availableLocales?: string[];
 }

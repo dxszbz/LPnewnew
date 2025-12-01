@@ -16,36 +16,64 @@ const supportedLocalesSerialized = JSON.stringify(supportedLocales);
 const initialLocaleSerialized = JSON.stringify(initialLocale);
 ---
 
-<script define:vars={{ storageKeySerialized, supportedLocalesSerialized, initialLocaleSerialized }}>
+<script define:vars={{ storageKeySerialized, supportedLocalesSerialized, initialLocaleSerialized }} is:inline>
   // 中文註解：語言腳本負責同步語言設定並提供全局切換接口
-  const STORAGE_KEY = storageKeySerialized;
-  const SUPPORTED_LOCALES = supportedLocalesSerialized;
-  const INITIAL_LOCALE = initialLocaleSerialized;
+  const STORAGE_KEY = JSON.parse(storageKeySerialized);
+  const SUPPORTED_LOCALES = JSON.parse(supportedLocalesSerialized).map((item) =>
+    String(item).toLowerCase()
+  );
+  const INITIAL_LOCALE = String(JSON.parse(initialLocaleSerialized)).toLowerCase();
+
+  const normalizeLocale = (locale) => String(locale || '').toLowerCase().split('-')[0];
 
   const applyLocale = (locale) => {
-    document.documentElement.lang = locale;
-    localStorage.setItem(STORAGE_KEY, locale);
+    const normalized = normalizeLocale(locale);
+    if (!SUPPORTED_LOCALES.includes(normalized)) return;
+    document.documentElement.lang = normalized;
+    localStorage.setItem(STORAGE_KEY, normalized);
   };
 
   const readStoredLocale = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored || !SUPPORTED_LOCALES.includes(stored)) {
-      return INITIAL_LOCALE;
+      return null;
     }
-    return stored;
+    return normalizeLocale(stored);
+  };
+
+  const detectBrowserLocale = () => {
+    const candidates = [...(navigator.languages ?? []), navigator.language].filter(Boolean);
+    for (const locale of candidates) {
+      const normalized = normalizeLocale(locale);
+      if (SUPPORTED_LOCALES.includes(normalized)) {
+        return normalized;
+      }
+    }
+    return null;
+  };
+
+  const pickInitialLocale = () => {
+    const stored = readStoredLocale();
+    if (stored) return stored;
+
+    const browser = detectBrowserLocale();
+    if (browser) return browser;
+
+    return normalizeLocale(INITIAL_LOCALE);
   };
 
   const init = () => {
-    const locale = readStoredLocale();
+    const locale = pickInitialLocale();
     applyLocale(locale);
   };
 
   window.__LANDER_I18N__ = {
-    getLocale: () => localStorage.getItem(STORAGE_KEY) ?? INITIAL_LOCALE,
+    getLocale: () => normalizeLocale(localStorage.getItem(STORAGE_KEY) ?? INITIAL_LOCALE),
     setLocale: (locale) => {
-      if (!SUPPORTED_LOCALES.includes(locale)) return;
-      applyLocale(locale);
-      document.dispatchEvent(new CustomEvent('lander:locale-change', { detail: locale }));
+      const normalized = normalizeLocale(locale);
+      if (!SUPPORTED_LOCALES.includes(normalized)) return;
+      applyLocale(normalized);
+      document.dispatchEvent(new CustomEvent('lander:locale-change', { detail: normalized }));
     },
     listLocales: () => [...SUPPORTED_LOCALES]
   };

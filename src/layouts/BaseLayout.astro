@@ -23,10 +23,11 @@ const {
 } = Astro.props satisfies Props;
 
 const initialThemeAttribute = theme === 'system' ? 'night' : theme;
+const initialThemeModeAttribute = theme;
 ---
 
 <!DOCTYPE html>
-<html lang={lang} data-theme={initialThemeAttribute}>
+<html lang={lang} data-theme={initialThemeAttribute} data-theme-mode={initialThemeModeAttribute}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

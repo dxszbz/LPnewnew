@@ -24,7 +24,8 @@ const sanitizeQuantity = (value: string | null) => {
 };
 
 export const initWordpressCheckout = (config: RuntimeConfig, form: HTMLFormElement) => {
-  if (config.checkout.type !== 'wordpress') return;
+  const checkout = config.checkout;
+  if (checkout.type !== 'wordpress') return;
 
   const button = form.querySelector<HTMLButtonElement>('[data-checkout-trigger]');
   const label = form.querySelector<HTMLElement>('[data-checkout-cta-text]');
@@ -43,7 +44,7 @@ export const initWordpressCheckout = (config: RuntimeConfig, form: HTMLFormEleme
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const endpoint = String(config.checkout.endpoint ?? '').trim();
+    const endpoint = String(checkout.endpoint ?? '').trim();
     if (!endpoint) {
       alert('Checkout endpoint is not configured.');
       return;
@@ -73,7 +74,7 @@ export const initWordpressCheckout = (config: RuntimeConfig, form: HTMLFormEleme
     }
 
     const params = new URLSearchParams({
-      wdp: config.checkout.wdp,
+      wdp: checkout.wdp,
       product_id: config.product.sku,
       product_name: config.product.name,
       price: String(config.product.price.current),

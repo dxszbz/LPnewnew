@@ -116,9 +116,10 @@ const bootstrapTikTokPixel = (pixelIds: string[]) => {
       'disableCookie'
     ];
     ttq.setAndDefer = (obj: TikTokPixel, method: string) => {
-      obj[method] = function (...args: unknown[]) {
-        obj.push([method, ...args]);
-      };
+      const anyObj = obj as unknown as Record<string, unknown>;
+      anyObj[method] = function (...args: unknown[]) {
+        (obj as TikTokPixel).push([method, ...args]);
+      } as unknown;
     };
     ttq.methods.forEach((method) => {
       ttq.setAndDefer?.(ttq, method);

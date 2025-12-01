@@ -166,7 +166,7 @@ export const initExitIntent = (config: ExitIntentConfig) => {
       { type: 'touchstart', passive: true }
     ];
     idleEvents.forEach(({ type, passive }) => {
-      const options = passive ? { passive: true } : undefined;
+      const options: AddEventListenerOptions | undefined = passive ? { passive: true } : undefined;
       document.addEventListener(type, activityHandler as EventListener, options);
       triggerCleanups.push(() =>
         document.removeEventListener(type, activityHandler as EventListener, options)

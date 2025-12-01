@@ -16,12 +16,13 @@ const availableThemesSerialized = JSON.stringify(availableThemes);
 const initialThemeSerialized = JSON.stringify(initialTheme);
 ---
 
-<script define:vars={{ storageKeySerialized, availableThemesSerialized, initialThemeSerialized }}>
+<script define:vars={{ storageKeySerialized, availableThemesSerialized, initialThemeSerialized }} is:inline>
   // 中文註解：主題腳本負責讀寫本地儲存並在頁面載入前設定 data-theme
-  const STORAGE_KEY = storageKeySerialized;
-  const AVAILABLE_THEMES = availableThemesSerialized;
-  const INITIAL_THEME = initialThemeSerialized;
+  const STORAGE_KEY = JSON.parse(storageKeySerialized);
+  const AVAILABLE_THEMES = JSON.parse(availableThemesSerialized);
+  const INITIAL_THEME = JSON.parse(initialThemeSerialized);
   const prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const root = document.documentElement;
 
   const resolveTheme = (theme) =>
     theme === 'system'
@@ -40,12 +41,13 @@ const initialThemeSerialized = JSON.stringify(initialTheme);
   };
 
   const applyTheme = (theme) => {
-    const root = document.documentElement;
     const resolved = resolveTheme(theme);
     root.dataset.theme = resolved;
+    root.dataset.themeMode = theme;
     localStorage.setItem(STORAGE_KEY, theme);
     root.classList.toggle('theme-night', resolved === 'night');
     root.classList.toggle('theme-day', resolved === 'day');
+    root.classList.toggle('dark', resolved === 'night');
     ensureWatcher(theme);
   };
 
@@ -63,10 +65,6 @@ const initialThemeSerialized = JSON.stringify(initialTheme);
       prefersDarkQuery.addEventListener('change', handler);
       return () => prefersDarkQuery.removeEventListener('change', handler);
     }
-    if (typeof prefersDarkQuery.addListener === 'function') {
-      prefersDarkQuery.addListener(handler);
-      return () => prefersDarkQuery.removeListener(handler);
-    }
     return () => {};
   };
 
@@ -77,7 +75,7 @@ const initialThemeSerialized = JSON.stringify(initialTheme);
   };
 
   window.__LANDER_THEME__ = {
-    getTheme: () => localStorage.getItem(STORAGE_KEY) ?? 'system',
+    getTheme: () => root.dataset.themeMode ?? localStorage.getItem(STORAGE_KEY) ?? 'system',
     setTheme: (nextTheme) => {
       if (!AVAILABLE_THEMES.includes(nextTheme)) return;
       applyTheme(nextTheme);

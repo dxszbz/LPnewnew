@@ -7,7 +7,8 @@ const sanitizeQuantity = (value: string | null) => {
 };
 
 export const initShopyyCheckout = (config: RuntimeConfig, form: HTMLFormElement) => {
-  if (config.checkout.type !== 'shopyy') return;
+  const checkout = config.checkout;
+  if (checkout.type !== 'shopyy') return;
 
   const button = form.querySelector<HTMLButtonElement>('[data-checkout-trigger]');
   const label = form.querySelector<HTMLElement>('[data-checkout-cta-text]');
@@ -26,7 +27,7 @@ export const initShopyyCheckout = (config: RuntimeConfig, form: HTMLFormElement)
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const { domain, productId, skuCode } = config.checkout;
+    const { domain, productId, skuCode } = checkout;
     const endpoint = config.api?.checkoutEndpoint?.trim();
 
     if (!endpoint || !domain || !productId || !skuCode) {

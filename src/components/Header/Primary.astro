@@ -1,0 +1,233 @@
+---
+export interface Props {
+  productName: string;
+}
+
+const { productName } = Astro.props satisfies Props;
+---
+
+<header class="fixed inset-x-0 top-12 z-40 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-sm">
+  <div class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-4 py-3 sm:px-6 lg:px-10">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <a href="/" class="text-lg font-bold text-white hover:text-primary-400 transition-colors">
+        {productName}
+      </a>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2">
+      <!-- Theme Toggle -->
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle theme"
+        class="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+      >
+        <i data-lucide="sun" class="h-5 w-5 hidden [[data-theme-mode='day']_&]:block" aria-hidden="true"></i>
+        <i data-lucide="moon" class="h-5 w-5 hidden [[data-theme-mode='night']_&]:block" aria-hidden="true"></i>
+        <i data-lucide="monitor" class="h-5 w-5 hidden [[data-theme-mode='system']_&]:block" aria-hidden="true"></i>
+      </button>
+
+      <!-- Language Switcher -->
+      <div class="relative">
+        <button
+          id="locale-toggle"
+          type="button"
+          aria-label="Select language"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+        >
+          <i data-lucide="languages" class="h-4 w-4" aria-hidden="true"></i>
+          <span id="current-locale" class="uppercase">EN</span>
+          <i data-lucide="chevron-down" class="h-3 w-3" aria-hidden="true"></i>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div
+          id="locale-menu"
+          class="absolute right-0 mt-2 w-32 origin-top-right rounded-lg border border-slate-700 bg-slate-900 py-1 shadow-xl opacity-0 scale-95 pointer-events-none transition-all duration-200"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="locale-toggle"
+        >
+          <!-- Language options will be populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { refreshIcons } from '../../scripts/utils/icons';
+
+  // 中文註解：初始化頭部互動功能
+  function initHeader() {
+    const getRuntime = () => {
+      const host = document.getElementById('landing-runtime') as HTMLScriptElement | null;
+      if (!host?.textContent) return null;
+      try {
+        return JSON.parse(host.textContent) as {
+          product?: { sku?: string };
+          locale?: string;
+        };
+      } catch {
+        return null;
+      }
+    };
+    const runtime = getRuntime();
+
+    type ThemeApi = {
+      getTheme: () => string;
+      setTheme: (nextTheme: string) => void;
+      listThemes: () => string[];
+    };
+
+    type I18nApi = {
+      getLocale: () => string;
+      setLocale: (locale: string) => void;
+      listLocales: () => string[];
+    };
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const localeToggle = document.getElementById('locale-toggle');
+    const localeMenu = document.getElementById('locale-menu');
+    const currentLocaleEl = document.getElementById('current-locale');
+
+    if (!themeToggle || !localeToggle || !localeMenu || !currentLocaleEl) return;
+
+    // 主題切換邏輯
+    const themeApi = (window as typeof window & { __LANDER_THEME__?: ThemeApi }).__LANDER_THEME__;
+    const availableThemes = themeApi?.listThemes() ?? ['system', 'day', 'night'];
+
+    themeToggle.addEventListener('click', (ev) => {
+      if (!themeApi) return;
+      // 避免影響其他點擊監聽（如語言選單）
+      ev.stopPropagation();
+      const current = themeApi.getTheme();
+      const currentIndex = availableThemes.indexOf(current as any);
+      const nextIndex = (currentIndex + 1) % availableThemes.length;
+      const nextTheme = availableThemes[nextIndex];
+      themeApi.setTheme(nextTheme);
+    });
+
+    // 語言切換邏輯
+    const i18nApi = (window as typeof window & { __LANDER_I18N__?: I18nApi }).__LANDER_I18N__;
+    const localesFromApi = i18nApi?.listLocales() ?? ['en'];
+    // 確保 supportedLocales 是陣列而不是字串
+    const supportedLocales = Array.isArray(localesFromApi) ? localesFromApi : Array.from(localesFromApi);
+
+    // 更新當前語言顯示
+    const updateCurrentLocale = () => {
+      if (!i18nApi) return;
+      const current = i18nApi.getLocale();
+      currentLocaleEl.textContent = current.toUpperCase();
+    };
+
+    // 填充語言選單
+    const populateLocaleMenu = () => {
+      if (!localeMenu || !i18nApi) return;
+
+      const currentLocale = i18nApi.getLocale();
+      localeMenu.innerHTML = supportedLocales
+        .map(locale => {
+          const isActive = locale === currentLocale;
+          return `
+            <button
+              type="button"
+              class="flex w-full items-center gap-2 px-4 py-2 text-sm text-left ${
+                isActive
+                  ? 'bg-primary-500/10 text-primary-400'
+                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+              } transition-colors"
+              data-locale="${locale}"
+              role="menuitem"
+            >
+              ${isActive ? '<i data-lucide="check" class="h-3 w-3" aria-hidden="true"></i>' : '<span class="w-3"></span>'}
+              <span class="uppercase">${locale}</span>
+            </button>
+          `;
+        })
+        .join('');
+
+      // 重新初始化 Lucide 圖標
+      refreshIcons();
+
+      // 綁定點擊事件
+      localeMenu.querySelectorAll('[data-locale]').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const target = e.currentTarget as HTMLElement;
+          const locale = target.dataset.locale;
+          if (locale && i18nApi) {
+            i18nApi.setLocale(locale);
+            updateCurrentLocale();
+            populateLocaleMenu();
+            toggleLocaleMenu(false);
+            const productId = runtime?.product?.sku;
+            if (productId) {
+              const segments = window.location.pathname.split('/').filter(Boolean);
+              const productIndex = segments.findIndex((seg) => seg === productId);
+              let nextPath = window.location.pathname;
+              if (productIndex !== -1) {
+                if (segments[productIndex + 1]) {
+                  segments[productIndex + 1] = locale;
+                } else {
+                  segments.splice(productIndex + 1, 0, locale);
+                }
+                nextPath = `/${segments.join('/')}`;
+              } else {
+                nextPath = `/products/${productId}/${locale}`;
+              }
+              const url = new URL(nextPath + window.location.search + window.location.hash, window.location.origin);
+              window.location.href = url.toString();
+            }
+          }
+        });
+      });
+    };
+
+    // 切換選單顯示
+    const toggleLocaleMenu = (show?: boolean) => {
+      const isOpen = show ?? localeMenu.classList.contains('opacity-100');
+
+      if (!isOpen) {
+        localeMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        localeMenu.classList.add('opacity-100', 'scale-100');
+        localeToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        localeMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        localeMenu.classList.remove('opacity-100', 'scale-100');
+        localeToggle.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    // 點擊語言按鈕切換選單
+    localeToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      toggleLocaleMenu();
+    });
+
+    // 點擊外部關閉選單
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (!localeToggle.contains(target) && !localeMenu.contains(target)) {
+        toggleLocaleMenu(false);
+      }
+    });
+
+    // 初始化
+    updateCurrentLocale();
+    populateLocaleMenu();
+
+    // 監聽語言變更事件
+    document.addEventListener('lander:locale-change', () => {
+      updateCurrentLocale();
+      populateLocaleMenu();
+    });
+  }
+
+  // 初始化並在需要時重新初始化圖標
+  initHeader();
+  refreshIcons();
+</script>
