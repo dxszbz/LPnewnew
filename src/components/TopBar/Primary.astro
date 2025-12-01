@@ -1,18 +1,16 @@
 ---
 export interface Props {
-  icon: string;
   message: string;
   countdownLabel: string;
 }
 
-const { icon, message, countdownLabel } = Astro.props satisfies Props;
+const { message, countdownLabel } = Astro.props satisfies Props;
 ---
 
 <div class="sticky inset-x-0 top-0 z-50 bg-rose-500 text-white">
   <div class="mx-auto flex w-full max-w-screen-xl items-center justify-between px-4 py-2 text-sm font-semibold tracking-wide sm:px-6 lg:px-10">
     <span class="inline-flex items-center gap-1 text-left">
-      <i data-lucide={icon} class="h-4 w-4 animate-wiggle" aria-hidden="true"></i>
-      {message}
+      <span data-topbar-message class="inline-flex items-center gap-1">{message}</span>
     </span>
     <span class="hidden text-right text-xs sm:block">
       {countdownLabel}
@@ -20,3 +18,63 @@ const { icon, message, countdownLabel } = Astro.props satisfies Props;
     </span>
   </div>
 </div>
+
+<script>
+  // 中文註解：等待 DOM 準備後再執行定位，避免節點缺失導致腳本提前返回
+  const translations: Record<string, string> = {
+    en: 'Special discount for visitors in {place}, {country}',
+    fr: 'Réduction spéciale pour les visiteurs à {place}, {country}',
+    de: 'Sonderrabatt für Besucher in {place}, {country}',
+    es: 'Descuento especial para visitantes en {place}, {country}',
+    it: 'Sconto speciale per i visitatori a {place}, {country}',
+    nl: 'Speciale korting voor bezoekers in {place}, {country}'
+  };
+
+  const getLocale = () => {
+    const api = (window as typeof window & { __LANDER_I18N__?: { getLocale: () => string } }).__LANDER_I18N__;
+    const current = api?.getLocale?.() || document.documentElement.lang || 'en';
+    return current.toLowerCase().split('-')[0];
+  };
+
+  const renderFlag = (countryCode?: string) => {
+    if (!countryCode) return '';
+    const code = countryCode.toLowerCase();
+    return `<span class="fi fi-${code} h-4 w-6 rounded-sm mr-2 ring-2 ring-white shadow-sm shrink-0"></span>`;
+  };
+
+  const formatMessage = (locale: string, place: string, countryCode?: string, country?: string) => {
+    const base = translations[locale] ?? translations.en;
+    const text = base
+      .replace('{place}', place)
+      .replace('{country}', country ?? countryCode ?? '');
+    return `${renderFlag(countryCode)}<span>${text}</span>`;
+  };
+
+  const updateMessage = async (messageEl: HTMLElement) => {
+    try {
+      const res = await fetch('https://ipapi.xcam.workers.dev/', { credentials: 'omit' });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data?.status !== 'success') return;
+      const place = data.city || data.regionName || data.country || '';
+      if (!place) return;
+      const locale = getLocale();
+      const next = formatMessage(locale, place, data.countryCode, data.country);
+      messageEl.innerHTML = next;
+    } catch (error) {
+      console.warn('Geo message fetch failed', error);
+    }
+  };
+
+  const initTopbar = () => {
+    const messageEl = document.querySelector<HTMLElement>('[data-topbar-message]');
+    if (!messageEl) return;
+    updateMessage(messageEl);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTopbar, { once: true });
+  } else {
+    initTopbar();
+  }
+</script>

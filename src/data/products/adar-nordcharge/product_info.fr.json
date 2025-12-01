@@ -1,6 +1,5 @@
 {
   "topBar": {
-    "icon": "sparkles",
     "message": "Lancement d'urgence : garantie 10 ans + offre 1 acheté = 1 offert",
     "countdownLabel": "La caisse ferme dans"
   },
