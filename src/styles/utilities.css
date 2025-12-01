@@ -1,11 +1,11 @@
 .stock-stripes {
-  background-color: #ff6b00;
+  background-color: #f43f5e;
   background-image: repeating-linear-gradient(
     135deg,
-    rgba(255, 107, 0, 0.8) 0px,
-    rgba(255, 107, 0, 0.8) 20px,
-    rgba(232, 92, 0, 0.8) 20px,
-    rgba(232, 92, 0, 0.8) 40px
+    rgba(244, 63, 94, 0.8) 0px,
+    rgba(244, 63, 94, 0.8) 20px,
+    rgba(219, 55, 85, 0.8) 20px,
+    rgba(219, 55, 85, 0.8) 40px
   );
   background-size: 60px 60px;
   background-position: 0 0, 0 0;

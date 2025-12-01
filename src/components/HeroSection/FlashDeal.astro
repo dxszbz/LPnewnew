@@ -14,7 +14,7 @@ const gallery = product.gallery.length ? product.gallery : [product.mainImage];
 <section class="relative flex flex-col gap-6 rounded-xl bg-gradient-to-b from-slate-50 to-white p-6 shadow-2xl ring-1 ring-slate-200 dark:from-slate-900/60 dark:to-slate-950 dark:ring-white/10 sm:grid sm:grid-cols-2 sm:gap-10 sm:p-10">
   <div class="relative order-1 sm:order-1">
     {hero.badgeLines?.length ? (
-      <div class="absolute -left-11 -top-4 z-40 hidden h-20 w-20 rounded-full bg-warning-500 text-center text-xs font-bold uppercase text-white shadow-glow sm:flex sm:flex-col sm:items-center sm:justify-center animate-floatBadge">
+      <div class="absolute -left-11 -top-4 z-40 hidden h-20 w-20 rounded-full bg-rose-500 text-center text-xs font-bold uppercase text-white shadow-glow sm:flex sm:flex-col sm:items-center sm:justify-center animate-floatBadge">
         {hero.badgeLines.map((line) => <span>{line}</span>)}
       </div>
     ) : null}
@@ -103,7 +103,7 @@ const gallery = product.gallery.length ? product.gallery : [product.mainImage];
     <div class="rounded-2xl border border-slate-200 bg-slate-100 p-4 shadow-lg dark:border-white/10 dark:bg-slate-900/70 sm:mt-auto">
       <div class="flex flex-col gap-3">
         <div class="flex items-center justify-between">
-          <div class="text-xs font-semibold uppercase tracking-wide text-warning-600 dark:text-warning-500">
+          <div class="text-xs font-semibold uppercase tracking-wide text-rose-600 dark:text-rose-500">
             {hero.inventoryCard.countdownLabel}
           </div>
           <div data-countdown="main" class="text-2xl font-black text-slate-900 dark:text-white"></div>
@@ -112,14 +112,14 @@ const gallery = product.gallery.length ? product.gallery : [product.mainImage];
           <div class="flex items-center justify-between text-xs text-slate-600 dark:text-white/70">
             <span>{hero.inventoryCard.stockLabel}</span>
             <span>
-              <span data-stock-text="main" class="font-bold text-warning-500"></span>
+              <span data-stock-text="main" class="font-bold text-rose-500"></span>
               &nbsp;{hero.inventoryCard.stockUnit}
             </span>
           </div>
           <div class="mt-2 h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-white/10">
             <div data-stock-bar class="stock-stripes h-3 w-full animate-progressStripes rounded-full"></div>
           </div>
-          <p data-stock-alert class="mt-2 text-xs font-semibold text-warning-500"></p>
+          <p data-stock-alert class="mt-2 text-xs font-semibold text-rose-500"></p>
         </div>
         {hero.inventoryCard.trustSignals?.length ? (
           <div class="flex flex-wrap items-center gap-3 text-xs text-slate-600 dark:text-white/60">

@@ -15,7 +15,7 @@ const {
 
 const stockHtml = stockMessage.replace(
   '{stock}',
-  '<span data-stock-text="sticky" class="font-bold text-warning-500"></span>'
+  '<span data-stock-text="sticky" class="font-bold text-rose-500"></span>'
 );
 ---
 
@@ -25,12 +25,12 @@ const stockHtml = stockMessage.replace(
       <p class="font-semibold text-slate-900 dark:text-white">
         {headline}
       </p>
-      <p class="mt-0.5 text-sm font-semibold text-warning-600 dark:text-warning-500">
+      <p class="mt-0.5 text-sm font-semibold text-rose-600 dark:text-rose-500">
         <span data-countdown="sticky"></span>
       </p>
       <p class="mt-0.5" set:html={stockHtml}></p>
     </div>
-    <a href={`#${targetId}`} class="cta-scroll flex-1 rounded-full bg-warning-500 px-4 py-3 text-center text-sm font-black text-slate-950 shadow-lg shadow-warning-500/40" role="button">
+    <a href={`#${targetId}`} class="cta-scroll flex-1 rounded-full bg-rose-500 px-4 py-3 text-center text-sm font-black text-white shadow-lg shadow-rose-500/40" role="button">
       {ctaLabel}
     </a>
   </div>

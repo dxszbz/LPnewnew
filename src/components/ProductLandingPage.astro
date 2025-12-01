@@ -188,10 +188,6 @@ const copyright =
   availableThemes={[...siteConfig.themes]}
   supportedLocales={runtimeLocales}
 >
-  {HeaderComponent && (
-    <HeaderComponent productName={product.name} />
-  )}
-
   {TopBarComponent && (
     <TopBarComponent
       icon={info.topBar.icon}
@@ -200,7 +196,11 @@ const copyright =
     />
   )}
 
-  <main class="mx-auto mt-28 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-32 sm:px-6 lg:px-10">
+  {HeaderComponent && (
+    <HeaderComponent productName={product.name} />
+  )}
+
+  <main class="mx-auto mt-6 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-8 sm:px-6 lg:px-10">
     {HeroComponent && <HeroComponent hero={info.hero} product={product} />}
     {ProductDetailsComponent && <ProductDetailsComponent html={info.detailHtml} />}
     {GuaranteeComponent && <GuaranteeComponent content={info.guarantee} />}
