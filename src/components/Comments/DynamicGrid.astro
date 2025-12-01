@@ -10,58 +10,58 @@ const { content } = Astro.props satisfies Props;
 const initialReviews = content.reviews.slice(0, content.perPage);
 ---
 
-<section class="mt-16 rounded-3xl border border-white/5 bg-slate-900/40 p-6 sm:p-10">
+<section class="mt-16 rounded-3xl border border-slate-200 bg-slate-50 p-6 dark:border-white/5 dark:bg-slate-900/40 sm:p-10">
   <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
     <div class="max-w-2xl space-y-3">
-      <h2 class="text-3xl font-bold text-white">{content.headline}</h2>
-      <p class="text-sm text-white/70">{content.description}</p>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white">{content.headline}</h2>
+      <p class="text-sm text-slate-700 dark:text-white/70">{content.description}</p>
     </div>
-    <div class="rounded-2xl bg-brand-500/20 px-4 py-3 text-sm font-semibold text-brand-100" data-comments-activity>
+    <div class="rounded-2xl bg-brand-500/10 px-4 py-3 text-sm font-semibold text-brand-700 dark:bg-brand-500/20 dark:text-brand-100" data-comments-activity>
       {content.activity}
     </div>
   </div>
   <div class="mt-8 grid gap-6 md:grid-cols-2" data-comments-root>
     {initialReviews.map((comment) => (
-      <article class="rounded-3xl border border-white/5 bg-slate-950/70 p-5 shadow-lg shadow-black/30">
+      <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-lg shadow-black/10 dark:border-white/5 dark:bg-slate-950/70 dark:shadow-black/30">
         <header class="flex items-center gap-3">
           <img
-            class="lazyload h-12 w-12 rounded-full border border-white/20 object-cover"
+            class="lazyload h-12 w-12 rounded-full border border-slate-200 object-cover dark:border-white/20"
             src={LAZY_MEDIA_PLACEHOLDER}
             data-src={comment.avatar}
             alt={comment.name}
           />
           <noscript>
-            <img class="h-12 w-12 rounded-full border border-white/20 object-cover" src={comment.avatar} alt={comment.name} />
+            <img class="h-12 w-12 rounded-full border border-slate-200 object-cover dark:border-white/20" src={comment.avatar} alt={comment.name} />
           </noscript>
           <div>
-            <p class="text-sm font-semibold text-white">{comment.name}</p>
-            <p class="text-xs text-white/40">{comment.timestamp}</p>
+            <p class="text-sm font-semibold text-slate-900 dark:text-white">{comment.name}</p>
+            <p class="text-xs text-slate-500 dark:text-white/40">{comment.timestamp}</p>
           </div>
           <div class="ml-auto flex gap-1">
             {Array.from({ length: 5 }, (_, index) => (
               <span
                 data-lucide="star"
-                class={`h-4 w-4 ${index < comment.stars ? 'text-warning-500 icon-solid' : 'text-white/20'}`}
+                class={`h-4 w-4 ${index < comment.stars ? 'text-warning-500 icon-solid' : 'text-slate-300 dark:text-white/20'}`}
                 aria-hidden="true"
               ></span>
             ))}
           </div>
         </header>
-        <p class="mt-4 text-sm leading-relaxed text-white/80">{comment.content}</p>
-        <footer class="mt-4 flex items-center justify-between text-xs text-white/40">
+        <p class="mt-4 text-sm leading-relaxed text-slate-700 dark:text-white/80">{comment.content}</p>
+        <footer class="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-white/40">
           <span>Verified buyer</span>
           <span>👍 {Math.floor(Math.random() * 120) + 80}</span>
         </footer>
       </article>
     ))}
   </div>
-  <div class="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-white/60">
-    <button type="button" class="flex items-center gap-1 rounded-full border border-white/20 px-3 py-2 text-white transition hover:border-brand-500/60 hover:text-brand-100 disabled:opacity-40" data-comments-prev>
+  <div class="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600 dark:text-white/60">
+    <button type="button" class="flex items-center gap-1 rounded-full border border-slate-200 px-3 py-2 text-slate-700 transition hover:border-brand-500/60 hover:text-brand-700 disabled:opacity-40 dark:border-white/20 dark:text-white dark:hover:text-brand-100" data-comments-prev>
       <i data-lucide="chevron-left" class="h-3 w-3" aria-hidden="true"></i>
       {content.pagination.previous}
     </button>
     <div class="flex flex-wrap items-center gap-2" data-comments-dots></div>
-    <button type="button" class="flex items-center gap-1 rounded-full border border-white/20 px-3 py-2 text-white transition hover:border-brand-500/60 hover:text-brand-100 disabled:opacity-40" data-comments-next>
+    <button type="button" class="flex items-center gap-1 rounded-full border border-slate-200 px-3 py-2 text-slate-700 transition hover:border-brand-500/60 hover:text-brand-700 disabled:opacity-40 dark:border-white/20 dark:text-white dark:hover:text-brand-100" data-comments-next>
       {content.pagination.next}
       <i data-lucide="chevron-right" class="h-3 w-3" aria-hidden="true"></i>
     </button>
