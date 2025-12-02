@@ -22,12 +22,12 @@ const { message, countdownLabel } = Astro.props satisfies Props;
 <script>
   // 中文註解：等待 DOM 準備後再執行定位，避免節點缺失導致腳本提前返回
   const translations: Record<string, string> = {
-    en: 'Special discount for visitors in {place}, {country}',
-    fr: 'Réduction spéciale pour les visiteurs à {place}, {country}',
-    de: 'Sonderrabatt für Besucher in {place}, {country}',
-    es: 'Descuento especial para visitantes en {place}, {country}',
-    it: 'Sconto speciale per i visitatori a {place}, {country}',
-    nl: 'Speciale korting voor bezoekers in {place}, {country}'
+    en: 'Limited Discount only in {place}, {country}',
+    fr: 'Remise limitée uniquement à {place}, {country}',
+    de: 'Begrenzter Rabatt nur in {place}, {country}',
+    es: 'Descuento limitado solo en {place}, {country}',
+    it: 'Sconto limitato solo a {place}, {country}',
+    nl: 'Beperkte korting alleen in {place}, {country}'
   };
 
   const getLocale = () => {
