@@ -42,6 +42,10 @@ export const initWordpressCheckout = (config: RuntimeConfig, form: HTMLFormEleme
     if (icon) icon.classList.toggle('hidden', isLoading);
   };
 
+  const resetState = () => setState('idle');
+  // 返回或從 bfcache 恢復時，確保 CTA 恢復可點擊
+  window.addEventListener('pageshow', resetState);
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const endpoint = String(checkout.endpoint ?? '').trim();

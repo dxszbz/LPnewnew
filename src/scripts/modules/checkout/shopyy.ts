@@ -25,6 +25,10 @@ export const initShopyyCheckout = (config: RuntimeConfig, form: HTMLFormElement)
     if (icon) icon.classList.toggle('hidden', isLoading);
   };
 
+  const resetState = () => setState('idle');
+  // 返回或從 bfcache 恢復時，確保 CTA 恢復可點擊
+  window.addEventListener('pageshow', resetState);
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const { domain, productId, skuCode } = checkout;
@@ -78,6 +82,9 @@ export const initShopyyCheckout = (config: RuntimeConfig, form: HTMLFormElement)
       console.error('Shopyy checkout failed', error);
       alert('Failed to create order. Please try again.');
       setState('idle');
+    } finally {
+      // 若跳轉未發生或請求失敗，保證狀態復位；成功跳轉時 bfcache 返回亦會由 pageshow 重置
+      resetState();
     }
   });
 };
