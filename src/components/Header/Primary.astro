@@ -116,6 +116,7 @@ const { productName } = Astro.props satisfies Props;
     const localesFromApi = i18nApi?.listLocales() ?? ['en'];
     // 確保 supportedLocales 是陣列而不是字串
     const supportedLocales = Array.isArray(localesFromApi) ? localesFromApi : Array.from(localesFromApi);
+    const runtimeLocale = runtime?.locale?.toLowerCase();
 
     // 取得國旗代碼：未匹配時回退至美國
     const localeToCountry = (locale: string) => {
@@ -150,6 +151,16 @@ const { productName } = Astro.props satisfies Props;
       const current = i18nApi.getLocale();
       currentLocaleEl.innerHTML = `${renderFlag(current)}<span class="sr-only">${current.toUpperCase()}</span>`;
     };
+
+    // 確保當前頁的 locale 強制覆蓋本地存儲的舊值，避免顯示錯誤國旗
+    if (
+      i18nApi &&
+      runtimeLocale &&
+      supportedLocales.includes(runtimeLocale) &&
+      i18nApi.getLocale() !== runtimeLocale
+    ) {
+      i18nApi.setLocale(runtimeLocale);
+    }
 
     // 填充語言選單
     const populateLocaleMenu = () => {
