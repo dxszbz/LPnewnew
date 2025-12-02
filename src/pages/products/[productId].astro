@@ -1,19 +1,34 @@
 ---
-import ProductLandingPage from '../../components/ProductLandingPage.astro';
-import { listAvailableProducts } from '../../utils/loadProduct';
+import { listAvailableProducts, listProductLocales } from '../../utils/loadProduct';
+import { siteConfig } from '../../config';
 
 export const getStaticPaths = () => {
   const products = listAvailableProducts();
   return products.map((productId) => ({
-    params: { productId }
+    params: { productId },
+    props: {
+      locales: listProductLocales(productId),
+      defaultLocale: siteConfig.locales.default
+    }
   }));
 };
 
 const { productId } = Astro.params;
+const { locales = [], defaultLocale } = Astro.props as { locales?: string[]; defaultLocale?: string };
 const availableProducts = listAvailableProducts();
+void locales;
+void defaultLocale;
 
 if (!productId || !availableProducts.includes(productId)) {
   throw new Error(`找不到產品 ${productId}，請確認資料夾是否存在。`);
 }
+
+// 重定向到帶語言的路徑
+return Astro.redirect(
+  ((id: string) => {
+    const preferred = locales.find((item) => item === siteConfig.locales.default);
+    const fallback = preferred ?? locales[0] ?? defaultLocale ?? siteConfig.locales.default;
+    return `/products/${id}/${fallback}`;
+  })(productId)
+);
 ---
-<ProductLandingPage productId={productId} />

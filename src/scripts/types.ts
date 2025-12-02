@@ -44,6 +44,8 @@ export type RuntimeConfig = {
   analytics: RuntimeAnalytics;
   checkout: RuntimeCheckout;
   api: RuntimeApi;
+  locale: string;
+  availableLocales: string[];
   countdown: {
     durationSeconds: number;
   };

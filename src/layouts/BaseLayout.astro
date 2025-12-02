@@ -22,11 +22,12 @@ const {
   supportedLocales = ['en']
 } = Astro.props satisfies Props;
 
-const initialThemeAttribute = theme === 'system' ? 'night' : theme;
+const initialThemeAttribute = theme === 'system' ? 'day' : theme;
+const initialThemeModeAttribute = theme;
 ---
 
 <!DOCTYPE html>
-<html lang={lang} data-theme={initialThemeAttribute}>
+<html lang={lang} data-theme={initialThemeAttribute} data-theme-mode={initialThemeModeAttribute}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,7 +36,7 @@ const initialThemeAttribute = theme === 'system' ? 'night' : theme;
     <ThemeScript initialTheme={theme} availableThemes={availableThemes} />
     <LocaleScript initialLocale={lang} supportedLocales={supportedLocales} />
   </head>
-  <body class="bg-slate-950 text-slate-50 antialiased has-skeleton" data-skeleton-state="pending">
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 antialiased has-skeleton" data-skeleton-state="pending">
     <div id="global-skeleton" class="skeleton-shell" aria-hidden="true">
       <div class="skeleton-header skeleton-shimmer"></div>
       <div class="skeleton-hero skeleton-shimmer"></div>

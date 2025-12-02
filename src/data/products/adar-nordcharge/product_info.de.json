@@ -1,0 +1,331 @@
+{
+  "topBar": {
+    "message": "Notfall-Launch: 10 Jahre Sorglos-Garantie + BOGO-Bonus",
+    "countdownLabel": "Checkout schließt in"
+  },
+  "hero": {
+    "badgeLines": [
+      "Flash",
+      "Deal",
+      "87% RABATT"
+    ],
+    "socialProof": {
+      "icon": "star",
+      "text": "97.248 Tech-Fans gaben 5-Sterne-Bewertungen"
+    },
+    "headline": "Magnetische Schnellpower. Keine Kabel. Kein leerer Akku.",
+    "description": "A'DAR NordCharge klickt magnetisch ein, liefert 20W Schnellladung und smarte Wärme­kontrolle – sichere dir das BOGO-Bundle, bevor der Timer ausläuft.",
+    "highlights": [
+      "60% in 30 Minuten",
+      "Starker MagSafe-Halt",
+      "LED‑Poweranzeige"
+    ],
+    "inventoryCard": {
+      "countdownLabel": "Angebot endet in",
+      "stockLabel": "Live-Bestand",
+      "stockUnit": "Sets",
+      "stockAlert": "Nur noch 12 Sets, bevor der Preis wieder 189 $ beträgt",
+      "trustSignals": [
+        {
+          "icon": "shield-check",
+          "text": "10 Jahre Garantie"
+        },
+        {
+          "icon": "printer",
+          "text": "Versand noch heute"
+        },
+        {
+          "icon": "truck",
+          "text": "Weltweit kostenloser Versand"
+        }
+      ]
+    },
+    "cta": {
+      "label": "Jetzt Bestellung sichern",
+      "icon": "arrow-right",
+      "banner": {
+        "icon": "users",
+        "text": "41 Käufer sind gerade im Checkout"
+      },
+      "note": "256-bit gesicherter Checkout · 24/7 Live-Support · Stressfreie Rückgabe"
+    }
+  },
+  "countdown": {
+    "durationSeconds": 869
+  },
+  "inventory": {
+    "start": 96,
+    "minimum": 12
+  },
+  "detailHtml": "<section id=\"value-details\" class=\"mt-12 rounded-3xl border border-white/5 bg-slate-900/50 p-6 sm:p-10\">\n  <h2 class=\"text-2xl font-bold text-white\">Lass ein leeres Handy dich nicht mehr stressen</h2>\n  <p class=\"mt-3 text-sm text-slate-100 dark:text-slate-100\">Ein leerer Akku ist keine „Kleinigkeit“. Er blockiert Türen, Zahlungen und Entscheidungen genau dann, wenn es zählt. Lerne es nicht auf die harte Tour.</p>\n\n  <!-- Row 1: Pain points with visual (text left, image right) -->\n  <div class=\"mt-6 grid gap-6 md:grid-cols-2 md:items-center\">\n    <div class=\"space-y-2 text-sm text-white/75\">\n      <ul class=\"space-y-2\">\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"map-pin\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>In einer fast fremden Stadt gestrandet – dein Handy stirbt, als der letzte Bus abfährt.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"heart\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Direkt vor dem ersten Date geht dein Handy aus – sie denken, du wärst nie gekommen.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"trending-down\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Im Börsenabverkauf stirbt dein Handy – dein Portfolio fällt, und du kannst nicht handeln.</span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"overflow-hidden rounded-xl bg-slate-900/60\">\n      <img src=\"https://1075koolfm.com/cobPub/uploads/2025/04/Battery.jpg\" alt=\"A'DAR NordCharge im Einsatz ohne Standfuß, Sorgen wegen leerem Akku\" class=\"h-auto w-full object-cover\"/>\n    </div>\n  </div>\n\n  <!-- Row 2: Three frustrations solved (image left, text right) -->\n  <div class=\"mt-8 grid gap-6 md:grid-cols-2 md:items-center\">\n    <!-- Left: feature image/GIF -->\n    <div class=\"overflow-hidden rounded-xl bg-slate-800/50\">\n      <img src=\"https://ekontravel.com/cdn/shop/files/NC_gif3.webp\" alt=\"Magnetischer Snap, Schnellladen und stabiler Stand in Aktion\" class=\"h-auto w-full object-cover\"/>\n    </div>\n    <!-- Right: copy list -->\n    <div class=\"space-y-3\">\n      <h3 class=\"text-xl font-bold text-white\">Drei Frustmomente mit einem Klick gelöst</h3>\n      <ul class=\"space-y-2 text-sm text-white/80\">\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"magnet\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Magnetisches Snap-on-Alignment – rastet ein und bleibt fest.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"zap\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Echte Schnellladung – 20W PD bringt 60% Akku in 30 Minuten.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"gauge\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Stabile Standfunktion – freihändig Video, Calls und Streams im Hoch- oder Querformat.</span>\n        </li>\n      </ul>\n    </div>\n  </div>\n\n  <!-- Row 2.5: Slim + Stand dedicated (text left, image right) -->\n  <div class=\"mt-8 grid gap-6 md:grid-cols-2 md:items-center\">\n    <!-- Left: copy -->\n    <div class=\"space-y-3 text-sm text-white/80\">\n      <h3 class=\"text-xl font-bold text-white\">Trag weniger. Stell es hin. Erledige mehr.</h3>\n      <ul class=\"space-y-2\">\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"feather\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Ultraschlank, federleicht – verschwindet in deiner Hosentasche oder Sling.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"monitor\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Stabile Standfunktion – freihändige Calls, Streaming und Meetings.</span>\n        </li>\n        <li class=\"flex items-start gap-3\">\n          <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n            <i data-lucide=\"rotate-ccw\" class=\"h-5 w-5\"></i>\n          </span>\n          <span>Hoch- oder Querformat – stabile Winkel ohne Wackeln.</span>\n        </li>\n      </ul>\n    </div>\n    <!-- Right: feature image -->\n    <div class=\"overflow-hidden rounded-xl bg-slate-900/60\">\n      <img src=\"https://ekontravel.com/cdn/shop/files/IMG_4231_5_1_a72ab4e4-bf76-4b6e-a33e-b2e348d1b8e4.webp\" alt=\"Freihändiger Video-Call auf stabilem Stand; schlankes Profil in der Tasche\" class=\"h-auto w-full object-cover\"/>\n    </div>\n  </div>\n\n  <!-- Row 3: Product details with large visual -->\n  <div class=\"mt-8\">\n    <h3 class=\"text-xl font-bold text-white\">Specs, die den ganzen Tag mithalten</h3>\n    <!-- Row 3: alternate layout (image left, text right) with vertical centering -->\n    <div class=\"mt-4 grid gap-6 md:grid-cols-2 md:items-center\">\n      <div class=\"overflow-hidden rounded-xl bg-slate-900/60\">\n        <img src=\"https://ekontravel.com/cdn/shop/files/NC_gif2-ezgif.com-optimize.webp\" alt=\"Produktdetails im Überblick\" class=\"h-auto w-full object-cover\"/>\n      </div>\n      <div class=\"space-y-3 text-sm text-white/80\">\n        <p>A'DAR NordCharge rastet magnetisch ein und bringt dich durch die längsten Tage. Mit magnetischem Snap und <strong>stabiler Standfunktion</strong> ist es immer einsatzbereit – unterwegs, am Schreibtisch oder auf dem Nachttisch. Alles Wichtige auf einen Blick:</p>\n        <ul class=\"space-y-2\">\n          <li class=\"flex items-start gap-3\">\n            <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n              <i data-lucide=\"cpu\" class=\"h-5 w-5\"></i>\n            </span>\n            <span>10.000 mAh Hochdichte-Zelle • 20W USB-C in/out • 15W Wireless • Pass-Through-Charging</span>\n          </li>\n          <li class=\"flex items-start gap-3\">\n            <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n              <i data-lucide=\"circle-dot\" class=\"h-5 w-5\"></i>\n            </span>\n            <span>MagSafe-kompatibler Magnetring mit 18 Seltene-Erden-Magneten</span>\n          </li>\n          <li class=\"flex items-start gap-3\">\n            <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n              <i data-lucide=\"monitor-smartphone\" class=\"h-5 w-5\"></i>\n            </span>\n            <span>LED-Poweranzeige mit smarter Temperaturregelung</span>\n          </li>\n          <li class=\"flex items-start gap-3\">\n            <span class=\"mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n              <i data-lucide=\"package\" class=\"h-5 w-5\"></i>\n            </span>\n            <span>Im Lieferumfang: A'DAR NordCharge Powerbank, USB-C-Schnellkabel, Magnetring, Quick-Start-Guide</span>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <!-- Confidence guarantees -->\n  <div class=\"mt-8 space-y-3\">\n    <h3 class=\"text-xl font-bold text-white text-center\">Sicherheitszusagen, die jedes Zögern nehmen</h3>\n    <ul class=\"grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-white/80\">\n      <li class=\"flex items-start gap-3\">\n        <span class=\"inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n          <i data-lucide=\"headset\" class=\"h-5 w-5\"></i>\n        </span>\n        <span>24/7 Concierge-Support – sprich in 30 Sekunden mit einem Experten.</span>\n      </li>\n      <li class=\"flex items-start gap-3\">\n        <span class=\"inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n          <i data-lucide=\"refresh-ccw\" class=\"h-5 w-5\"></i>\n        </span>\n        <span>Unbegrenzte Austauschgeräte für 10 Jahre – Soforttausch, keine Fragen.</span>\n      </li>\n      <li class=\"flex items-start gap-3\">\n        <span class=\"inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800/70 text-brand-100\">\n          <i data-lucide=\"shield-check\" class=\"h-5 w-5\"></i>\n        </span>\n        <span>Zahlungssicherheit – PCI-konform und Echtzeit-Verschlüsselung.</span>\n      </li>\n    </ul>\n    <div class=\"rounded-xl bg-slate-950/70 p-4 text-sm text-white/75 ring-1 ring-white/5\">\n      <p class=\"italic\">„Das einzige magnetische Ladegerät in Hosentaschengröße, das 16 internationale Sicherheitszertifizierungen bestanden hat.“ — TechGear Review Lab</p>\n    </div>\n  </div>\n</section>",
+  "guarantee": {
+    "title": "Unsere risikofreie Garantie",
+    "description": "Wenn A'DAR NordCharge Ihren Akku-Stress nicht beendet, erhalten Sie innerhalb von 30 Tagen eine vollständige Rückerstattung – ohne Fragen.",
+    "bullets": [
+      "30-Tage-Test mit Prioritäts­support",
+      "Vollständige Rückerstattung ohne Fragen",
+      "Kostenloser weltweiter Versand",
+      "10 Jahre Sorglos-Garantie"
+    ],
+    "ctaLabel": "Mein risikofreies Testen starten",
+    "ctaHref": "#purchase",
+    "note": "Innerhalb von 30 Tagen kündbar für volle Erstattung"
+  },
+  "comments": {
+    "headline": "Fragst du dich noch, ob es sich lohnt?",
+    "description": "Wir prüfen jede Einsendung manuell und zeigen nur bestätigte Käufer. Bewertungen laden in Echtzeit, damit du siehst, was jetzt passiert.",
+    "activity": "3 neue 5-Sterne-Bewertungen in den letzten 2 Minuten",
+    "perPage": 6,
+    "pagination": {
+      "previous": "Zurück",
+      "next": "Weiter"
+    },
+    "reviews": [
+      {
+        "name": "Iris Chen | Freelance Brand Designer",
+        "timestamp": "Vor 20 Minuten",
+        "avatar": "https://i.pravatar.cc/80?img=68",
+        "stars": 5,
+        "content": "Client visits run all day and A'DAR NordCharge saves me from staring at 1% battery. The magnet is rock solid—I already convinced three teammates to grab theirs."
+      },
+      {
+        "name": "Ethan Lin | Tech YouTuber",
+        "timestamp": "Vor 32 Minuten",
+        "avatar": "https://i.pravatar.cc/80?img=15",
+        "stars": 5,
+        "content": "Filming vlogs drains my phone fast. A'DAR NordCharge pumps it back up during shoots and never overheats. Easily the best magnetic pack I’ve tested."
+      },
+      {
+        "name": "Penny Wang | Travel Creator",
+        "timestamp": "Vor 41 Minuten",
+        "avatar": "https://i.pravatar.cc/80?img=55",
+        "stars": 5,
+        "content": "Just survived a 12-day Europe tour with zero charging anxiety. While others hunted outlets, I snapped the A'DAR NordCharge on and kept moving."
+      },
+      {
+        "name": "Marcus Chang | Startup Founder",
+        "timestamp": "Vor 55 Minuten",
+        "avatar": "https://i.pravatar.cc/80?img=24",
+        "stars": 5,
+        "content": "Received mine yesterday and went straight into investor meetings. Phone stayed at 80%+ all day and support replied instantly on chat."
+      },
+      {
+        "name": "Sophia Reyes | Event Planner",
+        "timestamp": "Vor 1 Stunde",
+        "avatar": "https://i.pravatar.cc/80?img=32",
+        "stars": 5,
+        "content": "Coordinating conferences means constant calls. A'DAR NordCharge let me run registration, live-stream, and photos without plugging in once."
+      },
+      {
+        "name": "David King | Airline Pilot",
+        "timestamp": "Vor 1 Stunde",
+        "avatar": "https://i.pravatar.cc/80?img=29",
+        "stars": 5,
+        "content": "Layovers are unpredictable. This power bank fits my flight bag and keeps my phone and headset topped up between legs."
+      },
+      {
+        "name": "Lena Novak | Fashion Buyer",
+        "timestamp": "Vor 1 Stunde",
+        "avatar": "https://i.pravatar.cc/80?img=41",
+        "stars": 5,
+        "content": "Paris showroom days are brutal on batteries. With A'DAR NordCharge I FaceTimed HQ all afternoon and still had juice for navigation at night."
+      },
+      {
+        "name": "Arjun Patel | Product Manager",
+        "timestamp": "Vor 2 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=47",
+        "stars": 5,
+        "content": "Daily standups, field visits, and ride-share tracking—A'DAR NordCharge handled it all. Love the LED readout so I know when to recharge it."
+      },
+      {
+        "name": "Mia Lopez | Wedding Photographer",
+        "timestamp": "Vor 2 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=12",
+        "stars": 5,
+        "content": "Shot a full wedding weekend and used the A'DAR NordCharge as my safety net between ceremonies. It even powered my gimbal in a pinch."
+      },
+      {
+        "name": "Kevin Brooks | Uber Fleet Owner",
+        "timestamp": "Vor 2 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=3",
+        "stars": 5,
+        "content": "Drivers were draining phones running apps. Bought the bundle and my top performers now finish shifts with battery to spare."
+      },
+      {
+        "name": "Harper Quinn | College Student",
+        "timestamp": "Vor 3 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=52",
+        "stars": 5,
+        "content": "Campus days run 14 hours. A'DAR NordCharge sticks to my phone while I take notes, stream tutorials, and commute. No more backpack full of cables."
+      },
+      {
+        "name": "Noah White | Notfallmediziner",
+        "timestamp": "Vor 3 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=11",
+        "stars": 5,
+        "content": "We can’t risk losing dispatch contact. A'DAR NordCharge clips on inside the ambulance and keeps our phones powered through double shifts."
+      },
+      {
+        "name": "Grace Lee | Immobilienmaklerin",
+        "timestamp": "Vor 3 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=36",
+        "stars": 5,
+        "content": "Back-to-back showings used to kill my phone before evening offers. Now I stream virtual tours on site without sweating the battery."
+      },
+      {
+        "name": "Owen Hughes | Travel Blogger",
+        "timestamp": "Vor 4 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=67",
+        "stars": 5,
+        "content": "Hiking in Patagonia meant zero outlets. A'DAR NordCharge stayed magnetized even with gloves on and fast charged my phone at base camp."
+      },
+      {
+        "name": "Emily Foster | Pflegefachkraft",
+        "timestamp": "Vor 4 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=40",
+        "stars": 5,
+        "content": "Clinic tablets and my phone stay alive on 12-hour shifts. Pass-through charging is a lifesaver during quick breaks."
+      },
+      {
+        "name": "Jamal Rivers | Basketball Coach",
+        "timestamp": "Vor 5 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=14",
+        "stars": 5,
+        "content": "Game days require video playback and constant messaging. A'DAR NordCharge kept my analytics tablet and phone powered from warmup to press."
+      },
+      {
+        "name": "Sophie Muller | Luxury Retail Manager",
+        "timestamp": "Vor 5 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=21",
+        "stars": 5,
+        "content": "Our VIP events rely on digital lookbooks. A'DAR NordCharge hides behind the phone and still powers contactless checkout all night."
+      },
+      {
+        "name": "Victor Ramirez | Lieferleiter",
+        "timestamp": "Vor 6 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=8",
+        "stars": 5,
+        "content": "Peak dinner rush before used to drain our team trackers. With A'DAR NordCharge, riders finish routes without detouring to charge."
+      },
+      {
+        "name": "Ava Collins | Krisenkommunikation",
+        "timestamp": "Vor 6 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=44",
+        "stars": 5,
+        "content": "Media crises mean nonstop calls. A'DAR NordCharge sits behind my phone during every interview and the battery never dips below 70%."
+      },
+      {
+        "name": "Logan Price | Softwareberater",
+        "timestamp": "Vor 7 Stunden",
+        "avatar": "https://i.pravatar.cc/80?img=5",
+        "stars": 5,
+        "content": "Airport lounges were full but I still demoed apps for clients on the go. A'DAR NordCharge's magnet never budged while screen sharing."
+      }
+    ],
+    "activityMessages": [
+      "3 frische 5-Sterne-Reviews gerade eingetroffen",
+      "Sophia aus Taipeh hat gerade das Magnetring-Bundle hinzugefügt",
+      "Jason aus Singapur hat soeben bezahlt",
+      "Concierge-Alarm: weniger als 25 Bundles übrig"
+    ]
+  },
+  "faq": [
+    {
+      "question": "F1. Funktioniert NordCharge mit Android-Handys?",
+      "answer": "Ja. Der integrierte USB-C-Port lädt Android-Handys, Tablets, Earbuds und mehr schnell. Der mitgelieferte Magnetring lässt jedes Case sicher einrasten."
+    },
+    {
+      "question": "F2. Darf ich es im Flugzeug mitnehmen?",
+      "answer": "Ja. 10.000 mAh liegen innerhalb der ICAO-Richtlinien für Handgepäck-Akkus."
+    },
+    {
+      "question": "F3. Überhitzt es beim Laden?",
+      "answer": "NordCharge überwacht die Temperatur mit 12 Schutzschichten und balanciert die Leistung automatisch, so bleibt es auch bei langen Sessions kühl."
+    },
+    {
+      "question": "F4. Kann ich Handy und Powerbank gleichzeitig laden?",
+      "answer": "Ja. Steck NordCharge an die Steckdose: Es lädt sich selbst, während es dein Handy per Wireless oder USB-C Pass-Through versorgt."
+    }
+  ],
+  "purchase": {
+    "title": "Bestellung abschließen",
+    "subtitle": "Snap-on Schnellpower · 10.000 mAh · 20W USB-C · LED-Anzeige",
+    "quantityLabel": "Menge",
+    "ctaLabel": "Jetzt kaufen — {{price}}",
+    "assurances": [
+      {
+        "icon": "truck",
+        "text": "Gratis Versand"
+      },
+      {
+        "icon": "rotate-ccw",
+        "text": "Einfache Rückgabe"
+      },
+      {
+        "icon": "shield-check",
+        "text": "Sicherer Checkout"
+      },
+      {
+        "icon": "badge-check",
+        "text": "1 Jahr Garantie"
+      },
+      {
+        "icon": "circle-dollar-sign",
+        "text": "Geld-zurück-Garantie"
+      },
+      {
+        "icon": "thumbs-up",
+        "text": "Zufriedenheitsgarantie"
+      }
+    ],
+    "note": "256-bit geschützter Checkout · 30 Tage Geld-zurück",
+    "mediaAlt": "A'DAR NordCharge Powerbank"
+  },
+  "exitIntent": {
+    "enabled": true,
+    "badge": "Geh nicht mit leeren Händen",
+    "title": "Sichere das NordCharge BOGO-Bundle bevor der Timer zurücksetzt",
+    "description": "Schließe jetzt ab, damit dein Handy und dein Backup voll bleiben. Wenn du gehst, springt der Preis sofort zurück.",
+    "highlight": "Wir haben das 89-$-Doppelpack noch ein paar Minuten für dich reserviert.",
+    "bullets": [
+      "Sofort 100 $ sparen – nur heute",
+      "Kostenloser Priority-Versand weltweit",
+      "10 Jahre Garantie + 30 Tage Geld zurück"
+    ],
+    "ctaLabel": "Ich behalte das Angebot",
+    "ctaHref": "#purchase",
+    "secondaryCtaLabel": "Weiter stöbern",
+    "secondaryCtaHref": "#value-details",
+    "dismissLabel": "Erinnerung schließen",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=900&q=80",
+      "alt": "NordCharge-Set neben Reise-Essentials"
+    }
+  },
+  "stickyFooter": {
+    "headline": "Flash-SALE endet in",
+    "stockMessage": "Nur noch {stock} Sets bevor der Preis wieder 189 $ ist",
+    "ctaLabel": "Jetzt sichern"
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "A'DAR Sorglos-Versprechen",
+        "body": "Jede Bestellung enthält 30 Tage risikofreie Rückgabe, kostenlosen weltweiten Versand und echten 24/7 Support."
+      },
+      {
+        "title": "Sicher einkaufen",
+        "items": [
+          "SSL-verschlüsselter Checkout",
+          "Zahlungsschutz durch Drittanbieter",
+          "Diskrete Verpackung für Geschenke"
+        ]
+      },
+      {
+        "title": "Jetzt handeln",
+        "body": "Wenn der Timer auf Null geht, gilt wieder der volle Preis. Schließe den Kauf jetzt ab, um deinen Platz zu sichern."
+      }
+    ],
+    "copyright": "© 2025 A'DAR Labs. Alle Rechte vorbehalten."
+  }
+}

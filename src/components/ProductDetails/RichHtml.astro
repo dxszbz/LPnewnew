@@ -6,4 +6,40 @@ export interface Props {
 const { html } = Astro.props satisfies Props;
 ---
 
-<Fragment set:html={html} />
+<div class="detail-html" set:html={html}></div>
+
+<style>
+  :global(.detail-html) {
+    color: #0f172a;
+  }
+  :global(.detail-html a) {
+    color: #1d4ed8;
+  }
+  :global(.detail-html strong) {
+    color: #0f172a;
+  }
+  :global([data-theme='day'] .detail-html .text-white),
+  :global([data-theme='day'] .detail-html .text-white\/90),
+  :global([data-theme='day'] .detail-html .text-white\/80),
+  :global([data-theme='day'] .detail-html .text-white\/75),
+  :global([data-theme='day'] .detail-html .text-white\/70),
+  :global([data-theme='day'] .detail-html .text-white\/60),
+  :global([data-theme='day'] .detail-html .text-white\/40) {
+    color: #0f172a !important;
+  }
+  :global([data-theme='day'] .detail-html .bg-slate-900),
+  :global([data-theme='day'] .detail-html [class*='bg-slate-9']) {
+    background-color: #f8fafc !important;
+  }
+  :global([data-theme='day'] .detail-html .bg-slate-800),
+  :global([data-theme='day'] .detail-html [class*='bg-slate-8']) {
+    background-color: #f1f5f9 !important;
+  }
+  :global([data-theme='day'] .detail-html .border-white),
+  :global([data-theme='day'] .detail-html [class*='border-white']) {
+    border-color: #e2e8f0 !important;
+  }
+  :global([data-theme='day'] .detail-html .text-brand-100) {
+    color: #1d4ed8 !important;
+  }
+</style>

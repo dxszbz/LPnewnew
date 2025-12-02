@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config';
 import { loadProduct } from '../utils/loadProduct';
 
+import Header from './Header/Primary.astro';
 import TopBar from './TopBar/Primary.astro';
 import HeroSection from './HeroSection/FlashDeal.astro';
 import ProductDetails from './ProductDetails/RichHtml.astro';
@@ -17,14 +18,21 @@ import ExitIntent from './ExitIntent/Primary.astro';
 
 type Props = {
   productId: string;
+  locale?: string;
 };
 
-const { productId } = Astro.props as Props;
-const { data: product, info, components } = loadProduct(productId);
+const { productId, locale } = Astro.props as Props;
+const { data: product, info, components, locale: resolvedLocale, availableLocales } = loadProduct(
+  productId,
+  locale
+);
 const exitIntentContent = info.exitIntent;
+const activeLocale = resolvedLocale ?? siteConfig.locales.default;
+const runtimeLocales = availableLocales?.length ? availableLocales : [...siteConfig.locales.supported];
 
 const componentRegistry = {
   BaseLayout,
+  'Header/Primary': Header,
   'TopBar/Primary': TopBar,
   'HeroSection/FlashDeal': HeroSection,
   'ProductDetails/RichHtml': ProductDetails,
@@ -39,6 +47,7 @@ const componentRegistry = {
 
 const defaultPreset = {
   layout: 'BaseLayout',
+  header: 'Header/Primary',
   topBar: 'TopBar/Primary',
   hero: 'HeroSection/FlashDeal',
   productDetails: 'ProductDetails/RichHtml',
@@ -69,6 +78,7 @@ const resolveComponent = (slot: ComponentSlot) => {
 };
 
 const LayoutComponent = (resolveComponent('layout') as typeof BaseLayout | null) ?? BaseLayout;
+const HeaderComponent = (resolveComponent('header') as typeof Header | null) ?? Header;
 const TopBarComponent = resolveComponent('topBar') as typeof TopBar | null;
 const HeroComponent = (resolveComponent('hero') as typeof HeroSection | null) ?? HeroSection;
 const ProductDetailsComponent =
@@ -161,7 +171,9 @@ const runtimeData = {
     activityMessages: info.comments.activityMessages ?? []
   },
   analytics: siteConfig.analytics,
-  exitIntent: exitIntentContent ?? null
+  exitIntent: exitIntentContent ?? null,
+  locale: activeLocale,
+  availableLocales: runtimeLocales
 };
 
 const runtimeJson = JSON.stringify(runtimeData);
@@ -171,20 +183,23 @@ const copyright =
 <LayoutComponent
   title={`${product.name} | Flash Deal`}
   description={info.hero.description.replace(/<[^>]+>/g, '')}
-  lang={siteConfig.locales.default}
+  lang={activeLocale}
   theme="system"
   availableThemes={[...siteConfig.themes]}
-  supportedLocales={[...siteConfig.locales.supported]}
+  supportedLocales={runtimeLocales}
 >
   {TopBarComponent && (
     <TopBarComponent
-      icon={info.topBar.icon}
       message={info.topBar.message}
       countdownLabel={info.topBar.countdownLabel}
     />
   )}
 
-  <main class="mx-auto mt-16 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-20 sm:px-6 lg:px-10">
+  {HeaderComponent && (
+    <HeaderComponent productName={product.name} />
+  )}
+
+  <main class="mx-auto mt-6 flex min-h-screen max-w-screen-xl flex-col px-4 pb-24 pt-6 sm:mt-8 sm:px-6 lg:px-10">
     {HeroComponent && <HeroComponent hero={info.hero} product={product} />}
     {ProductDetailsComponent && <ProductDetailsComponent html={info.detailHtml} />}
     {GuaranteeComponent && <GuaranteeComponent content={info.guarantee} />}
@@ -206,6 +221,6 @@ const copyright =
     <ExitIntent product={product} content={exitIntentContent} />
   )}
 
-  <script type="application/json" id="landing-runtime" set:html={runtimeJson}></script>
+  <script type="application/json" id="landing-runtime" set:html={runtimeJson} is:inline></script>
   <script src="../scripts/landing-init.ts"></script>
 </LayoutComponent>

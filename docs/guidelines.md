@@ -117,7 +117,7 @@ Recommended utility palette
 - Typography: `text-white`, `text-white/80`, `text-slate-300`, `font-bold`, `leading-relaxed`.
 - Surfaces: `bg-slate-900/50`, `bg-slate-950/60`, `ring-1 ring-white/10`, `border border-white/10`.
 - Shapes: `rounded-xl`, `rounded-2xl`, `rounded-3xl`.
-- Accents: `text-brand-100`, `bg-brand-500`, `bg-warning-500`, `text-success-500`.
+- Accents: `text-brand-100`, `bg-brand-500`, `bg-rose-500`, `text-success-500`.
 - Media: images with `lazyload` and `data-src` are auto‑initialized by the runtime. Include a `<noscript>` fallback.
 - Icons: use Lucide via `data-lucide="icon-name"` — icons are auto‑hydrated by the runtime script.
 
