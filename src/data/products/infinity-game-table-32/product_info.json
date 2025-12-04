@@ -1,6 +1,6 @@
 {
   "topBar": {
-    "message": "Black Friday & Cyber Monday drop: Infinity Game Table 32\" at €82.90 with free EU shipping",
+    "message": "Black Friday & Cyber Monday drop: Infinity Game Table 32\" at $59 with free EU shipping",
     "countdownLabel": "BFCM offer ends in"
   },
   "hero": {
@@ -24,7 +24,7 @@
       "countdownLabel": "Black Friday deal ends in",
       "stockLabel": "Live stock",
       "stockUnit": "tables",
-      "stockAlert": "Only 24 tables left at €82.9 for BFCM before price reverts",
+      "stockAlert": "Only 24 tables left at $59 for BFCM before price reverts",
       "trustSignals": [
         {
           "icon": "shield-check",
@@ -186,8 +186,8 @@
     "enabled": true,
     "badge": "Black Friday & Cyber Monday",
     "title": "Lock the 32\" Infinity Game Table while stock lasts",
-    "description": "BFCM price: save over €700 on the 32\" touchscreen table with built-in games and Wi-Fi updates.",
-    "highlight": "We reserved the €82.90 BFCM price for a few more minutes.",
+    "description": "BFCM price: save over $700 on the 32\" touchscreen table with built-in games and Wi-Fi updates.",
+    "highlight": "We reserved the $59 BFCM price for a few more minutes.",
     "bullets": [
       "Free EU shipping + 30-day returns",
       "Includes Hasbro classics and online play",
@@ -206,7 +206,7 @@
   "stickyFooter": {
     "headline": "BFCM price ends soon",
     "stockMessage": "Only {stock} tables left before price returns",
-    "ctaLabel": "Claim at €82.90"
+    "ctaLabel": "Claim at $59"
   },
   "footer": {
     "columns": [

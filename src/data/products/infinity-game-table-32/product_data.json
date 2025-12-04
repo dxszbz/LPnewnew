@@ -2,8 +2,8 @@
   "sku": "infinity-game-table-32",
   "name": "Infinity Game Table 32\"",
   "price": {
-    "currency": "EUR",
-    "current": 82.9,
+    "currency": "USD",
+    "current": 59,
     "original": 799
   },
   "mainImage": {
@@ -19,13 +19,14 @@
     { "url": "/products/infinity-game-table-32/images/6.webp", "alt": "Family playing Hasbro classics on Infinity Game Table" }
   ],
   "checkout": {
-    "type": "direct",
-    "url": "https://velunora.shop/176666-129230/checkouts/1292300f42c7c719895022d72b667cd6?_ref=https%3A%2F%2Fvelunora.shop%2Fproducts%2Finfinity-game-table-32%3Fdata_from%3Dsearch_detail"
+    "type": "shopyy",
+    "domain": "https://watchcleannow.shop/",
+    "productId": 10828506,
+    "skuCode": "10828506-12620399-48770742-0-0-0-0"
   },
   "meta": {
     "product_id": "infinity-game-table-32",
     "bundle": "single",
-    "currency": "EUR",
     "screen_size": "32-inch",
     "connectivity": "Wi-Fi",
     "features": ["Dynamic Zoom", "Tactile Feedback", "Online Play"]
