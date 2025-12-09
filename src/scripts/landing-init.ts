@@ -13,6 +13,7 @@ import { initQuantityStepper } from './modules/quantityStepper';
 import { initCheckout } from './modules/checkout';
 import { revealContent } from './modules/reveal';
 import { initPixelTracker } from './modules/analytics/pixelTracker';
+import { initCaseAdsPixel } from './modules/analytics/caseAdsPixel';
 import { initExitIntent } from './modules/exitIntent';
 
 const init = () => {
@@ -22,6 +23,7 @@ const init = () => {
   initLazyLoader();
   refreshIcons();
   initPixelTracker(runtime.analytics, runtime.product);
+  initCaseAdsPixel();
 
   const alertEl = document.querySelector<HTMLElement>('[data-stock-alert]');
   initCountdown(runtime.countdown.durationSeconds, alertEl);
