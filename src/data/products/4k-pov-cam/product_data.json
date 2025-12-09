@@ -3,7 +3,7 @@
   "name": "4K POV Mini Action Camera",
   "price": {
     "currency": "USD",
-    "current": 59,
+    "current": 39.99,
     "original": 199
   },
   "mainImage": {
@@ -31,7 +31,8 @@
     "skuCode": "13478711-0-0-0-0-0-0"
   },
   "meta": {
-    "bundle": "single",
+    "bundle": "2-pack",
+    "colors": ["Black", "White"],
     "product_id": "4k-pov-cam",
     "currency": "USD",
     "resolution": "4K@30fps",
