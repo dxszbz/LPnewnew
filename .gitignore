@@ -4,6 +4,7 @@ dist/
 .astro/
 .serena/
 adar/
+.claude/
 
 # Logs & diagnostics
 npm-debug.log*
@@ -21,3 +22,9 @@ pnpm-debug.log*
 .stylelintcache
 .parcel-cache
 /.turbo
+
+# Keep only adar-nordcharge product
+src/data/products/*
+!src/data/products/adar-nordcharge/
+public/products/*
+!public/products/adar-nordcharge/
